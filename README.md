@@ -1,5 +1,7 @@
 # MRT Middleware Integration Service
 
+https://claude.ai/artifact/YSMRpswGCaciQgMiKrinqK#slide-343d3ad85bc1
+
 Middleware integrasi **read-only** dari Facility SCADA (OPC UA), DTS/Telecommunication NMS, dan PIDS/PIDC Server
 ke canonical model di PostgreSQL. Data didistribusikan lewat REST API dan WebSocket dengan kontrol role, scope,
 dan audit log, plus UI dashboard monitoring.
