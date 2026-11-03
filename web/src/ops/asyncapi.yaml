@@ -1,0 +1,215 @@
+asyncapi: 3.0.0
+info:
+  title: MRT Middleware — WebSocket realtime
+  version: 0.2.0
+  description: |
+    Data realtime (telemetri, event/alarm, info kereta) dari middleware integrasi, sudah dinormalisasi ke canonical model.
+    Isi pesan `data` sama persis dengan skema respons REST (lihat /openapi.json): Telemetry, Event, TrainInfo.
+
+    Alur:
+    1. Buka koneksi ke `/ws`.
+    2. Kirim `auth` dalam 10 detik dengan **access token Azure AD** (pengguna SSO) atau **API key** (aplikasi).
+    3. Server membalas `auth_ok` (role, scope, kedaluwarsa token).
+    4. Kirim `subscribe` berisi channel dan (opsional) stasiun.
+    5. Server mengirim `data` untuk setiap record baru **yang berada dalam scope klien**.
+    6. Token SSO: server mengirim `auth_expiring` 2 menit sebelum habis; kirim `auth` lagi dengan token baru.
+       Identitas harus sama. Kalau tidak diperpanjang, koneksi ditutup dengan kode 4401.
+
+    Kredensial dikirim sebagai pesan, bukan di URL, agar tidak tercatat di log proxy.
+    Server mengirim ping WebSocket tiap 30 detik; klien yang tidak membalas pong diputus.
+
+    Kode penutupan: 4401 = auth gagal / token habis / timeout auth; 1001 = server shutdown.
+    Semua auth, re-auth, subscribe, dan disconnect dicatat di audit_logs (channel = websocket).
+servers:
+  middleware:
+    host: localhost:8080
+    pathname: /ws
+    protocol: ws
+    description: Ganti dengan host middleware; gunakan wss di balik reverse proxy TLS.
+
+channels:
+  realtime:
+    address: /ws
+    messages:
+      auth: { $ref: '#/components/messages/auth' }
+      subscribe: { $ref: '#/components/messages/subscribe' }
+      unsubscribe: { $ref: '#/components/messages/unsubscribe' }
+      ping: { $ref: '#/components/messages/ping' }
+      authOk: { $ref: '#/components/messages/authOk' }
+      authError: { $ref: '#/components/messages/authError' }
+      authExpiring: { $ref: '#/components/messages/authExpiring' }
+      subscribed: { $ref: '#/components/messages/subscribed' }
+      unsubscribed: { $ref: '#/components/messages/unsubscribed' }
+      pong: { $ref: '#/components/messages/pong' }
+      data: { $ref: '#/components/messages/data' }
+      error: { $ref: '#/components/messages/error' }
+
+operations:
+  sendAuth:
+    action: receive
+    channel: { $ref: '#/channels/realtime' }
+    summary: Klien mengautentikasi (juga untuk memperpanjang token)
+    messages: [{ $ref: '#/channels/realtime/messages/auth' }]
+    reply:
+      channel: { $ref: '#/channels/realtime' }
+      messages:
+        - { $ref: '#/channels/realtime/messages/authOk' }
+        - { $ref: '#/channels/realtime/messages/authError' }
+  sendSubscribe:
+    action: receive
+    channel: { $ref: '#/channels/realtime' }
+    summary: Klien berlangganan channel data
+    messages: [{ $ref: '#/channels/realtime/messages/subscribe' }]
+    reply:
+      channel: { $ref: '#/channels/realtime' }
+      messages: [{ $ref: '#/channels/realtime/messages/subscribed' }]
+  sendUnsubscribe:
+    action: receive
+    channel: { $ref: '#/channels/realtime' }
+    messages: [{ $ref: '#/channels/realtime/messages/unsubscribe' }]
+    reply:
+      channel: { $ref: '#/channels/realtime' }
+      messages: [{ $ref: '#/channels/realtime/messages/unsubscribed' }]
+  sendPing:
+    action: receive
+    channel: { $ref: '#/channels/realtime' }
+    messages: [{ $ref: '#/channels/realtime/messages/ping' }]
+    reply:
+      channel: { $ref: '#/channels/realtime' }
+      messages: [{ $ref: '#/channels/realtime/messages/pong' }]
+  pushData:
+    action: send
+    channel: { $ref: '#/channels/realtime' }
+    summary: Server mengirim record baru dalam scope klien
+    messages: [{ $ref: '#/channels/realtime/messages/data' }]
+  pushAuthExpiring:
+    action: send
+    channel: { $ref: '#/channels/realtime' }
+    summary: Server memperingatkan token SSO akan habis
+    messages: [{ $ref: '#/channels/realtime/messages/authExpiring' }]
+  pushError:
+    action: send
+    channel: { $ref: '#/channels/realtime' }
+    messages: [{ $ref: '#/channels/realtime/messages/error' }]
+
+components:
+  messages:
+    auth:
+      name: auth
+      payload:
+        type: object
+        required: [type, token]
+        properties:
+          type: { const: auth }
+          token: { type: string, description: Access token Azure AD atau API key }
+      examples:
+        - payload: { type: auth, token: mrtmw_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx }
+    subscribe:
+      name: subscribe
+      payload:
+        type: object
+        required: [type, channels]
+        properties:
+          type: { const: subscribe }
+          channels:
+            type: array
+            minItems: 1
+            items: { type: string, enum: [telemetry, event, train_info] }
+          stations:
+            type: array
+            description: Batasi ke stasiun tertentu (tetap dalam scope). Kosong = semua stasiun dalam scope.
+            items: { type: string, example: LBB }
+      examples:
+        - payload: { type: subscribe, channels: [event, train_info], stations: [LBB, FTM] }
+    unsubscribe:
+      name: unsubscribe
+      payload:
+        type: object
+        required: [type, channels]
+        properties:
+          type: { const: unsubscribe }
+          channels: { type: array, items: { type: string, enum: [telemetry, event, train_info] } }
+    ping:
+      name: ping
+      payload: { type: object, required: [type], properties: { type: { const: ping } } }
+    authOk:
+      name: auth_ok
+      payload:
+        type: object
+        properties:
+          type: { const: auth_ok }
+          role: { type: string, enum: [viewer, operator, admin] }
+          scopes: { type: string, example: 'scada:*,pids:LBB' }
+          expiresAt: { type: [string, 'null'], format: date-time, description: Null untuk API key }
+    authError:
+      name: auth_error
+      summary: Dikirim sesaat sebelum koneksi ditutup dengan kode 4401
+      payload:
+        type: object
+        properties:
+          type: { const: auth_error }
+          error: { type: string, example: token kedaluwarsa }
+    authExpiring:
+      name: auth_expiring
+      payload:
+        type: object
+        properties:
+          type: { const: auth_expiring }
+          expiresAt: { type: string, format: date-time }
+    subscribed:
+      name: subscribed
+      payload:
+        type: object
+        properties:
+          type: { const: subscribed }
+          channels: { type: array, items: { type: string } }
+          stations: { oneOf: [{ type: array, items: { type: string } }, { const: '*' }] }
+    unsubscribed:
+      name: unsubscribed
+      payload:
+        type: object
+        properties:
+          type: { const: unsubscribed }
+          channels: { type: array, items: { type: string } }
+    pong:
+      name: pong
+      payload:
+        type: object
+        properties:
+          type: { const: pong }
+          ts: { type: string, format: date-time }
+    data:
+      name: data
+      payload:
+        type: object
+        required: [type, channel, data]
+        properties:
+          type: { const: data }
+          channel: { type: string, enum: [telemetry, event, train_info] }
+          data:
+            description: 'Skema sesuai channel: Telemetry | Event | TrainInfo (lihat /openapi.json → components.schemas)'
+            type: object
+      examples:
+        - payload:
+            type: data
+            channel: event
+            data:
+              kind: event
+              source: nms
+              assetId: LBB-CSW01
+              station: LBB
+              category: alarm
+              severity: major
+              code: linkDown
+              message: Port GigabitEthernet1/0/12 down
+              state: active
+              alarmKey: 10.20.1.11|link_down|12
+              sourceTs: '2026-10-29T03:30:38.064Z'
+              receivedTs: '2026-10-29T03:30:38.070Z'
+    error:
+      name: error
+      payload:
+        type: object
+        properties:
+          type: { const: error }
+          error: { type: string, enum: [invalid_message, unauthenticated, token wajib] }

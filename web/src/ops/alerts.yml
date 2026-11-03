@@ -1,0 +1,174 @@
+# Aturan alert kesehatan MRT Middleware (bukan alarm operasional SCADA/NMS — itu ditangani sistem sumber).
+# Ambang di bawah adalah titik awal; sesuaikan dengan tim operasi setelah melihat pola data nyata.
+# Setiap alert punya anotasi `runbook` → docs/runbook.md
+#
+# Validasi:  promtool check rules ops/prometheus/alerts.yml
+# Uji unit:  promtool test rules ops/prometheus/alerts.test.yml
+
+groups:
+  - name: mrt-middleware.availability
+    rules:
+      - alert: MiddlewareDown
+        expr: up{job="mrt-middleware"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Middleware tidak bisa di-scrape ({{ $labels.instance }})"
+          description: "Proses middleware mati atau /metrics tidak terjangkau selama > 2 menit. Dashboard tidak menerima data."
+          runbook: "docs/runbook.md#middleware-down"
+
+      - alert: DatabaseDown
+        expr: mrt_mw_db_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Middleware tidak bisa menghubungi PostgreSQL"
+          description: "Data dari sumber tidak dapat disimpan dan API konsumen gagal."
+          runbook: "docs/runbook.md#database-down"
+
+  - name: mrt-middleware.connectors
+    rules:
+      - alert: ConnectorDisconnected
+        expr: mrt_mw_connector_up == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Konektor {{ $labels.connector }} ({{ $labels.source }}) tidak tersambung > 5 menit"
+          description: "Middleware terus mencoba menyambung ulang. Penyebab umum: sistem sumber mati, jaringan/firewall, kredensial atau sertifikat."
+          runbook: "docs/runbook.md#konektor-terputus"
+
+      # Feed yang seharusnya terus mengalir (SCADA berlangganan nilai, PIDS mengirim heartbeat & prediksi).
+      - alert: ConnectorStale
+        # nilai alert = umur data (sisi kiri `and`)
+        expr: |
+          (mrt_mw_connector_last_record_age_seconds{connector=~"scada-.*|pids-.*"} > 600)
+          and on (connector, source)
+          (mrt_mw_connector_up == 1)
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Konektor {{ $labels.connector }} tersambung tapi tidak ada data {{ $value | humanizeDuration }}"
+          description: "Koneksi terlihat sehat namun feed macet (subscription OPC UA berhenti, PIDC tidak mengirim, di luar jam operasi?)."
+          runbook: "docs/runbook.md#feed-macet"
+
+      # Syslog perangkat jaringan normalnya terus ada; trap SNMP boleh sepi berjam-jam sehingga tidak diawasi di sini.
+      - alert: SyslogSilent
+        expr: |
+          (mrt_mw_connector_last_record_age_seconds{connector=~".*syslog.*"} > 1800)
+          and on (connector, source)
+          (mrt_mw_connector_up == 1)
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Tidak ada syslog dari NMS selama {{ $value | humanizeDuration }}"
+          description: "Kemungkinan forwarding syslog di NMS/perangkat berhenti atau firewall memblokir UDP."
+          runbook: "docs/runbook.md#feed-macet"
+
+      - alert: ConnectorNeverReceived
+        expr: mrt_mw_connector_last_record_age_seconds{connector!~".*trap.*"} == -1
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Konektor {{ $labels.connector }} belum pernah menerima data sejak start"
+          runbook: "docs/runbook.md#feed-macet"
+
+  - name: mrt-middleware.pipeline
+    rules:
+      - alert: RejectedRateHigh
+        expr: |
+          sum by (connector) (rate(mrt_mw_records_rejected_total[15m]))
+            / clamp_min(sum by (connector) (rate(mrt_mw_records_received_total[15m])), 0.001)
+          > 0.01
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $value | humanizePercentage }} record dari {{ $labels.connector }} ditolak"
+          description: "Format data sumber berubah, tag/perangkat belum dipetakan, atau timestamp sumber salah (jam tidak sinkron). Lihat tabel rejected_records."
+          runbook: "docs/runbook.md#record-ditolak"
+
+      - alert: RecordsDropped
+        expr: sum by (connector) (increase(mrt_mw_records_dropped_total[5m])) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Record dari {{ $labels.connector }} dibuang karena antrian penuh"
+          description: "Middleware kewalahan atau database lambat. Data yang dibuang tidak tersimpan."
+          runbook: "docs/runbook.md#antrian-penuh"
+
+      - alert: QueueBacklog
+        expr: mrt_mw_queue_depth > 1000
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Antrian {{ $labels.connector }} menumpuk ({{ $value }} record)"
+          runbook: "docs/runbook.md#antrian-penuh"
+
+      - alert: PersistErrors
+        expr: sum(increase(mrt_mw_persist_errors_total[5m])) > 0
+        labels:
+          severity: critical
+        annotations:
+          summary: "Gagal menyimpan data ke database ({{ $value }} kali dalam 5 menit)"
+          runbook: "docs/runbook.md#database-down"
+
+      - alert: PipelineLatencyHigh
+        expr: histogram_quantile(0.95, sum by (le) (rate(mrt_mw_pipeline_seconds_bucket[5m]))) > 2
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Latency pipeline p95 {{ $value | humanizeDuration }} (> 2 dtk)"
+          description: "Dashboard tertinggal dari kondisi lapangan. Periksa beban database."
+          runbook: "docs/runbook.md#antrian-penuh"
+
+  - name: mrt-middleware.database
+    rules:
+      - alert: MaintenanceStale
+        expr: time() - mrt_mw_maintenance_last_success_timestamp_seconds > 3 * 3600
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Maintenance database (partisi/retensi) tidak berhasil > 3 jam"
+          description: "Tanpa maintenance, partisi baru tidak dibuat (data jatuh ke partisi default) dan data lama tidak dihapus."
+          runbook: "docs/runbook.md#maintenance-gagal"
+
+      - alert: DefaultPartitionHasRows
+        expr: mrt_mw_default_partition_rows > 0
+        for: 30m
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $value }} baris di partisi default tabel {{ $labels.table }}"
+          runbook: "docs/runbook.md#partisi-default"
+
+      # Butuh node_exporter di server database (job="node"). Hapus bila tidak dipakai.
+      - alert: DatabaseDiskLow
+        expr: |
+          node_filesystem_avail_bytes{job="node", mountpoint=~"/var/lib/postgresql.*"}
+            / node_filesystem_size_bytes{job="node", mountpoint=~"/var/lib/postgresql.*"} < 0.2
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Ruang disk database tersisa {{ $value | humanizePercentage }}"
+          runbook: "docs/runbook.md#disk-database"
+
+  - name: mrt-middleware.security
+    rules:
+      - alert: AuthFailuresSpike
+        expr: sum(increase(mrt_mw_auth_failures_total{status="401"}[10m])) > 50
+        labels:
+          severity: warning
+        annotations:
+          summary: "{{ $value }} percobaan akses API ditolak (401) dalam 10 menit"
+          description: "Aplikasi konsumen memakai API key kedaluwarsa/salah, atau ada upaya akses tidak sah. Periksa audit_logs."
+          runbook: "docs/runbook.md#akses-ditolak"

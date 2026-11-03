@@ -1,0 +1,109 @@
+# Uji unit aturan alert: promtool test rules ops/prometheus/alerts.test.yml
+rule_files:
+  - alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  - name: konektor terputus > 5 menit memicu alert, < 5 menit tidak
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_connector_up{source="nms", connector="nms-trap"}'
+        values: '1 1 0 0 0 0 0 0 0'
+    alert_rule_test:
+      - eval_time: 5m
+        alertname: ConnectorDisconnected
+        exp_alerts: []
+      - eval_time: 8m
+        alertname: ConnectorDisconnected
+        exp_alerts:
+          - exp_labels: { severity: critical, source: nms, connector: nms-trap }
+            exp_annotations:
+              summary: "Konektor nms-trap (nms) tidak tersambung > 5 menit"
+              description: "Middleware terus mencoba menyambung ulang. Penyebab umum: sistem sumber mati, jaringan/firewall, kredensial atau sertifikat."
+              runbook: "docs/runbook.md#konektor-terputus"
+
+  - name: feed SCADA tersambung tapi diam > 10 menit
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_connector_up{source="scada", connector="scada-main"}'
+        values: '1x20'
+      - series: 'mrt_mw_connector_last_record_age_seconds{source="scada", connector="scada-main"}'
+        values: '1 1 1 1 1 300 400 500 600 700 800 900 1000 1100'
+    alert_rule_test:
+      - eval_time: 9m
+        alertname: ConnectorStale
+        exp_alerts: []
+      - eval_time: 12m
+        alertname: ConnectorStale
+        exp_alerts:
+          - exp_labels: { severity: warning, source: scada, connector: scada-main }
+            exp_annotations:
+              summary: "Konektor scada-main tersambung tapi tidak ada data 16m 40s"
+              description: "Koneksi terlihat sehat namun feed macet (subscription OPC UA berhenti, PIDC tidak mengirim, di luar jam operasi?)."
+              runbook: "docs/runbook.md#feed-macet"
+
+  - name: trap SNMP yang sepi tidak dianggap macet
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_connector_up{source="nms", connector="nms-trap"}'
+        values: '1x30'
+      - series: 'mrt_mw_connector_last_record_age_seconds{source="nms", connector="nms-trap"}'
+        values: '5000x30'
+    alert_rule_test:
+      - eval_time: 30m
+        alertname: ConnectorStale
+        exp_alerts: []
+      - eval_time: 30m
+        alertname: ConnectorNeverReceived
+        exp_alerts: []
+
+  - name: record ditolak > 1% selama 15 menit
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_records_received_total{source="scada", connector="scada-main"}'
+        values: '0+600x40'
+      - series: 'mrt_mw_records_rejected_total{source="scada", connector="scada-main", stage="validate"}'
+        values: '0+30x40'
+    alert_rule_test:
+      - eval_time: 35m
+        alertname: RejectedRateHigh
+        exp_alerts:
+          - exp_labels: { severity: warning, connector: scada-main }
+            exp_annotations:
+              summary: "5% record dari scada-main ditolak"
+              description: "Format data sumber berubah, tag/perangkat belum dipetakan, atau timestamp sumber salah (jam tidak sinkron). Lihat tabel rejected_records."
+              runbook: "docs/runbook.md#record-ditolak"
+
+  - name: record dibuang langsung critical
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_records_dropped_total{source="nms", connector="nms-syslog"}'
+        values: '0 0 0 25 25 25'
+    alert_rule_test:
+      - eval_time: 4m
+        alertname: RecordsDropped
+        exp_alerts:
+          - exp_labels: { severity: critical, connector: nms-syslog }
+            exp_annotations:
+              summary: "Record dari nms-syslog dibuang karena antrian penuh"
+              description: "Middleware kewalahan atau database lambat. Data yang dibuang tidak tersimpan."
+              runbook: "docs/runbook.md#antrian-penuh"
+
+  - name: maintenance terakhir > 3 jam lalu
+    interval: 1m
+    input_series:
+      - series: 'mrt_mw_maintenance_last_success_timestamp_seconds'
+        values: '0x300'
+    alert_rule_test:
+      - eval_time: 2h
+        alertname: MaintenanceStale
+        exp_alerts: []
+      - eval_time: 3h30m
+        alertname: MaintenanceStale
+        exp_alerts:
+          - exp_labels: { severity: warning }
+            exp_annotations:
+              summary: "Maintenance database (partisi/retensi) tidak berhasil > 3 jam"
+              description: "Tanpa maintenance, partisi baru tidak dibuat (data jatuh ke partisi default) dan data lama tidak dihapus."
+              runbook: "docs/runbook.md#maintenance-gagal"

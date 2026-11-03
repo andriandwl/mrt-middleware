@@ -1,0 +1,31 @@
+# Prometheus untuk memantau MRT Middleware.
+# Validasi: promtool check config ops/prometheus/prometheus.yml
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 30s
+  external_labels:
+    environment: dev   # ganti: staging / production
+
+rule_files:
+  - /etc/prometheus/alerts.yml
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ["alertmanager:9093"]
+
+scrape_configs:
+  - job_name: mrt-middleware
+    metrics_path: /metrics
+    static_configs:
+      # docker-compose (profil monitoring): middleware berjalan di host → host.docker.internal
+      # produksi: ganti dengan alamat server middleware, mis. 10.x.x.x:8080
+      - targets: ["host.docker.internal:8080"]
+        labels:
+          service: mrt-middleware
+
+  # Opsional: node_exporter di server database untuk alert DatabaseDiskLow
+  # - job_name: node
+  #   static_configs:
+  #     - targets: ["db-server:9100"]

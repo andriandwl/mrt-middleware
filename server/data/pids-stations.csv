@@ -1,0 +1,14 @@
+seq,station_code,station_name,station_type,offset_min,platform_nb,platform_sb,dwell_s
+1,LBB,Lebak Bulus,elevated,0,1,2,45
+2,FTM,Fatmawati,elevated,3,1,2,30
+3,CPR,Cipete Raya,elevated,5,1,2,30
+4,HJN,Haji Nawi,elevated,7,1,2,30
+5,BLA,Blok A,elevated,9,1,2,30
+6,BLM,Blok M,elevated,11,1,2,45
+7,ASN,ASEAN,elevated,13,1,2,30
+8,SNY,Senayan,underground,16,1,2,30
+9,IST,Istora,underground,18,1,2,30
+10,BNH,Bendungan Hilir,underground,20,1,2,30
+11,STB,Setiabudi,underground,23,1,2,30
+12,DKA,Dukuh Atas,underground,25,1,2,45
+13,BHI,Bundaran HI,underground,28,1,2,45

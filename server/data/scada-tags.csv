@@ -1,0 +1,881 @@
+node_id,station_code,station_name,station_type,system,asset_code,asset_id,metric_tag,metric,data_type,unit,kind,severity,normal_min,normal_max,sim,description
+ns=2;s=LBB.ECS.AHU01.Running,LBB,Lebak Bulus,elevated,ECS,AHU01,LBB-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=LBB.ECS.AHU01.SupplyTemp,LBB,Lebak Bulus,elevated,ECS,AHU01,LBB-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=LBB.ECS.AHU01.ReturnTemp,LBB,Lebak Bulus,elevated,ECS,AHU01,LBB-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=LBB.ECS.AHU01.FanSpeed,LBB,Lebak Bulus,elevated,ECS,AHU01,LBB-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=LBB.ECS.AHU01.Fault,LBB,Lebak Bulus,elevated,ECS,AHU01,LBB-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=LBB.ECS.AHU02.Running,LBB,Lebak Bulus,elevated,ECS,AHU02,LBB-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=LBB.ECS.AHU02.SupplyTemp,LBB,Lebak Bulus,elevated,ECS,AHU02,LBB-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=LBB.ECS.AHU02.ReturnTemp,LBB,Lebak Bulus,elevated,ECS,AHU02,LBB-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=LBB.ECS.AHU02.FanSpeed,LBB,Lebak Bulus,elevated,ECS,AHU02,LBB-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=LBB.ECS.AHU02.Fault,LBB,Lebak Bulus,elevated,ECS,AHU02,LBB-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=LBB.ENV.PLT.PlatformTemp,LBB,Lebak Bulus,elevated,ENV,PLT,LBB-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=LBB.ENV.PLT.PlatformHumidity,LBB,Lebak Bulus,elevated,ENV,PLT,LBB-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=LBB.ENV.CNC.ConcourseTemp,LBB,Lebak Bulus,elevated,ENV,CNC,LBB-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=LBB.APG.APG01.DoorStatus,LBB,Lebak Bulus,elevated,APG,APG01,LBB-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=LBB.APG.APG01.ClosedLocked,LBB,Lebak Bulus,elevated,APG,APG01,LBB-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=LBB.APG.APG01.Fault,LBB,Lebak Bulus,elevated,APG,APG01,LBB-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=LBB.APG.APG02.DoorStatus,LBB,Lebak Bulus,elevated,APG,APG02,LBB-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=LBB.APG.APG02.ClosedLocked,LBB,Lebak Bulus,elevated,APG,APG02,LBB-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=LBB.APG.APG02.Fault,LBB,Lebak Bulus,elevated,APG,APG02,LBB-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=LBB.VTS.ESC01.Running,LBB,Lebak Bulus,elevated,VTS,ESC01,LBB-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=LBB.VTS.ESC01.Direction,LBB,Lebak Bulus,elevated,VTS,ESC01,LBB-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=LBB.VTS.ESC01.Fault,LBB,Lebak Bulus,elevated,VTS,ESC01,LBB-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=LBB.VTS.ESC02.Running,LBB,Lebak Bulus,elevated,VTS,ESC02,LBB-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=LBB.VTS.ESC02.Direction,LBB,Lebak Bulus,elevated,VTS,ESC02,LBB-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=LBB.VTS.ESC02.Fault,LBB,Lebak Bulus,elevated,VTS,ESC02,LBB-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=LBB.VTS.ESC03.Running,LBB,Lebak Bulus,elevated,VTS,ESC03,LBB-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=LBB.VTS.ESC03.Direction,LBB,Lebak Bulus,elevated,VTS,ESC03,LBB-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=LBB.VTS.ESC03.Fault,LBB,Lebak Bulus,elevated,VTS,ESC03,LBB-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=LBB.VTS.ESC04.Running,LBB,Lebak Bulus,elevated,VTS,ESC04,LBB-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=LBB.VTS.ESC04.Direction,LBB,Lebak Bulus,elevated,VTS,ESC04,LBB-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=LBB.VTS.ESC04.Fault,LBB,Lebak Bulus,elevated,VTS,ESC04,LBB-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=LBB.VTS.ESC05.Running,LBB,Lebak Bulus,elevated,VTS,ESC05,LBB-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=LBB.VTS.ESC05.Direction,LBB,Lebak Bulus,elevated,VTS,ESC05,LBB-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=LBB.VTS.ESC05.Fault,LBB,Lebak Bulus,elevated,VTS,ESC05,LBB-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=LBB.VTS.ESC06.Running,LBB,Lebak Bulus,elevated,VTS,ESC06,LBB-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=LBB.VTS.ESC06.Direction,LBB,Lebak Bulus,elevated,VTS,ESC06,LBB-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=LBB.VTS.ESC06.Fault,LBB,Lebak Bulus,elevated,VTS,ESC06,LBB-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=LBB.VTS.ELV01.Status,LBB,Lebak Bulus,elevated,VTS,ELV01,LBB-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=LBB.VTS.ELV01.Floor,LBB,Lebak Bulus,elevated,VTS,ELV01,LBB-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=LBB.VTS.ELV01.Fault,LBB,Lebak Bulus,elevated,VTS,ELV01,LBB-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=LBB.VTS.ELV02.Status,LBB,Lebak Bulus,elevated,VTS,ELV02,LBB-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=LBB.VTS.ELV02.Floor,LBB,Lebak Bulus,elevated,VTS,ELV02,LBB-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=LBB.VTS.ELV02.Fault,LBB,Lebak Bulus,elevated,VTS,ELV02,LBB-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=LBB.PWR.ER01.EnergyImport,LBB,Lebak Bulus,elevated,PWR,ER01,LBB-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=LBB.PWR.ER01.ActivePower,LBB,Lebak Bulus,elevated,PWR,ER01,LBB-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=LBB.PWR.ER01.VoltageLL,LBB,Lebak Bulus,elevated,PWR,ER01,LBB-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=LBB.PWR.ER01.PowerFactor,LBB,Lebak Bulus,elevated,PWR,ER01,LBB-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=LBB.PWR.ER01.IncomerTrip,LBB,Lebak Bulus,elevated,PWR,ER01,LBB-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=LBB.PLB.TNK01.Level,LBB,Lebak Bulus,elevated,PLB,TNK01,LBB-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=LBB.FAS.FACP.FireAlarm,LBB,Lebak Bulus,elevated,FAS,FACP,LBB-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=LBB.FAS.FACP.PanelFault,LBB,Lebak Bulus,elevated,FAS,FACP,LBB-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=LBB.LTG.PLT.PlatformLighting,LBB,Lebak Bulus,elevated,LTG,PLT,LBB-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=FTM.ECS.AHU01.Running,FTM,Fatmawati,elevated,ECS,AHU01,FTM-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=FTM.ECS.AHU01.SupplyTemp,FTM,Fatmawati,elevated,ECS,AHU01,FTM-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=FTM.ECS.AHU01.ReturnTemp,FTM,Fatmawati,elevated,ECS,AHU01,FTM-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=FTM.ECS.AHU01.FanSpeed,FTM,Fatmawati,elevated,ECS,AHU01,FTM-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=FTM.ECS.AHU01.Fault,FTM,Fatmawati,elevated,ECS,AHU01,FTM-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=FTM.ECS.AHU02.Running,FTM,Fatmawati,elevated,ECS,AHU02,FTM-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=FTM.ECS.AHU02.SupplyTemp,FTM,Fatmawati,elevated,ECS,AHU02,FTM-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=FTM.ECS.AHU02.ReturnTemp,FTM,Fatmawati,elevated,ECS,AHU02,FTM-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=FTM.ECS.AHU02.FanSpeed,FTM,Fatmawati,elevated,ECS,AHU02,FTM-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=FTM.ECS.AHU02.Fault,FTM,Fatmawati,elevated,ECS,AHU02,FTM-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=FTM.ENV.PLT.PlatformTemp,FTM,Fatmawati,elevated,ENV,PLT,FTM-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=FTM.ENV.PLT.PlatformHumidity,FTM,Fatmawati,elevated,ENV,PLT,FTM-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=FTM.ENV.CNC.ConcourseTemp,FTM,Fatmawati,elevated,ENV,CNC,FTM-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=FTM.APG.APG01.DoorStatus,FTM,Fatmawati,elevated,APG,APG01,FTM-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=FTM.APG.APG01.ClosedLocked,FTM,Fatmawati,elevated,APG,APG01,FTM-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=FTM.APG.APG01.Fault,FTM,Fatmawati,elevated,APG,APG01,FTM-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=FTM.APG.APG02.DoorStatus,FTM,Fatmawati,elevated,APG,APG02,FTM-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=FTM.APG.APG02.ClosedLocked,FTM,Fatmawati,elevated,APG,APG02,FTM-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=FTM.APG.APG02.Fault,FTM,Fatmawati,elevated,APG,APG02,FTM-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=FTM.VTS.ESC01.Running,FTM,Fatmawati,elevated,VTS,ESC01,FTM-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=FTM.VTS.ESC01.Direction,FTM,Fatmawati,elevated,VTS,ESC01,FTM-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=FTM.VTS.ESC01.Fault,FTM,Fatmawati,elevated,VTS,ESC01,FTM-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=FTM.VTS.ESC02.Running,FTM,Fatmawati,elevated,VTS,ESC02,FTM-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=FTM.VTS.ESC02.Direction,FTM,Fatmawati,elevated,VTS,ESC02,FTM-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=FTM.VTS.ESC02.Fault,FTM,Fatmawati,elevated,VTS,ESC02,FTM-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=FTM.VTS.ESC03.Running,FTM,Fatmawati,elevated,VTS,ESC03,FTM-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=FTM.VTS.ESC03.Direction,FTM,Fatmawati,elevated,VTS,ESC03,FTM-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=FTM.VTS.ESC03.Fault,FTM,Fatmawati,elevated,VTS,ESC03,FTM-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=FTM.VTS.ESC04.Running,FTM,Fatmawati,elevated,VTS,ESC04,FTM-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=FTM.VTS.ESC04.Direction,FTM,Fatmawati,elevated,VTS,ESC04,FTM-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=FTM.VTS.ESC04.Fault,FTM,Fatmawati,elevated,VTS,ESC04,FTM-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=FTM.VTS.ESC05.Running,FTM,Fatmawati,elevated,VTS,ESC05,FTM-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=FTM.VTS.ESC05.Direction,FTM,Fatmawati,elevated,VTS,ESC05,FTM-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=FTM.VTS.ESC05.Fault,FTM,Fatmawati,elevated,VTS,ESC05,FTM-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=FTM.VTS.ESC06.Running,FTM,Fatmawati,elevated,VTS,ESC06,FTM-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=FTM.VTS.ESC06.Direction,FTM,Fatmawati,elevated,VTS,ESC06,FTM-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=FTM.VTS.ESC06.Fault,FTM,Fatmawati,elevated,VTS,ESC06,FTM-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=FTM.VTS.ELV01.Status,FTM,Fatmawati,elevated,VTS,ELV01,FTM-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=FTM.VTS.ELV01.Floor,FTM,Fatmawati,elevated,VTS,ELV01,FTM-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=FTM.VTS.ELV01.Fault,FTM,Fatmawati,elevated,VTS,ELV01,FTM-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=FTM.VTS.ELV02.Status,FTM,Fatmawati,elevated,VTS,ELV02,FTM-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=FTM.VTS.ELV02.Floor,FTM,Fatmawati,elevated,VTS,ELV02,FTM-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=FTM.VTS.ELV02.Fault,FTM,Fatmawati,elevated,VTS,ELV02,FTM-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=FTM.PWR.ER01.EnergyImport,FTM,Fatmawati,elevated,PWR,ER01,FTM-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=FTM.PWR.ER01.ActivePower,FTM,Fatmawati,elevated,PWR,ER01,FTM-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=FTM.PWR.ER01.VoltageLL,FTM,Fatmawati,elevated,PWR,ER01,FTM-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=FTM.PWR.ER01.PowerFactor,FTM,Fatmawati,elevated,PWR,ER01,FTM-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=FTM.PWR.ER01.IncomerTrip,FTM,Fatmawati,elevated,PWR,ER01,FTM-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=FTM.PLB.TNK01.Level,FTM,Fatmawati,elevated,PLB,TNK01,FTM-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=FTM.FAS.FACP.FireAlarm,FTM,Fatmawati,elevated,FAS,FACP,FTM-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=FTM.FAS.FACP.PanelFault,FTM,Fatmawati,elevated,FAS,FACP,FTM-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=FTM.LTG.PLT.PlatformLighting,FTM,Fatmawati,elevated,LTG,PLT,FTM-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=CPR.ECS.AHU01.Running,CPR,Cipete Raya,elevated,ECS,AHU01,CPR-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=CPR.ECS.AHU01.SupplyTemp,CPR,Cipete Raya,elevated,ECS,AHU01,CPR-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=CPR.ECS.AHU01.ReturnTemp,CPR,Cipete Raya,elevated,ECS,AHU01,CPR-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=CPR.ECS.AHU01.FanSpeed,CPR,Cipete Raya,elevated,ECS,AHU01,CPR-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=CPR.ECS.AHU01.Fault,CPR,Cipete Raya,elevated,ECS,AHU01,CPR-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=CPR.ECS.AHU02.Running,CPR,Cipete Raya,elevated,ECS,AHU02,CPR-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=CPR.ECS.AHU02.SupplyTemp,CPR,Cipete Raya,elevated,ECS,AHU02,CPR-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=CPR.ECS.AHU02.ReturnTemp,CPR,Cipete Raya,elevated,ECS,AHU02,CPR-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=CPR.ECS.AHU02.FanSpeed,CPR,Cipete Raya,elevated,ECS,AHU02,CPR-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=CPR.ECS.AHU02.Fault,CPR,Cipete Raya,elevated,ECS,AHU02,CPR-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=CPR.ENV.PLT.PlatformTemp,CPR,Cipete Raya,elevated,ENV,PLT,CPR-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=CPR.ENV.PLT.PlatformHumidity,CPR,Cipete Raya,elevated,ENV,PLT,CPR-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=CPR.ENV.CNC.ConcourseTemp,CPR,Cipete Raya,elevated,ENV,CNC,CPR-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=CPR.APG.APG01.DoorStatus,CPR,Cipete Raya,elevated,APG,APG01,CPR-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=CPR.APG.APG01.ClosedLocked,CPR,Cipete Raya,elevated,APG,APG01,CPR-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=CPR.APG.APG01.Fault,CPR,Cipete Raya,elevated,APG,APG01,CPR-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=CPR.APG.APG02.DoorStatus,CPR,Cipete Raya,elevated,APG,APG02,CPR-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=CPR.APG.APG02.ClosedLocked,CPR,Cipete Raya,elevated,APG,APG02,CPR-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=CPR.APG.APG02.Fault,CPR,Cipete Raya,elevated,APG,APG02,CPR-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=CPR.VTS.ESC01.Running,CPR,Cipete Raya,elevated,VTS,ESC01,CPR-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=CPR.VTS.ESC01.Direction,CPR,Cipete Raya,elevated,VTS,ESC01,CPR-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=CPR.VTS.ESC01.Fault,CPR,Cipete Raya,elevated,VTS,ESC01,CPR-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=CPR.VTS.ESC02.Running,CPR,Cipete Raya,elevated,VTS,ESC02,CPR-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=CPR.VTS.ESC02.Direction,CPR,Cipete Raya,elevated,VTS,ESC02,CPR-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=CPR.VTS.ESC02.Fault,CPR,Cipete Raya,elevated,VTS,ESC02,CPR-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=CPR.VTS.ESC03.Running,CPR,Cipete Raya,elevated,VTS,ESC03,CPR-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=CPR.VTS.ESC03.Direction,CPR,Cipete Raya,elevated,VTS,ESC03,CPR-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=CPR.VTS.ESC03.Fault,CPR,Cipete Raya,elevated,VTS,ESC03,CPR-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=CPR.VTS.ESC04.Running,CPR,Cipete Raya,elevated,VTS,ESC04,CPR-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=CPR.VTS.ESC04.Direction,CPR,Cipete Raya,elevated,VTS,ESC04,CPR-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=CPR.VTS.ESC04.Fault,CPR,Cipete Raya,elevated,VTS,ESC04,CPR-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=CPR.VTS.ESC05.Running,CPR,Cipete Raya,elevated,VTS,ESC05,CPR-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=CPR.VTS.ESC05.Direction,CPR,Cipete Raya,elevated,VTS,ESC05,CPR-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=CPR.VTS.ESC05.Fault,CPR,Cipete Raya,elevated,VTS,ESC05,CPR-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=CPR.VTS.ESC06.Running,CPR,Cipete Raya,elevated,VTS,ESC06,CPR-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=CPR.VTS.ESC06.Direction,CPR,Cipete Raya,elevated,VTS,ESC06,CPR-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=CPR.VTS.ESC06.Fault,CPR,Cipete Raya,elevated,VTS,ESC06,CPR-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=CPR.VTS.ELV01.Status,CPR,Cipete Raya,elevated,VTS,ELV01,CPR-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=CPR.VTS.ELV01.Floor,CPR,Cipete Raya,elevated,VTS,ELV01,CPR-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=CPR.VTS.ELV01.Fault,CPR,Cipete Raya,elevated,VTS,ELV01,CPR-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=CPR.VTS.ELV02.Status,CPR,Cipete Raya,elevated,VTS,ELV02,CPR-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=CPR.VTS.ELV02.Floor,CPR,Cipete Raya,elevated,VTS,ELV02,CPR-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=CPR.VTS.ELV02.Fault,CPR,Cipete Raya,elevated,VTS,ELV02,CPR-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=CPR.PWR.ER01.EnergyImport,CPR,Cipete Raya,elevated,PWR,ER01,CPR-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=CPR.PWR.ER01.ActivePower,CPR,Cipete Raya,elevated,PWR,ER01,CPR-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=CPR.PWR.ER01.VoltageLL,CPR,Cipete Raya,elevated,PWR,ER01,CPR-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=CPR.PWR.ER01.PowerFactor,CPR,Cipete Raya,elevated,PWR,ER01,CPR-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=CPR.PWR.ER01.IncomerTrip,CPR,Cipete Raya,elevated,PWR,ER01,CPR-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=CPR.PLB.TNK01.Level,CPR,Cipete Raya,elevated,PLB,TNK01,CPR-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=CPR.FAS.FACP.FireAlarm,CPR,Cipete Raya,elevated,FAS,FACP,CPR-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=CPR.FAS.FACP.PanelFault,CPR,Cipete Raya,elevated,FAS,FACP,CPR-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=CPR.LTG.PLT.PlatformLighting,CPR,Cipete Raya,elevated,LTG,PLT,CPR-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=HJN.ECS.AHU01.Running,HJN,Haji Nawi,elevated,ECS,AHU01,HJN-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=HJN.ECS.AHU01.SupplyTemp,HJN,Haji Nawi,elevated,ECS,AHU01,HJN-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=HJN.ECS.AHU01.ReturnTemp,HJN,Haji Nawi,elevated,ECS,AHU01,HJN-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=HJN.ECS.AHU01.FanSpeed,HJN,Haji Nawi,elevated,ECS,AHU01,HJN-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=HJN.ECS.AHU01.Fault,HJN,Haji Nawi,elevated,ECS,AHU01,HJN-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=HJN.ECS.AHU02.Running,HJN,Haji Nawi,elevated,ECS,AHU02,HJN-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=HJN.ECS.AHU02.SupplyTemp,HJN,Haji Nawi,elevated,ECS,AHU02,HJN-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=HJN.ECS.AHU02.ReturnTemp,HJN,Haji Nawi,elevated,ECS,AHU02,HJN-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=HJN.ECS.AHU02.FanSpeed,HJN,Haji Nawi,elevated,ECS,AHU02,HJN-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=HJN.ECS.AHU02.Fault,HJN,Haji Nawi,elevated,ECS,AHU02,HJN-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=HJN.ENV.PLT.PlatformTemp,HJN,Haji Nawi,elevated,ENV,PLT,HJN-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=HJN.ENV.PLT.PlatformHumidity,HJN,Haji Nawi,elevated,ENV,PLT,HJN-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=HJN.ENV.CNC.ConcourseTemp,HJN,Haji Nawi,elevated,ENV,CNC,HJN-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=HJN.APG.APG01.DoorStatus,HJN,Haji Nawi,elevated,APG,APG01,HJN-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=HJN.APG.APG01.ClosedLocked,HJN,Haji Nawi,elevated,APG,APG01,HJN-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=HJN.APG.APG01.Fault,HJN,Haji Nawi,elevated,APG,APG01,HJN-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=HJN.APG.APG02.DoorStatus,HJN,Haji Nawi,elevated,APG,APG02,HJN-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=HJN.APG.APG02.ClosedLocked,HJN,Haji Nawi,elevated,APG,APG02,HJN-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=HJN.APG.APG02.Fault,HJN,Haji Nawi,elevated,APG,APG02,HJN-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=HJN.VTS.ESC01.Running,HJN,Haji Nawi,elevated,VTS,ESC01,HJN-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=HJN.VTS.ESC01.Direction,HJN,Haji Nawi,elevated,VTS,ESC01,HJN-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=HJN.VTS.ESC01.Fault,HJN,Haji Nawi,elevated,VTS,ESC01,HJN-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=HJN.VTS.ESC02.Running,HJN,Haji Nawi,elevated,VTS,ESC02,HJN-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=HJN.VTS.ESC02.Direction,HJN,Haji Nawi,elevated,VTS,ESC02,HJN-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=HJN.VTS.ESC02.Fault,HJN,Haji Nawi,elevated,VTS,ESC02,HJN-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=HJN.VTS.ESC03.Running,HJN,Haji Nawi,elevated,VTS,ESC03,HJN-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=HJN.VTS.ESC03.Direction,HJN,Haji Nawi,elevated,VTS,ESC03,HJN-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=HJN.VTS.ESC03.Fault,HJN,Haji Nawi,elevated,VTS,ESC03,HJN-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=HJN.VTS.ESC04.Running,HJN,Haji Nawi,elevated,VTS,ESC04,HJN-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=HJN.VTS.ESC04.Direction,HJN,Haji Nawi,elevated,VTS,ESC04,HJN-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=HJN.VTS.ESC04.Fault,HJN,Haji Nawi,elevated,VTS,ESC04,HJN-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=HJN.VTS.ESC05.Running,HJN,Haji Nawi,elevated,VTS,ESC05,HJN-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=HJN.VTS.ESC05.Direction,HJN,Haji Nawi,elevated,VTS,ESC05,HJN-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=HJN.VTS.ESC05.Fault,HJN,Haji Nawi,elevated,VTS,ESC05,HJN-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=HJN.VTS.ESC06.Running,HJN,Haji Nawi,elevated,VTS,ESC06,HJN-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=HJN.VTS.ESC06.Direction,HJN,Haji Nawi,elevated,VTS,ESC06,HJN-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=HJN.VTS.ESC06.Fault,HJN,Haji Nawi,elevated,VTS,ESC06,HJN-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=HJN.VTS.ELV01.Status,HJN,Haji Nawi,elevated,VTS,ELV01,HJN-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=HJN.VTS.ELV01.Floor,HJN,Haji Nawi,elevated,VTS,ELV01,HJN-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=HJN.VTS.ELV01.Fault,HJN,Haji Nawi,elevated,VTS,ELV01,HJN-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=HJN.VTS.ELV02.Status,HJN,Haji Nawi,elevated,VTS,ELV02,HJN-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=HJN.VTS.ELV02.Floor,HJN,Haji Nawi,elevated,VTS,ELV02,HJN-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=HJN.VTS.ELV02.Fault,HJN,Haji Nawi,elevated,VTS,ELV02,HJN-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=HJN.PWR.ER01.EnergyImport,HJN,Haji Nawi,elevated,PWR,ER01,HJN-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=HJN.PWR.ER01.ActivePower,HJN,Haji Nawi,elevated,PWR,ER01,HJN-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=HJN.PWR.ER01.VoltageLL,HJN,Haji Nawi,elevated,PWR,ER01,HJN-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=HJN.PWR.ER01.PowerFactor,HJN,Haji Nawi,elevated,PWR,ER01,HJN-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=HJN.PWR.ER01.IncomerTrip,HJN,Haji Nawi,elevated,PWR,ER01,HJN-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=HJN.PLB.TNK01.Level,HJN,Haji Nawi,elevated,PLB,TNK01,HJN-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=HJN.FAS.FACP.FireAlarm,HJN,Haji Nawi,elevated,FAS,FACP,HJN-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=HJN.FAS.FACP.PanelFault,HJN,Haji Nawi,elevated,FAS,FACP,HJN-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=HJN.LTG.PLT.PlatformLighting,HJN,Haji Nawi,elevated,LTG,PLT,HJN-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=BLA.ECS.AHU01.Running,BLA,Blok A,elevated,ECS,AHU01,BLA-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=BLA.ECS.AHU01.SupplyTemp,BLA,Blok A,elevated,ECS,AHU01,BLA-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=BLA.ECS.AHU01.ReturnTemp,BLA,Blok A,elevated,ECS,AHU01,BLA-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=BLA.ECS.AHU01.FanSpeed,BLA,Blok A,elevated,ECS,AHU01,BLA-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=BLA.ECS.AHU01.Fault,BLA,Blok A,elevated,ECS,AHU01,BLA-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=BLA.ECS.AHU02.Running,BLA,Blok A,elevated,ECS,AHU02,BLA-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=BLA.ECS.AHU02.SupplyTemp,BLA,Blok A,elevated,ECS,AHU02,BLA-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=BLA.ECS.AHU02.ReturnTemp,BLA,Blok A,elevated,ECS,AHU02,BLA-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=BLA.ECS.AHU02.FanSpeed,BLA,Blok A,elevated,ECS,AHU02,BLA-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=BLA.ECS.AHU02.Fault,BLA,Blok A,elevated,ECS,AHU02,BLA-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=BLA.ENV.PLT.PlatformTemp,BLA,Blok A,elevated,ENV,PLT,BLA-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=BLA.ENV.PLT.PlatformHumidity,BLA,Blok A,elevated,ENV,PLT,BLA-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=BLA.ENV.CNC.ConcourseTemp,BLA,Blok A,elevated,ENV,CNC,BLA-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=BLA.APG.APG01.DoorStatus,BLA,Blok A,elevated,APG,APG01,BLA-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=BLA.APG.APG01.ClosedLocked,BLA,Blok A,elevated,APG,APG01,BLA-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=BLA.APG.APG01.Fault,BLA,Blok A,elevated,APG,APG01,BLA-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=BLA.APG.APG02.DoorStatus,BLA,Blok A,elevated,APG,APG02,BLA-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=BLA.APG.APG02.ClosedLocked,BLA,Blok A,elevated,APG,APG02,BLA-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=BLA.APG.APG02.Fault,BLA,Blok A,elevated,APG,APG02,BLA-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=BLA.VTS.ESC01.Running,BLA,Blok A,elevated,VTS,ESC01,BLA-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=BLA.VTS.ESC01.Direction,BLA,Blok A,elevated,VTS,ESC01,BLA-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=BLA.VTS.ESC01.Fault,BLA,Blok A,elevated,VTS,ESC01,BLA-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=BLA.VTS.ESC02.Running,BLA,Blok A,elevated,VTS,ESC02,BLA-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=BLA.VTS.ESC02.Direction,BLA,Blok A,elevated,VTS,ESC02,BLA-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=BLA.VTS.ESC02.Fault,BLA,Blok A,elevated,VTS,ESC02,BLA-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=BLA.VTS.ESC03.Running,BLA,Blok A,elevated,VTS,ESC03,BLA-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=BLA.VTS.ESC03.Direction,BLA,Blok A,elevated,VTS,ESC03,BLA-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=BLA.VTS.ESC03.Fault,BLA,Blok A,elevated,VTS,ESC03,BLA-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=BLA.VTS.ESC04.Running,BLA,Blok A,elevated,VTS,ESC04,BLA-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=BLA.VTS.ESC04.Direction,BLA,Blok A,elevated,VTS,ESC04,BLA-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=BLA.VTS.ESC04.Fault,BLA,Blok A,elevated,VTS,ESC04,BLA-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=BLA.VTS.ESC05.Running,BLA,Blok A,elevated,VTS,ESC05,BLA-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=BLA.VTS.ESC05.Direction,BLA,Blok A,elevated,VTS,ESC05,BLA-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=BLA.VTS.ESC05.Fault,BLA,Blok A,elevated,VTS,ESC05,BLA-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=BLA.VTS.ESC06.Running,BLA,Blok A,elevated,VTS,ESC06,BLA-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=BLA.VTS.ESC06.Direction,BLA,Blok A,elevated,VTS,ESC06,BLA-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=BLA.VTS.ESC06.Fault,BLA,Blok A,elevated,VTS,ESC06,BLA-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=BLA.VTS.ELV01.Status,BLA,Blok A,elevated,VTS,ELV01,BLA-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=BLA.VTS.ELV01.Floor,BLA,Blok A,elevated,VTS,ELV01,BLA-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=BLA.VTS.ELV01.Fault,BLA,Blok A,elevated,VTS,ELV01,BLA-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=BLA.VTS.ELV02.Status,BLA,Blok A,elevated,VTS,ELV02,BLA-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=BLA.VTS.ELV02.Floor,BLA,Blok A,elevated,VTS,ELV02,BLA-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=BLA.VTS.ELV02.Fault,BLA,Blok A,elevated,VTS,ELV02,BLA-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=BLA.PWR.ER01.EnergyImport,BLA,Blok A,elevated,PWR,ER01,BLA-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=BLA.PWR.ER01.ActivePower,BLA,Blok A,elevated,PWR,ER01,BLA-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=BLA.PWR.ER01.VoltageLL,BLA,Blok A,elevated,PWR,ER01,BLA-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=BLA.PWR.ER01.PowerFactor,BLA,Blok A,elevated,PWR,ER01,BLA-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=BLA.PWR.ER01.IncomerTrip,BLA,Blok A,elevated,PWR,ER01,BLA-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=BLA.PLB.TNK01.Level,BLA,Blok A,elevated,PLB,TNK01,BLA-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=BLA.FAS.FACP.FireAlarm,BLA,Blok A,elevated,FAS,FACP,BLA-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=BLA.FAS.FACP.PanelFault,BLA,Blok A,elevated,FAS,FACP,BLA-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=BLA.LTG.PLT.PlatformLighting,BLA,Blok A,elevated,LTG,PLT,BLA-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=BLM.ECS.AHU01.Running,BLM,Blok M,elevated,ECS,AHU01,BLM-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=BLM.ECS.AHU01.SupplyTemp,BLM,Blok M,elevated,ECS,AHU01,BLM-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=BLM.ECS.AHU01.ReturnTemp,BLM,Blok M,elevated,ECS,AHU01,BLM-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=BLM.ECS.AHU01.FanSpeed,BLM,Blok M,elevated,ECS,AHU01,BLM-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=BLM.ECS.AHU01.Fault,BLM,Blok M,elevated,ECS,AHU01,BLM-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=BLM.ECS.AHU02.Running,BLM,Blok M,elevated,ECS,AHU02,BLM-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=BLM.ECS.AHU02.SupplyTemp,BLM,Blok M,elevated,ECS,AHU02,BLM-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=BLM.ECS.AHU02.ReturnTemp,BLM,Blok M,elevated,ECS,AHU02,BLM-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=BLM.ECS.AHU02.FanSpeed,BLM,Blok M,elevated,ECS,AHU02,BLM-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=BLM.ECS.AHU02.Fault,BLM,Blok M,elevated,ECS,AHU02,BLM-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=BLM.ENV.PLT.PlatformTemp,BLM,Blok M,elevated,ENV,PLT,BLM-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=BLM.ENV.PLT.PlatformHumidity,BLM,Blok M,elevated,ENV,PLT,BLM-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=BLM.ENV.CNC.ConcourseTemp,BLM,Blok M,elevated,ENV,CNC,BLM-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=BLM.APG.APG01.DoorStatus,BLM,Blok M,elevated,APG,APG01,BLM-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=BLM.APG.APG01.ClosedLocked,BLM,Blok M,elevated,APG,APG01,BLM-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=BLM.APG.APG01.Fault,BLM,Blok M,elevated,APG,APG01,BLM-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=BLM.APG.APG02.DoorStatus,BLM,Blok M,elevated,APG,APG02,BLM-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=BLM.APG.APG02.ClosedLocked,BLM,Blok M,elevated,APG,APG02,BLM-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=BLM.APG.APG02.Fault,BLM,Blok M,elevated,APG,APG02,BLM-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=BLM.VTS.ESC01.Running,BLM,Blok M,elevated,VTS,ESC01,BLM-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=BLM.VTS.ESC01.Direction,BLM,Blok M,elevated,VTS,ESC01,BLM-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=BLM.VTS.ESC01.Fault,BLM,Blok M,elevated,VTS,ESC01,BLM-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=BLM.VTS.ESC02.Running,BLM,Blok M,elevated,VTS,ESC02,BLM-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=BLM.VTS.ESC02.Direction,BLM,Blok M,elevated,VTS,ESC02,BLM-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=BLM.VTS.ESC02.Fault,BLM,Blok M,elevated,VTS,ESC02,BLM-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=BLM.VTS.ESC03.Running,BLM,Blok M,elevated,VTS,ESC03,BLM-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=BLM.VTS.ESC03.Direction,BLM,Blok M,elevated,VTS,ESC03,BLM-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=BLM.VTS.ESC03.Fault,BLM,Blok M,elevated,VTS,ESC03,BLM-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=BLM.VTS.ESC04.Running,BLM,Blok M,elevated,VTS,ESC04,BLM-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=BLM.VTS.ESC04.Direction,BLM,Blok M,elevated,VTS,ESC04,BLM-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=BLM.VTS.ESC04.Fault,BLM,Blok M,elevated,VTS,ESC04,BLM-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=BLM.VTS.ESC05.Running,BLM,Blok M,elevated,VTS,ESC05,BLM-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=BLM.VTS.ESC05.Direction,BLM,Blok M,elevated,VTS,ESC05,BLM-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=BLM.VTS.ESC05.Fault,BLM,Blok M,elevated,VTS,ESC05,BLM-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=BLM.VTS.ESC06.Running,BLM,Blok M,elevated,VTS,ESC06,BLM-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=BLM.VTS.ESC06.Direction,BLM,Blok M,elevated,VTS,ESC06,BLM-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=BLM.VTS.ESC06.Fault,BLM,Blok M,elevated,VTS,ESC06,BLM-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=BLM.VTS.ELV01.Status,BLM,Blok M,elevated,VTS,ELV01,BLM-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=BLM.VTS.ELV01.Floor,BLM,Blok M,elevated,VTS,ELV01,BLM-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=BLM.VTS.ELV01.Fault,BLM,Blok M,elevated,VTS,ELV01,BLM-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=BLM.VTS.ELV02.Status,BLM,Blok M,elevated,VTS,ELV02,BLM-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=BLM.VTS.ELV02.Floor,BLM,Blok M,elevated,VTS,ELV02,BLM-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=BLM.VTS.ELV02.Fault,BLM,Blok M,elevated,VTS,ELV02,BLM-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=BLM.PWR.ER01.EnergyImport,BLM,Blok M,elevated,PWR,ER01,BLM-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=BLM.PWR.ER01.ActivePower,BLM,Blok M,elevated,PWR,ER01,BLM-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=BLM.PWR.ER01.VoltageLL,BLM,Blok M,elevated,PWR,ER01,BLM-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=BLM.PWR.ER01.PowerFactor,BLM,Blok M,elevated,PWR,ER01,BLM-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=BLM.PWR.ER01.IncomerTrip,BLM,Blok M,elevated,PWR,ER01,BLM-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=BLM.PLB.TNK01.Level,BLM,Blok M,elevated,PLB,TNK01,BLM-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=BLM.FAS.FACP.FireAlarm,BLM,Blok M,elevated,FAS,FACP,BLM-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=BLM.FAS.FACP.PanelFault,BLM,Blok M,elevated,FAS,FACP,BLM-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=BLM.LTG.PLT.PlatformLighting,BLM,Blok M,elevated,LTG,PLT,BLM-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=ASN.ECS.AHU01.Running,ASN,ASEAN,elevated,ECS,AHU01,ASN-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=ASN.ECS.AHU01.SupplyTemp,ASN,ASEAN,elevated,ECS,AHU01,ASN-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=ASN.ECS.AHU01.ReturnTemp,ASN,ASEAN,elevated,ECS,AHU01,ASN-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=ASN.ECS.AHU01.FanSpeed,ASN,ASEAN,elevated,ECS,AHU01,ASN-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=ASN.ECS.AHU01.Fault,ASN,ASEAN,elevated,ECS,AHU01,ASN-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=ASN.ECS.AHU02.Running,ASN,ASEAN,elevated,ECS,AHU02,ASN-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=ASN.ECS.AHU02.SupplyTemp,ASN,ASEAN,elevated,ECS,AHU02,ASN-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=ASN.ECS.AHU02.ReturnTemp,ASN,ASEAN,elevated,ECS,AHU02,ASN-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=ASN.ECS.AHU02.FanSpeed,ASN,ASEAN,elevated,ECS,AHU02,ASN-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=ASN.ECS.AHU02.Fault,ASN,ASEAN,elevated,ECS,AHU02,ASN-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=ASN.ENV.PLT.PlatformTemp,ASN,ASEAN,elevated,ENV,PLT,ASN-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,28,33,analog_daily,Suhu area peron
+ns=2;s=ASN.ENV.PLT.PlatformHumidity,ASN,ASEAN,elevated,ENV,PLT,ASN-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=ASN.ENV.CNC.ConcourseTemp,ASN,ASEAN,elevated,ENV,CNC,ASN-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,27,32,analog_daily,Suhu area concourse
+ns=2;s=ASN.APG.APG01.DoorStatus,ASN,ASEAN,elevated,APG,APG01,ASN-APG-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Automatic platform gate peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=ASN.APG.APG01.ClosedLocked,ASN,ASEAN,elevated,APG,APG01,ASN-APG-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Automatic platform gate peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=ASN.APG.APG01.Fault,ASN,ASEAN,elevated,APG,APG01,ASN-APG-01,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Bundaran HI fault
+ns=2;s=ASN.APG.APG02.DoorStatus,ASN,ASEAN,elevated,APG,APG02,ASN-APG-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Automatic platform gate peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=ASN.APG.APG02.ClosedLocked,ASN,ASEAN,elevated,APG,APG02,ASN-APG-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Automatic platform gate peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=ASN.APG.APG02.Fault,ASN,ASEAN,elevated,APG,APG02,ASN-APG-02,Fault,fault,Boolean,,alarm,major,,,alarm,Automatic platform gate peron arah Lebak Bulus fault
+ns=2;s=ASN.VTS.ESC01.Running,ASN,ASEAN,elevated,VTS,ESC01,ASN-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=ASN.VTS.ESC01.Direction,ASN,ASEAN,elevated,VTS,ESC01,ASN-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=ASN.VTS.ESC01.Fault,ASN,ASEAN,elevated,VTS,ESC01,ASN-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=ASN.VTS.ESC02.Running,ASN,ASEAN,elevated,VTS,ESC02,ASN-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=ASN.VTS.ESC02.Direction,ASN,ASEAN,elevated,VTS,ESC02,ASN-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=ASN.VTS.ESC02.Fault,ASN,ASEAN,elevated,VTS,ESC02,ASN-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=ASN.VTS.ESC03.Running,ASN,ASEAN,elevated,VTS,ESC03,ASN-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=ASN.VTS.ESC03.Direction,ASN,ASEAN,elevated,VTS,ESC03,ASN-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=ASN.VTS.ESC03.Fault,ASN,ASEAN,elevated,VTS,ESC03,ASN-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=ASN.VTS.ESC04.Running,ASN,ASEAN,elevated,VTS,ESC04,ASN-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=ASN.VTS.ESC04.Direction,ASN,ASEAN,elevated,VTS,ESC04,ASN-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=ASN.VTS.ESC04.Fault,ASN,ASEAN,elevated,VTS,ESC04,ASN-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=ASN.VTS.ESC05.Running,ASN,ASEAN,elevated,VTS,ESC05,ASN-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=ASN.VTS.ESC05.Direction,ASN,ASEAN,elevated,VTS,ESC05,ASN-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=ASN.VTS.ESC05.Fault,ASN,ASEAN,elevated,VTS,ESC05,ASN-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=ASN.VTS.ESC06.Running,ASN,ASEAN,elevated,VTS,ESC06,ASN-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=ASN.VTS.ESC06.Direction,ASN,ASEAN,elevated,VTS,ESC06,ASN-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=ASN.VTS.ESC06.Fault,ASN,ASEAN,elevated,VTS,ESC06,ASN-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=ASN.VTS.ELV01.Status,ASN,ASEAN,elevated,VTS,ELV01,ASN-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=ASN.VTS.ELV01.Floor,ASN,ASEAN,elevated,VTS,ELV01,ASN-ELV-01,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 1
+ns=2;s=ASN.VTS.ELV01.Fault,ASN,ASEAN,elevated,VTS,ELV01,ASN-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=ASN.VTS.ELV02.Status,ASN,ASEAN,elevated,VTS,ELV02,ASN-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=ASN.VTS.ELV02.Floor,ASN,ASEAN,elevated,VTS,ELV02,ASN-ELV-02,Floor,floor,Int32,,telemetry,,0,2,floor,Posisi lantai lift 2
+ns=2;s=ASN.VTS.ELV02.Fault,ASN,ASEAN,elevated,VTS,ELV02,ASN-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=ASN.PWR.ER01.EnergyImport,ASN,ASEAN,elevated,PWR,ER01,ASN-ER-01,EnergyImport,energy,Double,kWh,telemetry,,180,320,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=ASN.PWR.ER01.ActivePower,ASN,ASEAN,elevated,PWR,ER01,ASN-ER-01,ActivePower,active_power,Double,kW,telemetry,,180,320,analog_daily,Daya aktif panel LV
+ns=2;s=ASN.PWR.ER01.VoltageLL,ASN,ASEAN,elevated,PWR,ER01,ASN-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=ASN.PWR.ER01.PowerFactor,ASN,ASEAN,elevated,PWR,ER01,ASN-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=ASN.PWR.ER01.IncomerTrip,ASN,ASEAN,elevated,PWR,ER01,ASN-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=ASN.PLB.TNK01.Level,ASN,ASEAN,elevated,PLB,TNK01,ASN-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=ASN.FAS.FACP.FireAlarm,ASN,ASEAN,elevated,FAS,FACP,ASN-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=ASN.FAS.FACP.PanelFault,ASN,ASEAN,elevated,FAS,FACP,ASN-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=ASN.LTG.PLT.PlatformLighting,ASN,ASEAN,elevated,LTG,PLT,ASN-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=SNY.ECS.AHU01.Running,SNY,Senayan,underground,ECS,AHU01,SNY-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=SNY.ECS.AHU01.SupplyTemp,SNY,Senayan,underground,ECS,AHU01,SNY-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=SNY.ECS.AHU01.ReturnTemp,SNY,Senayan,underground,ECS,AHU01,SNY-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=SNY.ECS.AHU01.FanSpeed,SNY,Senayan,underground,ECS,AHU01,SNY-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=SNY.ECS.AHU01.Fault,SNY,Senayan,underground,ECS,AHU01,SNY-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=SNY.ECS.AHU02.Running,SNY,Senayan,underground,ECS,AHU02,SNY-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=SNY.ECS.AHU02.SupplyTemp,SNY,Senayan,underground,ECS,AHU02,SNY-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=SNY.ECS.AHU02.ReturnTemp,SNY,Senayan,underground,ECS,AHU02,SNY-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=SNY.ECS.AHU02.FanSpeed,SNY,Senayan,underground,ECS,AHU02,SNY-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=SNY.ECS.AHU02.Fault,SNY,Senayan,underground,ECS,AHU02,SNY-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=SNY.ECS.AHU03.Running,SNY,Senayan,underground,ECS,AHU03,SNY-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=SNY.ECS.AHU03.SupplyTemp,SNY,Senayan,underground,ECS,AHU03,SNY-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=SNY.ECS.AHU03.ReturnTemp,SNY,Senayan,underground,ECS,AHU03,SNY-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=SNY.ECS.AHU03.FanSpeed,SNY,Senayan,underground,ECS,AHU03,SNY-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=SNY.ECS.AHU03.Fault,SNY,Senayan,underground,ECS,AHU03,SNY-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=SNY.ECS.AHU04.Running,SNY,Senayan,underground,ECS,AHU04,SNY-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=SNY.ECS.AHU04.SupplyTemp,SNY,Senayan,underground,ECS,AHU04,SNY-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=SNY.ECS.AHU04.ReturnTemp,SNY,Senayan,underground,ECS,AHU04,SNY-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=SNY.ECS.AHU04.FanSpeed,SNY,Senayan,underground,ECS,AHU04,SNY-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=SNY.ECS.AHU04.Fault,SNY,Senayan,underground,ECS,AHU04,SNY-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=SNY.ECS.CH01.Running,SNY,Senayan,underground,ECS,CH01,SNY-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=SNY.ECS.CH01.ChwSupplyTemp,SNY,Senayan,underground,ECS,CH01,SNY-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=SNY.ECS.CH01.Load,SNY,Senayan,underground,ECS,CH01,SNY-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=SNY.ECS.CH01.Fault,SNY,Senayan,underground,ECS,CH01,SNY-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=SNY.ECS.CH02.Running,SNY,Senayan,underground,ECS,CH02,SNY-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=SNY.ECS.CH02.ChwSupplyTemp,SNY,Senayan,underground,ECS,CH02,SNY-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=SNY.ECS.CH02.Load,SNY,Senayan,underground,ECS,CH02,SNY-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=SNY.ECS.CH02.Fault,SNY,Senayan,underground,ECS,CH02,SNY-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=SNY.TVS.TVF01.Running,SNY,Senayan,underground,TVS,TVF01,SNY-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=SNY.TVS.TVF01.Mode,SNY,Senayan,underground,TVS,TVF01,SNY-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=SNY.TVS.TVF01.Fault,SNY,Senayan,underground,TVS,TVF01,SNY-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=SNY.TVS.TVF02.Running,SNY,Senayan,underground,TVS,TVF02,SNY-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=SNY.TVS.TVF02.Mode,SNY,Senayan,underground,TVS,TVF02,SNY-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=SNY.TVS.TVF02.Fault,SNY,Senayan,underground,TVS,TVF02,SNY-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=SNY.ENV.PLT.PlatformTemp,SNY,Senayan,underground,ENV,PLT,SNY-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=SNY.ENV.PLT.PlatformHumidity,SNY,Senayan,underground,ENV,PLT,SNY-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=SNY.ENV.CNC.ConcourseTemp,SNY,Senayan,underground,ENV,CNC,SNY-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=SNY.ENV.PLT.CO2,SNY,Senayan,underground,ENV,PLT,SNY-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=SNY.PSD.PSD01.DoorStatus,SNY,Senayan,underground,PSD,PSD01,SNY-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=SNY.PSD.PSD01.ClosedLocked,SNY,Senayan,underground,PSD,PSD01,SNY-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=SNY.PSD.PSD01.Fault,SNY,Senayan,underground,PSD,PSD01,SNY-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=SNY.PSD.PSD02.DoorStatus,SNY,Senayan,underground,PSD,PSD02,SNY-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=SNY.PSD.PSD02.ClosedLocked,SNY,Senayan,underground,PSD,PSD02,SNY-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=SNY.PSD.PSD02.Fault,SNY,Senayan,underground,PSD,PSD02,SNY-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=SNY.VTS.ESC01.Running,SNY,Senayan,underground,VTS,ESC01,SNY-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=SNY.VTS.ESC01.Direction,SNY,Senayan,underground,VTS,ESC01,SNY-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=SNY.VTS.ESC01.Fault,SNY,Senayan,underground,VTS,ESC01,SNY-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=SNY.VTS.ESC02.Running,SNY,Senayan,underground,VTS,ESC02,SNY-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=SNY.VTS.ESC02.Direction,SNY,Senayan,underground,VTS,ESC02,SNY-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=SNY.VTS.ESC02.Fault,SNY,Senayan,underground,VTS,ESC02,SNY-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=SNY.VTS.ESC03.Running,SNY,Senayan,underground,VTS,ESC03,SNY-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=SNY.VTS.ESC03.Direction,SNY,Senayan,underground,VTS,ESC03,SNY-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=SNY.VTS.ESC03.Fault,SNY,Senayan,underground,VTS,ESC03,SNY-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=SNY.VTS.ESC04.Running,SNY,Senayan,underground,VTS,ESC04,SNY-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=SNY.VTS.ESC04.Direction,SNY,Senayan,underground,VTS,ESC04,SNY-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=SNY.VTS.ESC04.Fault,SNY,Senayan,underground,VTS,ESC04,SNY-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=SNY.VTS.ESC05.Running,SNY,Senayan,underground,VTS,ESC05,SNY-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=SNY.VTS.ESC05.Direction,SNY,Senayan,underground,VTS,ESC05,SNY-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=SNY.VTS.ESC05.Fault,SNY,Senayan,underground,VTS,ESC05,SNY-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=SNY.VTS.ESC06.Running,SNY,Senayan,underground,VTS,ESC06,SNY-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=SNY.VTS.ESC06.Direction,SNY,Senayan,underground,VTS,ESC06,SNY-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=SNY.VTS.ESC06.Fault,SNY,Senayan,underground,VTS,ESC06,SNY-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=SNY.VTS.ESC07.Running,SNY,Senayan,underground,VTS,ESC07,SNY-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=SNY.VTS.ESC07.Direction,SNY,Senayan,underground,VTS,ESC07,SNY-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=SNY.VTS.ESC07.Fault,SNY,Senayan,underground,VTS,ESC07,SNY-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=SNY.VTS.ESC08.Running,SNY,Senayan,underground,VTS,ESC08,SNY-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=SNY.VTS.ESC08.Direction,SNY,Senayan,underground,VTS,ESC08,SNY-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=SNY.VTS.ESC08.Fault,SNY,Senayan,underground,VTS,ESC08,SNY-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=SNY.VTS.ELV01.Status,SNY,Senayan,underground,VTS,ELV01,SNY-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=SNY.VTS.ELV01.Floor,SNY,Senayan,underground,VTS,ELV01,SNY-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=SNY.VTS.ELV01.Fault,SNY,Senayan,underground,VTS,ELV01,SNY-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=SNY.VTS.ELV02.Status,SNY,Senayan,underground,VTS,ELV02,SNY-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=SNY.VTS.ELV02.Floor,SNY,Senayan,underground,VTS,ELV02,SNY-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=SNY.VTS.ELV02.Fault,SNY,Senayan,underground,VTS,ELV02,SNY-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=SNY.PWR.ER01.EnergyImport,SNY,Senayan,underground,PWR,ER01,SNY-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=SNY.PWR.ER01.ActivePower,SNY,Senayan,underground,PWR,ER01,SNY-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=SNY.PWR.ER01.VoltageLL,SNY,Senayan,underground,PWR,ER01,SNY-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=SNY.PWR.ER01.PowerFactor,SNY,Senayan,underground,PWR,ER01,SNY-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=SNY.PWR.ER01.IncomerTrip,SNY,Senayan,underground,PWR,ER01,SNY-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=SNY.DRN.SMP01.Level,SNY,Senayan,underground,DRN,SMP01,SNY-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=SNY.DRN.SMP01.PumpRunning,SNY,Senayan,underground,DRN,SMP01,SNY-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=SNY.DRN.SMP01.HighLevel,SNY,Senayan,underground,DRN,SMP01,SNY-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=SNY.PLB.TNK01.Level,SNY,Senayan,underground,PLB,TNK01,SNY-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=SNY.FAS.FACP.FireAlarm,SNY,Senayan,underground,FAS,FACP,SNY-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=SNY.FAS.FACP.PanelFault,SNY,Senayan,underground,FAS,FACP,SNY-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=SNY.LTG.PLT.PlatformLighting,SNY,Senayan,underground,LTG,PLT,SNY-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=IST.ECS.AHU01.Running,IST,Istora,underground,ECS,AHU01,IST-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=IST.ECS.AHU01.SupplyTemp,IST,Istora,underground,ECS,AHU01,IST-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=IST.ECS.AHU01.ReturnTemp,IST,Istora,underground,ECS,AHU01,IST-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=IST.ECS.AHU01.FanSpeed,IST,Istora,underground,ECS,AHU01,IST-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=IST.ECS.AHU01.Fault,IST,Istora,underground,ECS,AHU01,IST-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=IST.ECS.AHU02.Running,IST,Istora,underground,ECS,AHU02,IST-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=IST.ECS.AHU02.SupplyTemp,IST,Istora,underground,ECS,AHU02,IST-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=IST.ECS.AHU02.ReturnTemp,IST,Istora,underground,ECS,AHU02,IST-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=IST.ECS.AHU02.FanSpeed,IST,Istora,underground,ECS,AHU02,IST-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=IST.ECS.AHU02.Fault,IST,Istora,underground,ECS,AHU02,IST-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=IST.ECS.AHU03.Running,IST,Istora,underground,ECS,AHU03,IST-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=IST.ECS.AHU03.SupplyTemp,IST,Istora,underground,ECS,AHU03,IST-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=IST.ECS.AHU03.ReturnTemp,IST,Istora,underground,ECS,AHU03,IST-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=IST.ECS.AHU03.FanSpeed,IST,Istora,underground,ECS,AHU03,IST-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=IST.ECS.AHU03.Fault,IST,Istora,underground,ECS,AHU03,IST-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=IST.ECS.AHU04.Running,IST,Istora,underground,ECS,AHU04,IST-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=IST.ECS.AHU04.SupplyTemp,IST,Istora,underground,ECS,AHU04,IST-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=IST.ECS.AHU04.ReturnTemp,IST,Istora,underground,ECS,AHU04,IST-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=IST.ECS.AHU04.FanSpeed,IST,Istora,underground,ECS,AHU04,IST-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=IST.ECS.AHU04.Fault,IST,Istora,underground,ECS,AHU04,IST-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=IST.ECS.CH01.Running,IST,Istora,underground,ECS,CH01,IST-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=IST.ECS.CH01.ChwSupplyTemp,IST,Istora,underground,ECS,CH01,IST-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=IST.ECS.CH01.Load,IST,Istora,underground,ECS,CH01,IST-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=IST.ECS.CH01.Fault,IST,Istora,underground,ECS,CH01,IST-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=IST.ECS.CH02.Running,IST,Istora,underground,ECS,CH02,IST-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=IST.ECS.CH02.ChwSupplyTemp,IST,Istora,underground,ECS,CH02,IST-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=IST.ECS.CH02.Load,IST,Istora,underground,ECS,CH02,IST-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=IST.ECS.CH02.Fault,IST,Istora,underground,ECS,CH02,IST-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=IST.TVS.TVF01.Running,IST,Istora,underground,TVS,TVF01,IST-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=IST.TVS.TVF01.Mode,IST,Istora,underground,TVS,TVF01,IST-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=IST.TVS.TVF01.Fault,IST,Istora,underground,TVS,TVF01,IST-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=IST.TVS.TVF02.Running,IST,Istora,underground,TVS,TVF02,IST-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=IST.TVS.TVF02.Mode,IST,Istora,underground,TVS,TVF02,IST-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=IST.TVS.TVF02.Fault,IST,Istora,underground,TVS,TVF02,IST-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=IST.ENV.PLT.PlatformTemp,IST,Istora,underground,ENV,PLT,IST-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=IST.ENV.PLT.PlatformHumidity,IST,Istora,underground,ENV,PLT,IST-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=IST.ENV.CNC.ConcourseTemp,IST,Istora,underground,ENV,CNC,IST-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=IST.ENV.PLT.CO2,IST,Istora,underground,ENV,PLT,IST-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=IST.PSD.PSD01.DoorStatus,IST,Istora,underground,PSD,PSD01,IST-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=IST.PSD.PSD01.ClosedLocked,IST,Istora,underground,PSD,PSD01,IST-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=IST.PSD.PSD01.Fault,IST,Istora,underground,PSD,PSD01,IST-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=IST.PSD.PSD02.DoorStatus,IST,Istora,underground,PSD,PSD02,IST-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=IST.PSD.PSD02.ClosedLocked,IST,Istora,underground,PSD,PSD02,IST-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=IST.PSD.PSD02.Fault,IST,Istora,underground,PSD,PSD02,IST-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=IST.VTS.ESC01.Running,IST,Istora,underground,VTS,ESC01,IST-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=IST.VTS.ESC01.Direction,IST,Istora,underground,VTS,ESC01,IST-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=IST.VTS.ESC01.Fault,IST,Istora,underground,VTS,ESC01,IST-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=IST.VTS.ESC02.Running,IST,Istora,underground,VTS,ESC02,IST-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=IST.VTS.ESC02.Direction,IST,Istora,underground,VTS,ESC02,IST-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=IST.VTS.ESC02.Fault,IST,Istora,underground,VTS,ESC02,IST-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=IST.VTS.ESC03.Running,IST,Istora,underground,VTS,ESC03,IST-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=IST.VTS.ESC03.Direction,IST,Istora,underground,VTS,ESC03,IST-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=IST.VTS.ESC03.Fault,IST,Istora,underground,VTS,ESC03,IST-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=IST.VTS.ESC04.Running,IST,Istora,underground,VTS,ESC04,IST-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=IST.VTS.ESC04.Direction,IST,Istora,underground,VTS,ESC04,IST-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=IST.VTS.ESC04.Fault,IST,Istora,underground,VTS,ESC04,IST-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=IST.VTS.ESC05.Running,IST,Istora,underground,VTS,ESC05,IST-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=IST.VTS.ESC05.Direction,IST,Istora,underground,VTS,ESC05,IST-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=IST.VTS.ESC05.Fault,IST,Istora,underground,VTS,ESC05,IST-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=IST.VTS.ESC06.Running,IST,Istora,underground,VTS,ESC06,IST-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=IST.VTS.ESC06.Direction,IST,Istora,underground,VTS,ESC06,IST-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=IST.VTS.ESC06.Fault,IST,Istora,underground,VTS,ESC06,IST-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=IST.VTS.ESC07.Running,IST,Istora,underground,VTS,ESC07,IST-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=IST.VTS.ESC07.Direction,IST,Istora,underground,VTS,ESC07,IST-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=IST.VTS.ESC07.Fault,IST,Istora,underground,VTS,ESC07,IST-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=IST.VTS.ESC08.Running,IST,Istora,underground,VTS,ESC08,IST-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=IST.VTS.ESC08.Direction,IST,Istora,underground,VTS,ESC08,IST-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=IST.VTS.ESC08.Fault,IST,Istora,underground,VTS,ESC08,IST-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=IST.VTS.ELV01.Status,IST,Istora,underground,VTS,ELV01,IST-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=IST.VTS.ELV01.Floor,IST,Istora,underground,VTS,ELV01,IST-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=IST.VTS.ELV01.Fault,IST,Istora,underground,VTS,ELV01,IST-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=IST.VTS.ELV02.Status,IST,Istora,underground,VTS,ELV02,IST-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=IST.VTS.ELV02.Floor,IST,Istora,underground,VTS,ELV02,IST-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=IST.VTS.ELV02.Fault,IST,Istora,underground,VTS,ELV02,IST-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=IST.PWR.ER01.EnergyImport,IST,Istora,underground,PWR,ER01,IST-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=IST.PWR.ER01.ActivePower,IST,Istora,underground,PWR,ER01,IST-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=IST.PWR.ER01.VoltageLL,IST,Istora,underground,PWR,ER01,IST-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=IST.PWR.ER01.PowerFactor,IST,Istora,underground,PWR,ER01,IST-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=IST.PWR.ER01.IncomerTrip,IST,Istora,underground,PWR,ER01,IST-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=IST.DRN.SMP01.Level,IST,Istora,underground,DRN,SMP01,IST-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=IST.DRN.SMP01.PumpRunning,IST,Istora,underground,DRN,SMP01,IST-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=IST.DRN.SMP01.HighLevel,IST,Istora,underground,DRN,SMP01,IST-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=IST.PLB.TNK01.Level,IST,Istora,underground,PLB,TNK01,IST-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=IST.FAS.FACP.FireAlarm,IST,Istora,underground,FAS,FACP,IST-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=IST.FAS.FACP.PanelFault,IST,Istora,underground,FAS,FACP,IST-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=IST.LTG.PLT.PlatformLighting,IST,Istora,underground,LTG,PLT,IST-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=BNH.ECS.AHU01.Running,BNH,Bendungan Hilir,underground,ECS,AHU01,BNH-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=BNH.ECS.AHU01.SupplyTemp,BNH,Bendungan Hilir,underground,ECS,AHU01,BNH-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=BNH.ECS.AHU01.ReturnTemp,BNH,Bendungan Hilir,underground,ECS,AHU01,BNH-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=BNH.ECS.AHU01.FanSpeed,BNH,Bendungan Hilir,underground,ECS,AHU01,BNH-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=BNH.ECS.AHU01.Fault,BNH,Bendungan Hilir,underground,ECS,AHU01,BNH-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=BNH.ECS.AHU02.Running,BNH,Bendungan Hilir,underground,ECS,AHU02,BNH-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=BNH.ECS.AHU02.SupplyTemp,BNH,Bendungan Hilir,underground,ECS,AHU02,BNH-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=BNH.ECS.AHU02.ReturnTemp,BNH,Bendungan Hilir,underground,ECS,AHU02,BNH-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=BNH.ECS.AHU02.FanSpeed,BNH,Bendungan Hilir,underground,ECS,AHU02,BNH-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=BNH.ECS.AHU02.Fault,BNH,Bendungan Hilir,underground,ECS,AHU02,BNH-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=BNH.ECS.AHU03.Running,BNH,Bendungan Hilir,underground,ECS,AHU03,BNH-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=BNH.ECS.AHU03.SupplyTemp,BNH,Bendungan Hilir,underground,ECS,AHU03,BNH-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=BNH.ECS.AHU03.ReturnTemp,BNH,Bendungan Hilir,underground,ECS,AHU03,BNH-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=BNH.ECS.AHU03.FanSpeed,BNH,Bendungan Hilir,underground,ECS,AHU03,BNH-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=BNH.ECS.AHU03.Fault,BNH,Bendungan Hilir,underground,ECS,AHU03,BNH-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=BNH.ECS.AHU04.Running,BNH,Bendungan Hilir,underground,ECS,AHU04,BNH-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=BNH.ECS.AHU04.SupplyTemp,BNH,Bendungan Hilir,underground,ECS,AHU04,BNH-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=BNH.ECS.AHU04.ReturnTemp,BNH,Bendungan Hilir,underground,ECS,AHU04,BNH-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=BNH.ECS.AHU04.FanSpeed,BNH,Bendungan Hilir,underground,ECS,AHU04,BNH-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=BNH.ECS.AHU04.Fault,BNH,Bendungan Hilir,underground,ECS,AHU04,BNH-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=BNH.ECS.CH01.Running,BNH,Bendungan Hilir,underground,ECS,CH01,BNH-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=BNH.ECS.CH01.ChwSupplyTemp,BNH,Bendungan Hilir,underground,ECS,CH01,BNH-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=BNH.ECS.CH01.Load,BNH,Bendungan Hilir,underground,ECS,CH01,BNH-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=BNH.ECS.CH01.Fault,BNH,Bendungan Hilir,underground,ECS,CH01,BNH-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=BNH.ECS.CH02.Running,BNH,Bendungan Hilir,underground,ECS,CH02,BNH-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=BNH.ECS.CH02.ChwSupplyTemp,BNH,Bendungan Hilir,underground,ECS,CH02,BNH-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=BNH.ECS.CH02.Load,BNH,Bendungan Hilir,underground,ECS,CH02,BNH-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=BNH.ECS.CH02.Fault,BNH,Bendungan Hilir,underground,ECS,CH02,BNH-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=BNH.TVS.TVF01.Running,BNH,Bendungan Hilir,underground,TVS,TVF01,BNH-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=BNH.TVS.TVF01.Mode,BNH,Bendungan Hilir,underground,TVS,TVF01,BNH-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=BNH.TVS.TVF01.Fault,BNH,Bendungan Hilir,underground,TVS,TVF01,BNH-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=BNH.TVS.TVF02.Running,BNH,Bendungan Hilir,underground,TVS,TVF02,BNH-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=BNH.TVS.TVF02.Mode,BNH,Bendungan Hilir,underground,TVS,TVF02,BNH-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=BNH.TVS.TVF02.Fault,BNH,Bendungan Hilir,underground,TVS,TVF02,BNH-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=BNH.ENV.PLT.PlatformTemp,BNH,Bendungan Hilir,underground,ENV,PLT,BNH-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=BNH.ENV.PLT.PlatformHumidity,BNH,Bendungan Hilir,underground,ENV,PLT,BNH-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=BNH.ENV.CNC.ConcourseTemp,BNH,Bendungan Hilir,underground,ENV,CNC,BNH-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=BNH.ENV.PLT.CO2,BNH,Bendungan Hilir,underground,ENV,PLT,BNH-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=BNH.PSD.PSD01.DoorStatus,BNH,Bendungan Hilir,underground,PSD,PSD01,BNH-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=BNH.PSD.PSD01.ClosedLocked,BNH,Bendungan Hilir,underground,PSD,PSD01,BNH-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=BNH.PSD.PSD01.Fault,BNH,Bendungan Hilir,underground,PSD,PSD01,BNH-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=BNH.PSD.PSD02.DoorStatus,BNH,Bendungan Hilir,underground,PSD,PSD02,BNH-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=BNH.PSD.PSD02.ClosedLocked,BNH,Bendungan Hilir,underground,PSD,PSD02,BNH-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=BNH.PSD.PSD02.Fault,BNH,Bendungan Hilir,underground,PSD,PSD02,BNH-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=BNH.VTS.ESC01.Running,BNH,Bendungan Hilir,underground,VTS,ESC01,BNH-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=BNH.VTS.ESC01.Direction,BNH,Bendungan Hilir,underground,VTS,ESC01,BNH-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=BNH.VTS.ESC01.Fault,BNH,Bendungan Hilir,underground,VTS,ESC01,BNH-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=BNH.VTS.ESC02.Running,BNH,Bendungan Hilir,underground,VTS,ESC02,BNH-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=BNH.VTS.ESC02.Direction,BNH,Bendungan Hilir,underground,VTS,ESC02,BNH-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=BNH.VTS.ESC02.Fault,BNH,Bendungan Hilir,underground,VTS,ESC02,BNH-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=BNH.VTS.ESC03.Running,BNH,Bendungan Hilir,underground,VTS,ESC03,BNH-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=BNH.VTS.ESC03.Direction,BNH,Bendungan Hilir,underground,VTS,ESC03,BNH-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=BNH.VTS.ESC03.Fault,BNH,Bendungan Hilir,underground,VTS,ESC03,BNH-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=BNH.VTS.ESC04.Running,BNH,Bendungan Hilir,underground,VTS,ESC04,BNH-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=BNH.VTS.ESC04.Direction,BNH,Bendungan Hilir,underground,VTS,ESC04,BNH-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=BNH.VTS.ESC04.Fault,BNH,Bendungan Hilir,underground,VTS,ESC04,BNH-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=BNH.VTS.ESC05.Running,BNH,Bendungan Hilir,underground,VTS,ESC05,BNH-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=BNH.VTS.ESC05.Direction,BNH,Bendungan Hilir,underground,VTS,ESC05,BNH-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=BNH.VTS.ESC05.Fault,BNH,Bendungan Hilir,underground,VTS,ESC05,BNH-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=BNH.VTS.ESC06.Running,BNH,Bendungan Hilir,underground,VTS,ESC06,BNH-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=BNH.VTS.ESC06.Direction,BNH,Bendungan Hilir,underground,VTS,ESC06,BNH-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=BNH.VTS.ESC06.Fault,BNH,Bendungan Hilir,underground,VTS,ESC06,BNH-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=BNH.VTS.ESC07.Running,BNH,Bendungan Hilir,underground,VTS,ESC07,BNH-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=BNH.VTS.ESC07.Direction,BNH,Bendungan Hilir,underground,VTS,ESC07,BNH-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=BNH.VTS.ESC07.Fault,BNH,Bendungan Hilir,underground,VTS,ESC07,BNH-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=BNH.VTS.ESC08.Running,BNH,Bendungan Hilir,underground,VTS,ESC08,BNH-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=BNH.VTS.ESC08.Direction,BNH,Bendungan Hilir,underground,VTS,ESC08,BNH-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=BNH.VTS.ESC08.Fault,BNH,Bendungan Hilir,underground,VTS,ESC08,BNH-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=BNH.VTS.ELV01.Status,BNH,Bendungan Hilir,underground,VTS,ELV01,BNH-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=BNH.VTS.ELV01.Floor,BNH,Bendungan Hilir,underground,VTS,ELV01,BNH-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=BNH.VTS.ELV01.Fault,BNH,Bendungan Hilir,underground,VTS,ELV01,BNH-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=BNH.VTS.ELV02.Status,BNH,Bendungan Hilir,underground,VTS,ELV02,BNH-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=BNH.VTS.ELV02.Floor,BNH,Bendungan Hilir,underground,VTS,ELV02,BNH-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=BNH.VTS.ELV02.Fault,BNH,Bendungan Hilir,underground,VTS,ELV02,BNH-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=BNH.PWR.ER01.EnergyImport,BNH,Bendungan Hilir,underground,PWR,ER01,BNH-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=BNH.PWR.ER01.ActivePower,BNH,Bendungan Hilir,underground,PWR,ER01,BNH-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=BNH.PWR.ER01.VoltageLL,BNH,Bendungan Hilir,underground,PWR,ER01,BNH-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=BNH.PWR.ER01.PowerFactor,BNH,Bendungan Hilir,underground,PWR,ER01,BNH-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=BNH.PWR.ER01.IncomerTrip,BNH,Bendungan Hilir,underground,PWR,ER01,BNH-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=BNH.DRN.SMP01.Level,BNH,Bendungan Hilir,underground,DRN,SMP01,BNH-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=BNH.DRN.SMP01.PumpRunning,BNH,Bendungan Hilir,underground,DRN,SMP01,BNH-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=BNH.DRN.SMP01.HighLevel,BNH,Bendungan Hilir,underground,DRN,SMP01,BNH-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=BNH.PLB.TNK01.Level,BNH,Bendungan Hilir,underground,PLB,TNK01,BNH-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=BNH.FAS.FACP.FireAlarm,BNH,Bendungan Hilir,underground,FAS,FACP,BNH-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=BNH.FAS.FACP.PanelFault,BNH,Bendungan Hilir,underground,FAS,FACP,BNH-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=BNH.LTG.PLT.PlatformLighting,BNH,Bendungan Hilir,underground,LTG,PLT,BNH-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=STB.ECS.AHU01.Running,STB,Setiabudi,underground,ECS,AHU01,STB-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=STB.ECS.AHU01.SupplyTemp,STB,Setiabudi,underground,ECS,AHU01,STB-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=STB.ECS.AHU01.ReturnTemp,STB,Setiabudi,underground,ECS,AHU01,STB-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=STB.ECS.AHU01.FanSpeed,STB,Setiabudi,underground,ECS,AHU01,STB-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=STB.ECS.AHU01.Fault,STB,Setiabudi,underground,ECS,AHU01,STB-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=STB.ECS.AHU02.Running,STB,Setiabudi,underground,ECS,AHU02,STB-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=STB.ECS.AHU02.SupplyTemp,STB,Setiabudi,underground,ECS,AHU02,STB-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=STB.ECS.AHU02.ReturnTemp,STB,Setiabudi,underground,ECS,AHU02,STB-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=STB.ECS.AHU02.FanSpeed,STB,Setiabudi,underground,ECS,AHU02,STB-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=STB.ECS.AHU02.Fault,STB,Setiabudi,underground,ECS,AHU02,STB-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=STB.ECS.AHU03.Running,STB,Setiabudi,underground,ECS,AHU03,STB-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=STB.ECS.AHU03.SupplyTemp,STB,Setiabudi,underground,ECS,AHU03,STB-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=STB.ECS.AHU03.ReturnTemp,STB,Setiabudi,underground,ECS,AHU03,STB-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=STB.ECS.AHU03.FanSpeed,STB,Setiabudi,underground,ECS,AHU03,STB-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=STB.ECS.AHU03.Fault,STB,Setiabudi,underground,ECS,AHU03,STB-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=STB.ECS.AHU04.Running,STB,Setiabudi,underground,ECS,AHU04,STB-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=STB.ECS.AHU04.SupplyTemp,STB,Setiabudi,underground,ECS,AHU04,STB-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=STB.ECS.AHU04.ReturnTemp,STB,Setiabudi,underground,ECS,AHU04,STB-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=STB.ECS.AHU04.FanSpeed,STB,Setiabudi,underground,ECS,AHU04,STB-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=STB.ECS.AHU04.Fault,STB,Setiabudi,underground,ECS,AHU04,STB-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=STB.ECS.CH01.Running,STB,Setiabudi,underground,ECS,CH01,STB-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=STB.ECS.CH01.ChwSupplyTemp,STB,Setiabudi,underground,ECS,CH01,STB-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=STB.ECS.CH01.Load,STB,Setiabudi,underground,ECS,CH01,STB-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=STB.ECS.CH01.Fault,STB,Setiabudi,underground,ECS,CH01,STB-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=STB.ECS.CH02.Running,STB,Setiabudi,underground,ECS,CH02,STB-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=STB.ECS.CH02.ChwSupplyTemp,STB,Setiabudi,underground,ECS,CH02,STB-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=STB.ECS.CH02.Load,STB,Setiabudi,underground,ECS,CH02,STB-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=STB.ECS.CH02.Fault,STB,Setiabudi,underground,ECS,CH02,STB-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=STB.TVS.TVF01.Running,STB,Setiabudi,underground,TVS,TVF01,STB-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=STB.TVS.TVF01.Mode,STB,Setiabudi,underground,TVS,TVF01,STB-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=STB.TVS.TVF01.Fault,STB,Setiabudi,underground,TVS,TVF01,STB-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=STB.TVS.TVF02.Running,STB,Setiabudi,underground,TVS,TVF02,STB-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=STB.TVS.TVF02.Mode,STB,Setiabudi,underground,TVS,TVF02,STB-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=STB.TVS.TVF02.Fault,STB,Setiabudi,underground,TVS,TVF02,STB-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=STB.ENV.PLT.PlatformTemp,STB,Setiabudi,underground,ENV,PLT,STB-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=STB.ENV.PLT.PlatformHumidity,STB,Setiabudi,underground,ENV,PLT,STB-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=STB.ENV.CNC.ConcourseTemp,STB,Setiabudi,underground,ENV,CNC,STB-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=STB.ENV.PLT.CO2,STB,Setiabudi,underground,ENV,PLT,STB-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=STB.PSD.PSD01.DoorStatus,STB,Setiabudi,underground,PSD,PSD01,STB-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=STB.PSD.PSD01.ClosedLocked,STB,Setiabudi,underground,PSD,PSD01,STB-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=STB.PSD.PSD01.Fault,STB,Setiabudi,underground,PSD,PSD01,STB-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=STB.PSD.PSD02.DoorStatus,STB,Setiabudi,underground,PSD,PSD02,STB-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=STB.PSD.PSD02.ClosedLocked,STB,Setiabudi,underground,PSD,PSD02,STB-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=STB.PSD.PSD02.Fault,STB,Setiabudi,underground,PSD,PSD02,STB-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=STB.VTS.ESC01.Running,STB,Setiabudi,underground,VTS,ESC01,STB-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=STB.VTS.ESC01.Direction,STB,Setiabudi,underground,VTS,ESC01,STB-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=STB.VTS.ESC01.Fault,STB,Setiabudi,underground,VTS,ESC01,STB-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=STB.VTS.ESC02.Running,STB,Setiabudi,underground,VTS,ESC02,STB-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=STB.VTS.ESC02.Direction,STB,Setiabudi,underground,VTS,ESC02,STB-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=STB.VTS.ESC02.Fault,STB,Setiabudi,underground,VTS,ESC02,STB-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=STB.VTS.ESC03.Running,STB,Setiabudi,underground,VTS,ESC03,STB-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=STB.VTS.ESC03.Direction,STB,Setiabudi,underground,VTS,ESC03,STB-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=STB.VTS.ESC03.Fault,STB,Setiabudi,underground,VTS,ESC03,STB-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=STB.VTS.ESC04.Running,STB,Setiabudi,underground,VTS,ESC04,STB-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=STB.VTS.ESC04.Direction,STB,Setiabudi,underground,VTS,ESC04,STB-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=STB.VTS.ESC04.Fault,STB,Setiabudi,underground,VTS,ESC04,STB-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=STB.VTS.ESC05.Running,STB,Setiabudi,underground,VTS,ESC05,STB-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=STB.VTS.ESC05.Direction,STB,Setiabudi,underground,VTS,ESC05,STB-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=STB.VTS.ESC05.Fault,STB,Setiabudi,underground,VTS,ESC05,STB-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=STB.VTS.ESC06.Running,STB,Setiabudi,underground,VTS,ESC06,STB-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=STB.VTS.ESC06.Direction,STB,Setiabudi,underground,VTS,ESC06,STB-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=STB.VTS.ESC06.Fault,STB,Setiabudi,underground,VTS,ESC06,STB-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=STB.VTS.ESC07.Running,STB,Setiabudi,underground,VTS,ESC07,STB-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=STB.VTS.ESC07.Direction,STB,Setiabudi,underground,VTS,ESC07,STB-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=STB.VTS.ESC07.Fault,STB,Setiabudi,underground,VTS,ESC07,STB-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=STB.VTS.ESC08.Running,STB,Setiabudi,underground,VTS,ESC08,STB-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=STB.VTS.ESC08.Direction,STB,Setiabudi,underground,VTS,ESC08,STB-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=STB.VTS.ESC08.Fault,STB,Setiabudi,underground,VTS,ESC08,STB-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=STB.VTS.ELV01.Status,STB,Setiabudi,underground,VTS,ELV01,STB-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=STB.VTS.ELV01.Floor,STB,Setiabudi,underground,VTS,ELV01,STB-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=STB.VTS.ELV01.Fault,STB,Setiabudi,underground,VTS,ELV01,STB-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=STB.VTS.ELV02.Status,STB,Setiabudi,underground,VTS,ELV02,STB-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=STB.VTS.ELV02.Floor,STB,Setiabudi,underground,VTS,ELV02,STB-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=STB.VTS.ELV02.Fault,STB,Setiabudi,underground,VTS,ELV02,STB-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=STB.PWR.ER01.EnergyImport,STB,Setiabudi,underground,PWR,ER01,STB-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=STB.PWR.ER01.ActivePower,STB,Setiabudi,underground,PWR,ER01,STB-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=STB.PWR.ER01.VoltageLL,STB,Setiabudi,underground,PWR,ER01,STB-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=STB.PWR.ER01.PowerFactor,STB,Setiabudi,underground,PWR,ER01,STB-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=STB.PWR.ER01.IncomerTrip,STB,Setiabudi,underground,PWR,ER01,STB-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=STB.DRN.SMP01.Level,STB,Setiabudi,underground,DRN,SMP01,STB-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=STB.DRN.SMP01.PumpRunning,STB,Setiabudi,underground,DRN,SMP01,STB-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=STB.DRN.SMP01.HighLevel,STB,Setiabudi,underground,DRN,SMP01,STB-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=STB.PLB.TNK01.Level,STB,Setiabudi,underground,PLB,TNK01,STB-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=STB.FAS.FACP.FireAlarm,STB,Setiabudi,underground,FAS,FACP,STB-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=STB.FAS.FACP.PanelFault,STB,Setiabudi,underground,FAS,FACP,STB-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=STB.LTG.PLT.PlatformLighting,STB,Setiabudi,underground,LTG,PLT,STB-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=DKA.ECS.AHU01.Running,DKA,Dukuh Atas,underground,ECS,AHU01,DKA-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=DKA.ECS.AHU01.SupplyTemp,DKA,Dukuh Atas,underground,ECS,AHU01,DKA-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=DKA.ECS.AHU01.ReturnTemp,DKA,Dukuh Atas,underground,ECS,AHU01,DKA-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=DKA.ECS.AHU01.FanSpeed,DKA,Dukuh Atas,underground,ECS,AHU01,DKA-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=DKA.ECS.AHU01.Fault,DKA,Dukuh Atas,underground,ECS,AHU01,DKA-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=DKA.ECS.AHU02.Running,DKA,Dukuh Atas,underground,ECS,AHU02,DKA-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=DKA.ECS.AHU02.SupplyTemp,DKA,Dukuh Atas,underground,ECS,AHU02,DKA-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=DKA.ECS.AHU02.ReturnTemp,DKA,Dukuh Atas,underground,ECS,AHU02,DKA-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=DKA.ECS.AHU02.FanSpeed,DKA,Dukuh Atas,underground,ECS,AHU02,DKA-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=DKA.ECS.AHU02.Fault,DKA,Dukuh Atas,underground,ECS,AHU02,DKA-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=DKA.ECS.AHU03.Running,DKA,Dukuh Atas,underground,ECS,AHU03,DKA-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=DKA.ECS.AHU03.SupplyTemp,DKA,Dukuh Atas,underground,ECS,AHU03,DKA-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=DKA.ECS.AHU03.ReturnTemp,DKA,Dukuh Atas,underground,ECS,AHU03,DKA-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=DKA.ECS.AHU03.FanSpeed,DKA,Dukuh Atas,underground,ECS,AHU03,DKA-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=DKA.ECS.AHU03.Fault,DKA,Dukuh Atas,underground,ECS,AHU03,DKA-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=DKA.ECS.AHU04.Running,DKA,Dukuh Atas,underground,ECS,AHU04,DKA-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=DKA.ECS.AHU04.SupplyTemp,DKA,Dukuh Atas,underground,ECS,AHU04,DKA-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=DKA.ECS.AHU04.ReturnTemp,DKA,Dukuh Atas,underground,ECS,AHU04,DKA-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=DKA.ECS.AHU04.FanSpeed,DKA,Dukuh Atas,underground,ECS,AHU04,DKA-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=DKA.ECS.AHU04.Fault,DKA,Dukuh Atas,underground,ECS,AHU04,DKA-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=DKA.ECS.CH01.Running,DKA,Dukuh Atas,underground,ECS,CH01,DKA-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=DKA.ECS.CH01.ChwSupplyTemp,DKA,Dukuh Atas,underground,ECS,CH01,DKA-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=DKA.ECS.CH01.Load,DKA,Dukuh Atas,underground,ECS,CH01,DKA-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=DKA.ECS.CH01.Fault,DKA,Dukuh Atas,underground,ECS,CH01,DKA-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=DKA.ECS.CH02.Running,DKA,Dukuh Atas,underground,ECS,CH02,DKA-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=DKA.ECS.CH02.ChwSupplyTemp,DKA,Dukuh Atas,underground,ECS,CH02,DKA-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=DKA.ECS.CH02.Load,DKA,Dukuh Atas,underground,ECS,CH02,DKA-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=DKA.ECS.CH02.Fault,DKA,Dukuh Atas,underground,ECS,CH02,DKA-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=DKA.TVS.TVF01.Running,DKA,Dukuh Atas,underground,TVS,TVF01,DKA-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=DKA.TVS.TVF01.Mode,DKA,Dukuh Atas,underground,TVS,TVF01,DKA-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=DKA.TVS.TVF01.Fault,DKA,Dukuh Atas,underground,TVS,TVF01,DKA-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=DKA.TVS.TVF02.Running,DKA,Dukuh Atas,underground,TVS,TVF02,DKA-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=DKA.TVS.TVF02.Mode,DKA,Dukuh Atas,underground,TVS,TVF02,DKA-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=DKA.TVS.TVF02.Fault,DKA,Dukuh Atas,underground,TVS,TVF02,DKA-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=DKA.ENV.PLT.PlatformTemp,DKA,Dukuh Atas,underground,ENV,PLT,DKA-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=DKA.ENV.PLT.PlatformHumidity,DKA,Dukuh Atas,underground,ENV,PLT,DKA-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=DKA.ENV.CNC.ConcourseTemp,DKA,Dukuh Atas,underground,ENV,CNC,DKA-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=DKA.ENV.PLT.CO2,DKA,Dukuh Atas,underground,ENV,PLT,DKA-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=DKA.PSD.PSD01.DoorStatus,DKA,Dukuh Atas,underground,PSD,PSD01,DKA-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=DKA.PSD.PSD01.ClosedLocked,DKA,Dukuh Atas,underground,PSD,PSD01,DKA-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=DKA.PSD.PSD01.Fault,DKA,Dukuh Atas,underground,PSD,PSD01,DKA-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=DKA.PSD.PSD02.DoorStatus,DKA,Dukuh Atas,underground,PSD,PSD02,DKA-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=DKA.PSD.PSD02.ClosedLocked,DKA,Dukuh Atas,underground,PSD,PSD02,DKA-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=DKA.PSD.PSD02.Fault,DKA,Dukuh Atas,underground,PSD,PSD02,DKA-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=DKA.VTS.ESC01.Running,DKA,Dukuh Atas,underground,VTS,ESC01,DKA-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=DKA.VTS.ESC01.Direction,DKA,Dukuh Atas,underground,VTS,ESC01,DKA-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=DKA.VTS.ESC01.Fault,DKA,Dukuh Atas,underground,VTS,ESC01,DKA-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=DKA.VTS.ESC02.Running,DKA,Dukuh Atas,underground,VTS,ESC02,DKA-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=DKA.VTS.ESC02.Direction,DKA,Dukuh Atas,underground,VTS,ESC02,DKA-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=DKA.VTS.ESC02.Fault,DKA,Dukuh Atas,underground,VTS,ESC02,DKA-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=DKA.VTS.ESC03.Running,DKA,Dukuh Atas,underground,VTS,ESC03,DKA-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=DKA.VTS.ESC03.Direction,DKA,Dukuh Atas,underground,VTS,ESC03,DKA-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=DKA.VTS.ESC03.Fault,DKA,Dukuh Atas,underground,VTS,ESC03,DKA-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=DKA.VTS.ESC04.Running,DKA,Dukuh Atas,underground,VTS,ESC04,DKA-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=DKA.VTS.ESC04.Direction,DKA,Dukuh Atas,underground,VTS,ESC04,DKA-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=DKA.VTS.ESC04.Fault,DKA,Dukuh Atas,underground,VTS,ESC04,DKA-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=DKA.VTS.ESC05.Running,DKA,Dukuh Atas,underground,VTS,ESC05,DKA-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=DKA.VTS.ESC05.Direction,DKA,Dukuh Atas,underground,VTS,ESC05,DKA-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=DKA.VTS.ESC05.Fault,DKA,Dukuh Atas,underground,VTS,ESC05,DKA-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=DKA.VTS.ESC06.Running,DKA,Dukuh Atas,underground,VTS,ESC06,DKA-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=DKA.VTS.ESC06.Direction,DKA,Dukuh Atas,underground,VTS,ESC06,DKA-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=DKA.VTS.ESC06.Fault,DKA,Dukuh Atas,underground,VTS,ESC06,DKA-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=DKA.VTS.ESC07.Running,DKA,Dukuh Atas,underground,VTS,ESC07,DKA-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=DKA.VTS.ESC07.Direction,DKA,Dukuh Atas,underground,VTS,ESC07,DKA-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=DKA.VTS.ESC07.Fault,DKA,Dukuh Atas,underground,VTS,ESC07,DKA-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=DKA.VTS.ESC08.Running,DKA,Dukuh Atas,underground,VTS,ESC08,DKA-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=DKA.VTS.ESC08.Direction,DKA,Dukuh Atas,underground,VTS,ESC08,DKA-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=DKA.VTS.ESC08.Fault,DKA,Dukuh Atas,underground,VTS,ESC08,DKA-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=DKA.VTS.ELV01.Status,DKA,Dukuh Atas,underground,VTS,ELV01,DKA-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=DKA.VTS.ELV01.Floor,DKA,Dukuh Atas,underground,VTS,ELV01,DKA-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=DKA.VTS.ELV01.Fault,DKA,Dukuh Atas,underground,VTS,ELV01,DKA-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=DKA.VTS.ELV02.Status,DKA,Dukuh Atas,underground,VTS,ELV02,DKA-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=DKA.VTS.ELV02.Floor,DKA,Dukuh Atas,underground,VTS,ELV02,DKA-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=DKA.VTS.ELV02.Fault,DKA,Dukuh Atas,underground,VTS,ELV02,DKA-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=DKA.PWR.ER01.EnergyImport,DKA,Dukuh Atas,underground,PWR,ER01,DKA-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=DKA.PWR.ER01.ActivePower,DKA,Dukuh Atas,underground,PWR,ER01,DKA-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=DKA.PWR.ER01.VoltageLL,DKA,Dukuh Atas,underground,PWR,ER01,DKA-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=DKA.PWR.ER01.PowerFactor,DKA,Dukuh Atas,underground,PWR,ER01,DKA-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=DKA.PWR.ER01.IncomerTrip,DKA,Dukuh Atas,underground,PWR,ER01,DKA-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=DKA.DRN.SMP01.Level,DKA,Dukuh Atas,underground,DRN,SMP01,DKA-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=DKA.DRN.SMP01.PumpRunning,DKA,Dukuh Atas,underground,DRN,SMP01,DKA-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=DKA.DRN.SMP01.HighLevel,DKA,Dukuh Atas,underground,DRN,SMP01,DKA-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=DKA.PLB.TNK01.Level,DKA,Dukuh Atas,underground,PLB,TNK01,DKA-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=DKA.FAS.FACP.FireAlarm,DKA,Dukuh Atas,underground,FAS,FACP,DKA-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=DKA.FAS.FACP.PanelFault,DKA,Dukuh Atas,underground,FAS,FACP,DKA-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=DKA.LTG.PLT.PlatformLighting,DKA,Dukuh Atas,underground,LTG,PLT,DKA-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh
+ns=2;s=BHI.ECS.AHU01.Running,BHI,Bundaran HI,underground,ECS,AHU01,BHI-AHU-01,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 1 beroperasi
+ns=2;s=BHI.ECS.AHU01.SupplyTemp,BHI,Bundaran HI,underground,ECS,AHU01,BHI-AHU-01,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 1
+ns=2;s=BHI.ECS.AHU01.ReturnTemp,BHI,Bundaran HI,underground,ECS,AHU01,BHI-AHU-01,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 1
+ns=2;s=BHI.ECS.AHU01.FanSpeed,BHI,Bundaran HI,underground,ECS,AHU01,BHI-AHU-01,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 1
+ns=2;s=BHI.ECS.AHU01.Fault,BHI,Bundaran HI,underground,ECS,AHU01,BHI-AHU-01,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 1 trip/fault
+ns=2;s=BHI.ECS.AHU02.Running,BHI,Bundaran HI,underground,ECS,AHU02,BHI-AHU-02,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 2 beroperasi
+ns=2;s=BHI.ECS.AHU02.SupplyTemp,BHI,Bundaran HI,underground,ECS,AHU02,BHI-AHU-02,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 2
+ns=2;s=BHI.ECS.AHU02.ReturnTemp,BHI,Bundaran HI,underground,ECS,AHU02,BHI-AHU-02,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 2
+ns=2;s=BHI.ECS.AHU02.FanSpeed,BHI,Bundaran HI,underground,ECS,AHU02,BHI-AHU-02,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 2
+ns=2;s=BHI.ECS.AHU02.Fault,BHI,Bundaran HI,underground,ECS,AHU02,BHI-AHU-02,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 2 trip/fault
+ns=2;s=BHI.ECS.AHU03.Running,BHI,Bundaran HI,underground,ECS,AHU03,BHI-AHU-03,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 3 beroperasi
+ns=2;s=BHI.ECS.AHU03.SupplyTemp,BHI,Bundaran HI,underground,ECS,AHU03,BHI-AHU-03,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 3
+ns=2;s=BHI.ECS.AHU03.ReturnTemp,BHI,Bundaran HI,underground,ECS,AHU03,BHI-AHU-03,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 3
+ns=2;s=BHI.ECS.AHU03.FanSpeed,BHI,Bundaran HI,underground,ECS,AHU03,BHI-AHU-03,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 3
+ns=2;s=BHI.ECS.AHU03.Fault,BHI,Bundaran HI,underground,ECS,AHU03,BHI-AHU-03,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 3 trip/fault
+ns=2;s=BHI.ECS.AHU04.Running,BHI,Bundaran HI,underground,ECS,AHU04,BHI-AHU-04,Running,running,Boolean,,telemetry,,,,run_ophours,AHU 4 beroperasi
+ns=2;s=BHI.ECS.AHU04.SupplyTemp,BHI,Bundaran HI,underground,ECS,AHU04,BHI-AHU-04,SupplyTemp,supply_temp,Double,°C,telemetry,,13,17,analog_daily,Suhu udara suplai AHU 4
+ns=2;s=BHI.ECS.AHU04.ReturnTemp,BHI,Bundaran HI,underground,ECS,AHU04,BHI-AHU-04,ReturnTemp,return_temp,Double,°C,telemetry,,24,28,analog_daily,Suhu udara balik AHU 4
+ns=2;s=BHI.ECS.AHU04.FanSpeed,BHI,Bundaran HI,underground,ECS,AHU04,BHI-AHU-04,FanSpeed,fan_speed,Double,%,telemetry,,55,90,analog_ophours,Kecepatan fan AHU 4
+ns=2;s=BHI.ECS.AHU04.Fault,BHI,Bundaran HI,underground,ECS,AHU04,BHI-AHU-04,Fault,fault,Boolean,,alarm,minor,,,alarm,AHU 4 trip/fault
+ns=2;s=BHI.ECS.CH01.Running,BHI,Bundaran HI,underground,ECS,CH01,BHI-CH-01,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 1 beroperasi
+ns=2;s=BHI.ECS.CH01.ChwSupplyTemp,BHI,Bundaran HI,underground,ECS,CH01,BHI-CH-01,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 1
+ns=2;s=BHI.ECS.CH01.Load,BHI,Bundaran HI,underground,ECS,CH01,BHI-CH-01,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 1
+ns=2;s=BHI.ECS.CH01.Fault,BHI,Bundaran HI,underground,ECS,CH01,BHI-CH-01,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 1 fault
+ns=2;s=BHI.ECS.CH02.Running,BHI,Bundaran HI,underground,ECS,CH02,BHI-CH-02,Running,running,Boolean,,telemetry,,,,run_ophours,Chiller 2 beroperasi
+ns=2;s=BHI.ECS.CH02.ChwSupplyTemp,BHI,Bundaran HI,underground,ECS,CH02,BHI-CH-02,ChwSupplyTemp,chw_supply_temp,Double,°C,telemetry,,6,8,analog,Suhu air dingin suplai chiller 2
+ns=2;s=BHI.ECS.CH02.Load,BHI,Bundaran HI,underground,ECS,CH02,BHI-CH-02,Load,load,Double,%,telemetry,,40,85,analog_daily,Beban chiller 2
+ns=2;s=BHI.ECS.CH02.Fault,BHI,Bundaran HI,underground,ECS,CH02,BHI-CH-02,Fault,fault,Boolean,,alarm,major,,,alarm,Chiller 2 fault
+ns=2;s=BHI.TVS.TVF01.Running,BHI,Bundaran HI,underground,TVS,TVF01,BHI-TVF-01,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 1 beroperasi
+ns=2;s=BHI.TVS.TVF01.Mode,BHI,Bundaran HI,underground,TVS,TVF01,BHI-TVF-01,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 1
+ns=2;s=BHI.TVS.TVF01.Fault,BHI,Bundaran HI,underground,TVS,TVF01,BHI-TVF-01,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 1 fault
+ns=2;s=BHI.TVS.TVF02.Running,BHI,Bundaran HI,underground,TVS,TVF02,BHI-TVF-02,Running,running,Boolean,,telemetry,,,,run_rare,Tunnel ventilation fan 2 beroperasi
+ns=2;s=BHI.TVS.TVF02.Mode,BHI,Bundaran HI,underground,TVS,TVF02,BHI-TVF-02,Mode,mode,String,,event,,,,enum_rare:NORMAL|CONGESTED,Mode ventilasi terowongan fan 2
+ns=2;s=BHI.TVS.TVF02.Fault,BHI,Bundaran HI,underground,TVS,TVF02,BHI-TVF-02,Fault,fault,Boolean,,alarm,major,,,alarm,Tunnel ventilation fan 2 fault
+ns=2;s=BHI.ENV.PLT.PlatformTemp,BHI,Bundaran HI,underground,ENV,PLT,BHI-ENV,PlatformTemp,platform_temp,Double,°C,telemetry,,25,28,analog_daily,Suhu area peron
+ns=2;s=BHI.ENV.PLT.PlatformHumidity,BHI,Bundaran HI,underground,ENV,PLT,BHI-ENV,PlatformHumidity,platform_humidity,Double,%RH,telemetry,,55,75,analog,Kelembapan area peron
+ns=2;s=BHI.ENV.CNC.ConcourseTemp,BHI,Bundaran HI,underground,ENV,CNC,BHI-ENV,ConcourseTemp,concourse_temp,Double,°C,telemetry,,24,27,analog_daily,Suhu area concourse
+ns=2;s=BHI.ENV.PLT.CO2,BHI,Bundaran HI,underground,ENV,PLT,BHI-ENV,CO2,co2,Double,ppm,telemetry,,500,900,analog_daily,Kadar CO2 area peron
+ns=2;s=BHI.PSD.PSD01.DoorStatus,BHI,Bundaran HI,underground,PSD,PSD01,BHI-PSD-01,DoorStatus,door_status,String,,telemetry,,,,door:1,Platform screen door peron arah Bundaran HI: OPEN/CLOSED
+ns=2;s=BHI.PSD.PSD01.ClosedLocked,BHI,Bundaran HI,underground,PSD,PSD01,BHI-PSD-01,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:1,Platform screen door peron arah Bundaran HI: semua pintu tertutup & terkunci
+ns=2;s=BHI.PSD.PSD01.Fault,BHI,Bundaran HI,underground,PSD,PSD01,BHI-PSD-01,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Bundaran HI fault
+ns=2;s=BHI.PSD.PSD02.DoorStatus,BHI,Bundaran HI,underground,PSD,PSD02,BHI-PSD-02,DoorStatus,door_status,String,,telemetry,,,,door:2,Platform screen door peron arah Lebak Bulus: OPEN/CLOSED
+ns=2;s=BHI.PSD.PSD02.ClosedLocked,BHI,Bundaran HI,underground,PSD,PSD02,BHI-PSD-02,ClosedLocked,closed_locked,Boolean,,telemetry,,,,door_locked:2,Platform screen door peron arah Lebak Bulus: semua pintu tertutup & terkunci
+ns=2;s=BHI.PSD.PSD02.Fault,BHI,Bundaran HI,underground,PSD,PSD02,BHI-PSD-02,Fault,fault,Boolean,,alarm,major,,,alarm,Platform screen door peron arah Lebak Bulus fault
+ns=2;s=BHI.VTS.ESC01.Running,BHI,Bundaran HI,underground,VTS,ESC01,BHI-ESC-01,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 1 beroperasi
+ns=2;s=BHI.VTS.ESC01.Direction,BHI,Bundaran HI,underground,VTS,ESC01,BHI-ESC-01,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 1
+ns=2;s=BHI.VTS.ESC01.Fault,BHI,Bundaran HI,underground,VTS,ESC01,BHI-ESC-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 1 berhenti karena fault
+ns=2;s=BHI.VTS.ESC02.Running,BHI,Bundaran HI,underground,VTS,ESC02,BHI-ESC-02,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 2 beroperasi
+ns=2;s=BHI.VTS.ESC02.Direction,BHI,Bundaran HI,underground,VTS,ESC02,BHI-ESC-02,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 2
+ns=2;s=BHI.VTS.ESC02.Fault,BHI,Bundaran HI,underground,VTS,ESC02,BHI-ESC-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 2 berhenti karena fault
+ns=2;s=BHI.VTS.ESC03.Running,BHI,Bundaran HI,underground,VTS,ESC03,BHI-ESC-03,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 3 beroperasi
+ns=2;s=BHI.VTS.ESC03.Direction,BHI,Bundaran HI,underground,VTS,ESC03,BHI-ESC-03,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 3
+ns=2;s=BHI.VTS.ESC03.Fault,BHI,Bundaran HI,underground,VTS,ESC03,BHI-ESC-03,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 3 berhenti karena fault
+ns=2;s=BHI.VTS.ESC04.Running,BHI,Bundaran HI,underground,VTS,ESC04,BHI-ESC-04,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 4 beroperasi
+ns=2;s=BHI.VTS.ESC04.Direction,BHI,Bundaran HI,underground,VTS,ESC04,BHI-ESC-04,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 4
+ns=2;s=BHI.VTS.ESC04.Fault,BHI,Bundaran HI,underground,VTS,ESC04,BHI-ESC-04,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 4 berhenti karena fault
+ns=2;s=BHI.VTS.ESC05.Running,BHI,Bundaran HI,underground,VTS,ESC05,BHI-ESC-05,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 5 beroperasi
+ns=2;s=BHI.VTS.ESC05.Direction,BHI,Bundaran HI,underground,VTS,ESC05,BHI-ESC-05,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 5
+ns=2;s=BHI.VTS.ESC05.Fault,BHI,Bundaran HI,underground,VTS,ESC05,BHI-ESC-05,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 5 berhenti karena fault
+ns=2;s=BHI.VTS.ESC06.Running,BHI,Bundaran HI,underground,VTS,ESC06,BHI-ESC-06,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 6 beroperasi
+ns=2;s=BHI.VTS.ESC06.Direction,BHI,Bundaran HI,underground,VTS,ESC06,BHI-ESC-06,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 6
+ns=2;s=BHI.VTS.ESC06.Fault,BHI,Bundaran HI,underground,VTS,ESC06,BHI-ESC-06,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 6 berhenti karena fault
+ns=2;s=BHI.VTS.ESC07.Running,BHI,Bundaran HI,underground,VTS,ESC07,BHI-ESC-07,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 7 beroperasi
+ns=2;s=BHI.VTS.ESC07.Direction,BHI,Bundaran HI,underground,VTS,ESC07,BHI-ESC-07,Direction,direction,String,,telemetry,,,,fixed:UP,Arah eskalator 7
+ns=2;s=BHI.VTS.ESC07.Fault,BHI,Bundaran HI,underground,VTS,ESC07,BHI-ESC-07,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 7 berhenti karena fault
+ns=2;s=BHI.VTS.ESC08.Running,BHI,Bundaran HI,underground,VTS,ESC08,BHI-ESC-08,Running,running,Boolean,,telemetry,,,,run_ophours,Eskalator 8 beroperasi
+ns=2;s=BHI.VTS.ESC08.Direction,BHI,Bundaran HI,underground,VTS,ESC08,BHI-ESC-08,Direction,direction,String,,telemetry,,,,fixed:DOWN,Arah eskalator 8
+ns=2;s=BHI.VTS.ESC08.Fault,BHI,Bundaran HI,underground,VTS,ESC08,BHI-ESC-08,Fault,fault,Boolean,,alarm,minor,,,alarm,Eskalator 8 berhenti karena fault
+ns=2;s=BHI.VTS.ELV01.Status,BHI,Bundaran HI,underground,VTS,ELV01,BHI-ELV-01,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 1
+ns=2;s=BHI.VTS.ELV01.Floor,BHI,Bundaran HI,underground,VTS,ELV01,BHI-ELV-01,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 1
+ns=2;s=BHI.VTS.ELV01.Fault,BHI,Bundaran HI,underground,VTS,ELV01,BHI-ELV-01,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 1 fault
+ns=2;s=BHI.VTS.ELV02.Status,BHI,Bundaran HI,underground,VTS,ELV02,BHI-ELV-02,Status,status,String,,telemetry,,,,enum_cycle:IDLE|MOVING,Status lift 2
+ns=2;s=BHI.VTS.ELV02.Floor,BHI,Bundaran HI,underground,VTS,ELV02,BHI-ELV-02,Floor,floor,Int32,,telemetry,,-2,0,floor,Posisi lantai lift 2
+ns=2;s=BHI.VTS.ELV02.Fault,BHI,Bundaran HI,underground,VTS,ELV02,BHI-ELV-02,Fault,fault,Boolean,,alarm,minor,,,alarm,Lift 2 fault
+ns=2;s=BHI.PWR.ER01.EnergyImport,BHI,Bundaran HI,underground,PWR,ER01,BHI-ER-01,EnergyImport,energy,Double,kWh,telemetry,,350,650,counter,Energi kumulatif panel LV (laju kW pada normal_min–max)
+ns=2;s=BHI.PWR.ER01.ActivePower,BHI,Bundaran HI,underground,PWR,ER01,BHI-ER-01,ActivePower,active_power,Double,kW,telemetry,,350,650,analog_daily,Daya aktif panel LV
+ns=2;s=BHI.PWR.ER01.VoltageLL,BHI,Bundaran HI,underground,PWR,ER01,BHI-ER-01,VoltageLL,voltage_ll,Double,V,telemetry,,395,405,analog,Tegangan line-line panel LV
+ns=2;s=BHI.PWR.ER01.PowerFactor,BHI,Bundaran HI,underground,PWR,ER01,BHI-ER-01,PowerFactor,power_factor,Double,,telemetry,,0.9,0.98,analog,Faktor daya panel LV
+ns=2;s=BHI.PWR.ER01.IncomerTrip,BHI,Bundaran HI,underground,PWR,ER01,BHI-ER-01,IncomerTrip,incomer_trip,Boolean,,alarm,critical,,,alarm_rare,Incomer breaker LV trip
+ns=2;s=BHI.DRN.SMP01.Level,BHI,Bundaran HI,underground,DRN,SMP01,BHI-SMP-01,Level,level,Double,%,telemetry,,15,75,sump,Level air sump pit
+ns=2;s=BHI.DRN.SMP01.PumpRunning,BHI,Bundaran HI,underground,DRN,SMP01,BHI-SMP-01,PumpRunning,pump_running,Boolean,,telemetry,,,,sump_pump,Pompa drainase sump pit beroperasi
+ns=2;s=BHI.DRN.SMP01.HighLevel,BHI,Bundaran HI,underground,DRN,SMP01,BHI-SMP-01,HighLevel,high_level,Boolean,,alarm,major,,,alarm_rare,Level air sump pit tinggi
+ns=2;s=BHI.PLB.TNK01.Level,BHI,Bundaran HI,underground,PLB,TNK01,BHI-TNK-01,Level,level,Double,%,telemetry,,45,95,analog,Level tangki air bersih
+ns=2;s=BHI.FAS.FACP.FireAlarm,BHI,Bundaran HI,underground,FAS,FACP,BHI-FACP,FireAlarm,fire_alarm,Boolean,,alarm,critical,,,alarm_rare,Fire alarm aktif
+ns=2;s=BHI.FAS.FACP.PanelFault,BHI,Bundaran HI,underground,FAS,FACP,BHI-FACP,PanelFault,panel_fault,Boolean,,alarm,minor,,,alarm,Fire alarm control panel fault
+ns=2;s=BHI.LTG.PLT.PlatformLighting,BHI,Bundaran HI,underground,LTG,PLT,BHI-LTG,PlatformLighting,platform_lighting,Boolean,,telemetry,,,,run_ophours,Penerangan peron menyala penuh

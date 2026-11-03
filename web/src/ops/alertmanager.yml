@@ -1,0 +1,51 @@
+# Alertmanager: ke mana notifikasi alert MRT Middleware dikirim.
+# Validasi: amtool check-config ops/alertmanager/alertmanager.yml
+#
+# Isi nilai SMTP / webhook sesuai infrastruktur MRT. Jangan commit kredensial asli — gunakan file
+# rahasia terpisah (smtp_auth_password_file) atau variabel dari secret manager.
+
+global:
+  resolve_timeout: 5m
+  smtp_smarthost: "smtp.example.local:587"          # ganti: server SMTP internal
+  smtp_from: "mrt-middleware-alert@example.local"   # ganti
+  smtp_require_tls: true
+  # smtp_auth_username: "..."
+  # smtp_auth_password_file: /etc/alertmanager/smtp_password
+
+route:
+  receiver: tim-integrasi-email
+  group_by: [alertname, connector, table]
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 4h
+  routes:
+    # Critical: kirim cepat & ulangi lebih sering
+    - matchers: [severity="critical"]
+      receiver: tim-integrasi-critical
+      group_wait: 10s
+      repeat_interval: 1h
+
+receivers:
+  - name: tim-integrasi-email
+    email_configs:
+      - to: "tim-integrasi@example.local"   # ganti
+        send_resolved: true
+
+  - name: tim-integrasi-critical
+    email_configs:
+      - to: "tim-integrasi@example.local"   # ganti
+        send_resolved: true
+    # Microsoft Teams lewat webhook kanal (Alertmanager >= 0.26). Isi URL webhook dari kanal Teams:
+    # msteams_configs:
+    #   - webhook_url: "https://<tenant>.webhook.office.com/..."
+    #     send_resolved: true
+
+# Saat middleware mati, alert turunan (konektor, feed, DB) tidak perlu dikirim terpisah.
+inhibit_rules:
+  - source_matchers: [alertname="MiddlewareDown"]
+    target_matchers: [severity=~"warning|critical", alertname!="MiddlewareDown"]
+  - source_matchers: [alertname="DatabaseDown"]
+    target_matchers: [alertname=~"PersistErrors|QueueBacklog|RecordsDropped|PipelineLatencyHigh|MaintenanceStale"]
+  - source_matchers: [alertname="ConnectorDisconnected"]
+    target_matchers: [alertname=~"ConnectorStale|SyslogSilent|ConnectorNeverReceived"]
+    equal: [connector]

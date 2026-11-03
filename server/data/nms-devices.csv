@@ -1,0 +1,143 @@
+device_id,hostname,ip,station_code,station_name,device_type,interfaces,description
+LBB-CSW01,LBB-CSW01,10.20.1.11,LBB,Lebak Bulus,dts_core_switch,24,DTS core switch (ring backbone) 1
+LBB-CSW02,LBB-CSW02,10.20.1.12,LBB,Lebak Bulus,dts_core_switch,24,DTS core switch (ring backbone) 2
+LBB-ASW01,LBB-ASW01,10.20.1.13,LBB,Lebak Bulus,dts_access_switch,48,DTS access switch 1
+LBB-ASW02,LBB-ASW02,10.20.1.14,LBB,Lebak Bulus,dts_access_switch,48,DTS access switch 2
+LBB-ASW03,LBB-ASW03,10.20.1.15,LBB,Lebak Bulus,dts_access_switch,48,DTS access switch 3
+LBB-TBS01,LBB-TBS01,10.20.1.16,LBB,Lebak Bulus,radio_base_station,4,Radio base station (TETRA) 1
+LBB-NVR01,LBB-NVR01,10.20.1.17,LBB,Lebak Bulus,cctv_nvr,4,CCTV network video recorder 1
+LBB-PAC01,LBB-PAC01,10.20.1.18,LBB,Lebak Bulus,pa_controller,2,Public address controller 1
+LBB-CLK01,LBB-CLK01,10.20.1.19,LBB,Lebak Bulus,clock_slave,1,Master clock slave 1
+LBB-PDC01,LBB-PDC01,10.20.1.20,LBB,Lebak Bulus,pids_display_ctrl,2,PIDS display controller 1
+FTM-CSW01,FTM-CSW01,10.20.2.11,FTM,Fatmawati,dts_core_switch,24,DTS core switch (ring backbone) 1
+FTM-CSW02,FTM-CSW02,10.20.2.12,FTM,Fatmawati,dts_core_switch,24,DTS core switch (ring backbone) 2
+FTM-ASW01,FTM-ASW01,10.20.2.13,FTM,Fatmawati,dts_access_switch,48,DTS access switch 1
+FTM-ASW02,FTM-ASW02,10.20.2.14,FTM,Fatmawati,dts_access_switch,48,DTS access switch 2
+FTM-ASW03,FTM-ASW03,10.20.2.15,FTM,Fatmawati,dts_access_switch,48,DTS access switch 3
+FTM-TBS01,FTM-TBS01,10.20.2.16,FTM,Fatmawati,radio_base_station,4,Radio base station (TETRA) 1
+FTM-NVR01,FTM-NVR01,10.20.2.17,FTM,Fatmawati,cctv_nvr,4,CCTV network video recorder 1
+FTM-PAC01,FTM-PAC01,10.20.2.18,FTM,Fatmawati,pa_controller,2,Public address controller 1
+FTM-CLK01,FTM-CLK01,10.20.2.19,FTM,Fatmawati,clock_slave,1,Master clock slave 1
+FTM-PDC01,FTM-PDC01,10.20.2.20,FTM,Fatmawati,pids_display_ctrl,2,PIDS display controller 1
+CPR-CSW01,CPR-CSW01,10.20.3.11,CPR,Cipete Raya,dts_core_switch,24,DTS core switch (ring backbone) 1
+CPR-CSW02,CPR-CSW02,10.20.3.12,CPR,Cipete Raya,dts_core_switch,24,DTS core switch (ring backbone) 2
+CPR-ASW01,CPR-ASW01,10.20.3.13,CPR,Cipete Raya,dts_access_switch,48,DTS access switch 1
+CPR-ASW02,CPR-ASW02,10.20.3.14,CPR,Cipete Raya,dts_access_switch,48,DTS access switch 2
+CPR-ASW03,CPR-ASW03,10.20.3.15,CPR,Cipete Raya,dts_access_switch,48,DTS access switch 3
+CPR-TBS01,CPR-TBS01,10.20.3.16,CPR,Cipete Raya,radio_base_station,4,Radio base station (TETRA) 1
+CPR-NVR01,CPR-NVR01,10.20.3.17,CPR,Cipete Raya,cctv_nvr,4,CCTV network video recorder 1
+CPR-PAC01,CPR-PAC01,10.20.3.18,CPR,Cipete Raya,pa_controller,2,Public address controller 1
+CPR-CLK01,CPR-CLK01,10.20.3.19,CPR,Cipete Raya,clock_slave,1,Master clock slave 1
+CPR-PDC01,CPR-PDC01,10.20.3.20,CPR,Cipete Raya,pids_display_ctrl,2,PIDS display controller 1
+HJN-CSW01,HJN-CSW01,10.20.4.11,HJN,Haji Nawi,dts_core_switch,24,DTS core switch (ring backbone) 1
+HJN-CSW02,HJN-CSW02,10.20.4.12,HJN,Haji Nawi,dts_core_switch,24,DTS core switch (ring backbone) 2
+HJN-ASW01,HJN-ASW01,10.20.4.13,HJN,Haji Nawi,dts_access_switch,48,DTS access switch 1
+HJN-ASW02,HJN-ASW02,10.20.4.14,HJN,Haji Nawi,dts_access_switch,48,DTS access switch 2
+HJN-ASW03,HJN-ASW03,10.20.4.15,HJN,Haji Nawi,dts_access_switch,48,DTS access switch 3
+HJN-TBS01,HJN-TBS01,10.20.4.16,HJN,Haji Nawi,radio_base_station,4,Radio base station (TETRA) 1
+HJN-NVR01,HJN-NVR01,10.20.4.17,HJN,Haji Nawi,cctv_nvr,4,CCTV network video recorder 1
+HJN-PAC01,HJN-PAC01,10.20.4.18,HJN,Haji Nawi,pa_controller,2,Public address controller 1
+HJN-CLK01,HJN-CLK01,10.20.4.19,HJN,Haji Nawi,clock_slave,1,Master clock slave 1
+HJN-PDC01,HJN-PDC01,10.20.4.20,HJN,Haji Nawi,pids_display_ctrl,2,PIDS display controller 1
+BLA-CSW01,BLA-CSW01,10.20.5.11,BLA,Blok A,dts_core_switch,24,DTS core switch (ring backbone) 1
+BLA-CSW02,BLA-CSW02,10.20.5.12,BLA,Blok A,dts_core_switch,24,DTS core switch (ring backbone) 2
+BLA-ASW01,BLA-ASW01,10.20.5.13,BLA,Blok A,dts_access_switch,48,DTS access switch 1
+BLA-ASW02,BLA-ASW02,10.20.5.14,BLA,Blok A,dts_access_switch,48,DTS access switch 2
+BLA-ASW03,BLA-ASW03,10.20.5.15,BLA,Blok A,dts_access_switch,48,DTS access switch 3
+BLA-TBS01,BLA-TBS01,10.20.5.16,BLA,Blok A,radio_base_station,4,Radio base station (TETRA) 1
+BLA-NVR01,BLA-NVR01,10.20.5.17,BLA,Blok A,cctv_nvr,4,CCTV network video recorder 1
+BLA-PAC01,BLA-PAC01,10.20.5.18,BLA,Blok A,pa_controller,2,Public address controller 1
+BLA-CLK01,BLA-CLK01,10.20.5.19,BLA,Blok A,clock_slave,1,Master clock slave 1
+BLA-PDC01,BLA-PDC01,10.20.5.20,BLA,Blok A,pids_display_ctrl,2,PIDS display controller 1
+BLM-CSW01,BLM-CSW01,10.20.6.11,BLM,Blok M,dts_core_switch,24,DTS core switch (ring backbone) 1
+BLM-CSW02,BLM-CSW02,10.20.6.12,BLM,Blok M,dts_core_switch,24,DTS core switch (ring backbone) 2
+BLM-ASW01,BLM-ASW01,10.20.6.13,BLM,Blok M,dts_access_switch,48,DTS access switch 1
+BLM-ASW02,BLM-ASW02,10.20.6.14,BLM,Blok M,dts_access_switch,48,DTS access switch 2
+BLM-ASW03,BLM-ASW03,10.20.6.15,BLM,Blok M,dts_access_switch,48,DTS access switch 3
+BLM-TBS01,BLM-TBS01,10.20.6.16,BLM,Blok M,radio_base_station,4,Radio base station (TETRA) 1
+BLM-NVR01,BLM-NVR01,10.20.6.17,BLM,Blok M,cctv_nvr,4,CCTV network video recorder 1
+BLM-PAC01,BLM-PAC01,10.20.6.18,BLM,Blok M,pa_controller,2,Public address controller 1
+BLM-CLK01,BLM-CLK01,10.20.6.19,BLM,Blok M,clock_slave,1,Master clock slave 1
+BLM-PDC01,BLM-PDC01,10.20.6.20,BLM,Blok M,pids_display_ctrl,2,PIDS display controller 1
+ASN-CSW01,ASN-CSW01,10.20.7.11,ASN,ASEAN,dts_core_switch,24,DTS core switch (ring backbone) 1
+ASN-CSW02,ASN-CSW02,10.20.7.12,ASN,ASEAN,dts_core_switch,24,DTS core switch (ring backbone) 2
+ASN-ASW01,ASN-ASW01,10.20.7.13,ASN,ASEAN,dts_access_switch,48,DTS access switch 1
+ASN-ASW02,ASN-ASW02,10.20.7.14,ASN,ASEAN,dts_access_switch,48,DTS access switch 2
+ASN-ASW03,ASN-ASW03,10.20.7.15,ASN,ASEAN,dts_access_switch,48,DTS access switch 3
+ASN-TBS01,ASN-TBS01,10.20.7.16,ASN,ASEAN,radio_base_station,4,Radio base station (TETRA) 1
+ASN-NVR01,ASN-NVR01,10.20.7.17,ASN,ASEAN,cctv_nvr,4,CCTV network video recorder 1
+ASN-PAC01,ASN-PAC01,10.20.7.18,ASN,ASEAN,pa_controller,2,Public address controller 1
+ASN-CLK01,ASN-CLK01,10.20.7.19,ASN,ASEAN,clock_slave,1,Master clock slave 1
+ASN-PDC01,ASN-PDC01,10.20.7.20,ASN,ASEAN,pids_display_ctrl,2,PIDS display controller 1
+SNY-CSW01,SNY-CSW01,10.20.8.11,SNY,Senayan,dts_core_switch,24,DTS core switch (ring backbone) 1
+SNY-CSW02,SNY-CSW02,10.20.8.12,SNY,Senayan,dts_core_switch,24,DTS core switch (ring backbone) 2
+SNY-ASW01,SNY-ASW01,10.20.8.13,SNY,Senayan,dts_access_switch,48,DTS access switch 1
+SNY-ASW02,SNY-ASW02,10.20.8.14,SNY,Senayan,dts_access_switch,48,DTS access switch 2
+SNY-ASW03,SNY-ASW03,10.20.8.15,SNY,Senayan,dts_access_switch,48,DTS access switch 3
+SNY-ASW04,SNY-ASW04,10.20.8.16,SNY,Senayan,dts_access_switch,48,DTS access switch 4
+SNY-TBS01,SNY-TBS01,10.20.8.17,SNY,Senayan,radio_base_station,4,Radio base station (TETRA) 1
+SNY-NVR01,SNY-NVR01,10.20.8.18,SNY,Senayan,cctv_nvr,4,CCTV network video recorder 1
+SNY-PAC01,SNY-PAC01,10.20.8.19,SNY,Senayan,pa_controller,2,Public address controller 1
+SNY-CLK01,SNY-CLK01,10.20.8.20,SNY,Senayan,clock_slave,1,Master clock slave 1
+SNY-PDC01,SNY-PDC01,10.20.8.21,SNY,Senayan,pids_display_ctrl,2,PIDS display controller 1
+IST-CSW01,IST-CSW01,10.20.9.11,IST,Istora,dts_core_switch,24,DTS core switch (ring backbone) 1
+IST-CSW02,IST-CSW02,10.20.9.12,IST,Istora,dts_core_switch,24,DTS core switch (ring backbone) 2
+IST-ASW01,IST-ASW01,10.20.9.13,IST,Istora,dts_access_switch,48,DTS access switch 1
+IST-ASW02,IST-ASW02,10.20.9.14,IST,Istora,dts_access_switch,48,DTS access switch 2
+IST-ASW03,IST-ASW03,10.20.9.15,IST,Istora,dts_access_switch,48,DTS access switch 3
+IST-ASW04,IST-ASW04,10.20.9.16,IST,Istora,dts_access_switch,48,DTS access switch 4
+IST-TBS01,IST-TBS01,10.20.9.17,IST,Istora,radio_base_station,4,Radio base station (TETRA) 1
+IST-NVR01,IST-NVR01,10.20.9.18,IST,Istora,cctv_nvr,4,CCTV network video recorder 1
+IST-PAC01,IST-PAC01,10.20.9.19,IST,Istora,pa_controller,2,Public address controller 1
+IST-CLK01,IST-CLK01,10.20.9.20,IST,Istora,clock_slave,1,Master clock slave 1
+IST-PDC01,IST-PDC01,10.20.9.21,IST,Istora,pids_display_ctrl,2,PIDS display controller 1
+BNH-CSW01,BNH-CSW01,10.20.10.11,BNH,Bendungan Hilir,dts_core_switch,24,DTS core switch (ring backbone) 1
+BNH-CSW02,BNH-CSW02,10.20.10.12,BNH,Bendungan Hilir,dts_core_switch,24,DTS core switch (ring backbone) 2
+BNH-ASW01,BNH-ASW01,10.20.10.13,BNH,Bendungan Hilir,dts_access_switch,48,DTS access switch 1
+BNH-ASW02,BNH-ASW02,10.20.10.14,BNH,Bendungan Hilir,dts_access_switch,48,DTS access switch 2
+BNH-ASW03,BNH-ASW03,10.20.10.15,BNH,Bendungan Hilir,dts_access_switch,48,DTS access switch 3
+BNH-ASW04,BNH-ASW04,10.20.10.16,BNH,Bendungan Hilir,dts_access_switch,48,DTS access switch 4
+BNH-TBS01,BNH-TBS01,10.20.10.17,BNH,Bendungan Hilir,radio_base_station,4,Radio base station (TETRA) 1
+BNH-NVR01,BNH-NVR01,10.20.10.18,BNH,Bendungan Hilir,cctv_nvr,4,CCTV network video recorder 1
+BNH-PAC01,BNH-PAC01,10.20.10.19,BNH,Bendungan Hilir,pa_controller,2,Public address controller 1
+BNH-CLK01,BNH-CLK01,10.20.10.20,BNH,Bendungan Hilir,clock_slave,1,Master clock slave 1
+BNH-PDC01,BNH-PDC01,10.20.10.21,BNH,Bendungan Hilir,pids_display_ctrl,2,PIDS display controller 1
+STB-CSW01,STB-CSW01,10.20.11.11,STB,Setiabudi,dts_core_switch,24,DTS core switch (ring backbone) 1
+STB-CSW02,STB-CSW02,10.20.11.12,STB,Setiabudi,dts_core_switch,24,DTS core switch (ring backbone) 2
+STB-ASW01,STB-ASW01,10.20.11.13,STB,Setiabudi,dts_access_switch,48,DTS access switch 1
+STB-ASW02,STB-ASW02,10.20.11.14,STB,Setiabudi,dts_access_switch,48,DTS access switch 2
+STB-ASW03,STB-ASW03,10.20.11.15,STB,Setiabudi,dts_access_switch,48,DTS access switch 3
+STB-ASW04,STB-ASW04,10.20.11.16,STB,Setiabudi,dts_access_switch,48,DTS access switch 4
+STB-TBS01,STB-TBS01,10.20.11.17,STB,Setiabudi,radio_base_station,4,Radio base station (TETRA) 1
+STB-NVR01,STB-NVR01,10.20.11.18,STB,Setiabudi,cctv_nvr,4,CCTV network video recorder 1
+STB-PAC01,STB-PAC01,10.20.11.19,STB,Setiabudi,pa_controller,2,Public address controller 1
+STB-CLK01,STB-CLK01,10.20.11.20,STB,Setiabudi,clock_slave,1,Master clock slave 1
+STB-PDC01,STB-PDC01,10.20.11.21,STB,Setiabudi,pids_display_ctrl,2,PIDS display controller 1
+DKA-CSW01,DKA-CSW01,10.20.12.11,DKA,Dukuh Atas,dts_core_switch,24,DTS core switch (ring backbone) 1
+DKA-CSW02,DKA-CSW02,10.20.12.12,DKA,Dukuh Atas,dts_core_switch,24,DTS core switch (ring backbone) 2
+DKA-ASW01,DKA-ASW01,10.20.12.13,DKA,Dukuh Atas,dts_access_switch,48,DTS access switch 1
+DKA-ASW02,DKA-ASW02,10.20.12.14,DKA,Dukuh Atas,dts_access_switch,48,DTS access switch 2
+DKA-ASW03,DKA-ASW03,10.20.12.15,DKA,Dukuh Atas,dts_access_switch,48,DTS access switch 3
+DKA-ASW04,DKA-ASW04,10.20.12.16,DKA,Dukuh Atas,dts_access_switch,48,DTS access switch 4
+DKA-TBS01,DKA-TBS01,10.20.12.17,DKA,Dukuh Atas,radio_base_station,4,Radio base station (TETRA) 1
+DKA-NVR01,DKA-NVR01,10.20.12.18,DKA,Dukuh Atas,cctv_nvr,4,CCTV network video recorder 1
+DKA-PAC01,DKA-PAC01,10.20.12.19,DKA,Dukuh Atas,pa_controller,2,Public address controller 1
+DKA-CLK01,DKA-CLK01,10.20.12.20,DKA,Dukuh Atas,clock_slave,1,Master clock slave 1
+DKA-PDC01,DKA-PDC01,10.20.12.21,DKA,Dukuh Atas,pids_display_ctrl,2,PIDS display controller 1
+BHI-CSW01,BHI-CSW01,10.20.13.11,BHI,Bundaran HI,dts_core_switch,24,DTS core switch (ring backbone) 1
+BHI-CSW02,BHI-CSW02,10.20.13.12,BHI,Bundaran HI,dts_core_switch,24,DTS core switch (ring backbone) 2
+BHI-ASW01,BHI-ASW01,10.20.13.13,BHI,Bundaran HI,dts_access_switch,48,DTS access switch 1
+BHI-ASW02,BHI-ASW02,10.20.13.14,BHI,Bundaran HI,dts_access_switch,48,DTS access switch 2
+BHI-ASW03,BHI-ASW03,10.20.13.15,BHI,Bundaran HI,dts_access_switch,48,DTS access switch 3
+BHI-ASW04,BHI-ASW04,10.20.13.16,BHI,Bundaran HI,dts_access_switch,48,DTS access switch 4
+BHI-TBS01,BHI-TBS01,10.20.13.17,BHI,Bundaran HI,radio_base_station,4,Radio base station (TETRA) 1
+BHI-NVR01,BHI-NVR01,10.20.13.18,BHI,Bundaran HI,cctv_nvr,4,CCTV network video recorder 1
+BHI-PAC01,BHI-PAC01,10.20.13.19,BHI,Bundaran HI,pa_controller,2,Public address controller 1
+BHI-CLK01,BHI-CLK01,10.20.13.20,BHI,Bundaran HI,clock_slave,1,Master clock slave 1
+BHI-PDC01,BHI-PDC01,10.20.13.21,BHI,Bundaran HI,pids_display_ctrl,2,PIDS display controller 1
+OCC-CRT01,OCC-CRT01,10.20.100.11,OCC,Operation Control Center,dts_core_router,48,DTS core router OCC 1
+OCC-CRT02,OCC-CRT02,10.20.100.12,OCC,Operation Control Center,dts_core_router,48,DTS core router OCC 2
+OCC-CSW01,OCC-CSW01,10.20.100.13,OCC,Operation Control Center,dts_core_switch,48,DTS core switch OCC 1
+OCC-CSW02,OCC-CSW02,10.20.100.14,OCC,Operation Control Center,dts_core_switch,48,DTS core switch OCC 2
+OCC-NMS01,OCC-NMS01,10.20.100.15,OCC,Operation Control Center,nms_server,2,NMS server 1
+OCC-TSW01,OCC-TSW01,10.20.100.16,OCC,Operation Control Center,radio_switch,8,TETRA switching & management 1

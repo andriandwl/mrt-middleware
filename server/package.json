@@ -1,0 +1,46 @@
+{
+  "name": "mrt-middleware-server",
+  "version": "0.2.0",
+  "description": "Middleware integrasi read-only: Facility SCADA (OPC UA), DTS/NMS, PIDS/PIDC -> canonical model -> PostgreSQL -> REST/WebSocket",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "migrate": "node scripts/migrate.js",
+    "client:create": "node scripts/create-client.js",
+    "sim:opcua": "node scripts/opcua-simulator.js",
+    "check": "node --check src/index.js",
+    "tags:generate": "node scripts/generate-scada-tags.js",
+    "mappings:import": "node scripts/import-mappings.js",
+    "nms:generate": "node scripts/generate-nms-catalog.js",
+    "pids:generate": "node scripts/generate-pids-catalog.js",
+    "sim:nms": "node scripts/nms-simulator.js",
+    "sim:pids": "node scripts/pids-simulator.js",
+    "sim:all": "node scripts/sim-all.js",
+    "sso:mapping": "node scripts/sso-mapping.js",
+    "dev:aad-mock": "node scripts/dev-aad-mock.js",
+    "db:maintain": "node scripts/db-maintain.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@asteasolutions/zod-to-openapi": "^7.3.4",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "jose": "^5.10.0",
+    "net-snmp": "^3.29.2",
+    "node-opcua": "^2.130.0",
+    "pg": "^8.13.1",
+    "pino": "^9.5.0",
+    "prom-client": "^15.1.3",
+    "swagger-ui-dist": "^5.34.0",
+    "ws": "^8.18.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "pino-pretty": "^13.0.0"
+  }
+}

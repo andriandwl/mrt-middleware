@@ -1,0 +1,7 @@
+apiVersion: 1
+providers:
+  - name: mrt-middleware
+    folder: MRT Middleware
+    type: file
+    options:
+      path: /var/lib/grafana/dashboards

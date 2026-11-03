@@ -1,0 +1,25 @@
+trap_id,trap_oid,name,device_types,category,severity,state,clears,key_varbind,message,weight,description
+link_down,1.3.6.1.6.3.1.1.5.3,linkDown,*,alarm,major,active,,ifIndex,Port {ifDescr} down,10,Interface operasional down (standar SNMPv2)
+link_up,1.3.6.1.6.3.1.1.5.4,linkUp,*,alarm,info,cleared,link_down,ifIndex,Port {ifDescr} up,0,Interface kembali up (standar SNMPv2)
+cold_start,1.3.6.1.6.3.1.1.5.1,coldStart,*,device_event,minor,info,,,Perangkat restart (cold start),2,Perangkat menyala ulang
+auth_fail,1.3.6.1.6.3.1.1.5.5,authenticationFailure,*,device_event,minor,info,,,Autentikasi SNMP gagal dari {peer},2,Akses SNMP dengan community/kredensial salah
+cpu_high,1.3.6.1.4.1.32473.1.0.1,cpuUtilizationHigh,dts_core_switch|dts_access_switch|dts_core_router,alarm,minor,active,,,CPU {value}% melewati ambang {threshold}%,6,Utilisasi CPU tinggi
+cpu_normal,1.3.6.1.4.1.32473.1.0.2,cpuUtilizationNormal,dts_core_switch|dts_access_switch|dts_core_router,alarm,info,cleared,cpu_high,,CPU kembali normal ({value}%),0,Utilisasi CPU normal
+temp_high,1.3.6.1.4.1.32473.1.0.3,temperatureHigh,*,alarm,major,active,,,Suhu perangkat {value}°C melewati ambang {threshold}°C,3,Suhu perangkat tinggi
+temp_normal,1.3.6.1.4.1.32473.1.0.4,temperatureNormal,*,alarm,info,cleared,temp_high,,Suhu perangkat kembali normal ({value}°C),0,Suhu perangkat normal
+psu_fail,1.3.6.1.4.1.32473.1.0.5,powerSupplyFailed,dts_core_switch|dts_core_router|cctv_nvr|nms_server,alarm,major,active,,component,{component} gagal,2,Power supply gagal (redundan)
+psu_ok,1.3.6.1.4.1.32473.1.0.6,powerSupplyRestored,dts_core_switch|dts_core_router|cctv_nvr|nms_server,alarm,info,cleared,psu_fail,component,{component} normal kembali,0,Power supply pulih
+fan_fail,1.3.6.1.4.1.32473.1.0.7,fanFailed,dts_core_switch|dts_access_switch|dts_core_router|cctv_nvr,alarm,minor,active,,component,{component} berhenti,3,Kipas perangkat gagal
+fan_ok,1.3.6.1.4.1.32473.1.0.8,fanRestored,dts_core_switch|dts_access_switch|dts_core_router|cctv_nvr,alarm,info,cleared,fan_fail,component,{component} normal kembali,0,Kipas pulih
+ring_break,1.3.6.1.4.1.32473.1.0.9,ringProtectionSwitched,dts_core_switch,alarm,critical,active,,,"Ring backbone terputus, jalur berpindah ke proteksi",1,Ring DTS terputus (protection switching)
+ring_restore,1.3.6.1.4.1.32473.1.0.10,ringRestored,dts_core_switch,alarm,info,cleared,ring_break,,Ring backbone pulih,0,Ring DTS pulih
+disk_fail,1.3.6.1.4.1.32473.1.0.11,storageDiskFailed,cctv_nvr|nms_server,alarm,major,active,,component,"{component} gagal, RAID degraded",2,Disk penyimpanan gagal
+disk_ok,1.3.6.1.4.1.32473.1.0.12,storageDiskRebuilt,cctv_nvr|nms_server,alarm,info,cleared,disk_fail,component,{component} selesai rebuild,0,Disk pulih
+radio_carrier_down,1.3.6.1.4.1.32473.1.0.13,radioCarrierDown,radio_base_station,alarm,critical,active,,component,Carrier radio {component} down,1,Carrier base station radio down
+radio_carrier_up,1.3.6.1.4.1.32473.1.0.14,radioCarrierUp,radio_base_station,alarm,info,cleared,radio_carrier_down,component,Carrier radio {component} up,0,Carrier radio pulih
+clock_sync_lost,1.3.6.1.4.1.32473.1.0.15,clockSyncLost,clock_slave,alarm,minor,active,,,Sinkronisasi waktu ke master clock hilang,2,Clock slave kehilangan sinkronisasi
+clock_sync_ok,1.3.6.1.4.1.32473.1.0.16,clockSyncRestored,clock_slave,alarm,info,cleared,clock_sync_lost,,Sinkronisasi waktu pulih,0,Clock slave tersinkron kembali
+pa_amp_fault,1.3.6.1.4.1.32473.1.0.17,paAmplifierFault,pa_controller,alarm,major,active,,component,Amplifier PA {component} fault,2,Amplifier public address fault
+pa_amp_ok,1.3.6.1.4.1.32473.1.0.18,paAmplifierRestored,pa_controller,alarm,info,cleared,pa_amp_fault,component,Amplifier PA {component} normal kembali,0,Amplifier PA pulih
+display_offline,1.3.6.1.4.1.32473.1.0.19,pidsDisplayOffline,pids_display_ctrl,alarm,minor,active,,component,Display PIDS {component} offline,3,Display PIDS tidak merespons
+display_online,1.3.6.1.4.1.32473.1.0.20,pidsDisplayOnline,pids_display_ctrl,alarm,info,cleared,display_offline,component,Display PIDS {component} online,0,Display PIDS kembali online
