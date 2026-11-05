@@ -55,6 +55,7 @@ export const STATE_LABEL = { active: 'Aktif', cleared: 'Selesai', info: 'Info' }
 export const TRAIN_TYPE_LABEL = { arrival: 'Kedatangan', departure: 'Keberangkatan', delay: 'Keterlambatan', disruption: 'Gangguan' };
 export const CONNECTOR_STATE_LABEL = {
   connected: 'Tersambung',
+  listening: 'Mendengarkan',
   connecting: 'Menyambung',
   disconnected: 'Terputus',
   error: 'Gagal',

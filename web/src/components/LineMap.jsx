@@ -7,11 +7,11 @@ import { tokens } from '../theme';
 import { CONNECTOR_STATE_LABEL, SOURCE_LABEL } from '../format';
 
 const SOURCES = ['scada', 'nms', 'pids'];
-const STATE_RANK = { error: 5, disconnected: 4, connecting: 3, stopped: 2, idle: 1, connected: 0 };
+const STATE_RANK = { error: 5, disconnected: 4, connecting: 3, stopped: 2, idle: 1, connected: 0, listening: 0 };
 
 function stateColor(state) {
   if (!state) return tokens.signal.idle;
-  if (state === 'connected') return tokens.signal.good;
+  if (state === 'connected' || state === 'listening') return tokens.signal.good;
   if (state === 'connecting') return tokens.signal.minor;
   if (state === 'error' || state === 'disconnected') return tokens.signal.critical;
   return tokens.signal.idle;

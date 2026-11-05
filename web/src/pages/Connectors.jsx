@@ -6,6 +6,7 @@ import { tokens } from '../theme';
 
 const STATE_COLOR = {
   connected: tokens.signal.good,
+  listening: tokens.signal.good,
   connecting: tokens.signal.minor,
   error: tokens.signal.critical,
   disconnected: tokens.signal.critical,
