@@ -1,24 +1,25 @@
-"use strict";
-
-const fs = require("node:fs");
-const path = require("node:path");
-const express = require("express");
-const helmet = require("helmet");
-const { ZodError } = require("zod");
-const { auditMiddleware } = require("./audit");
-const { apiRouter } = require("./routes");
-const { rateLimit } = require("./rate-limit");
-const { buildOpenApiDocument } = require("./openapi");
-const { registry } = require("../monitoring/metrics");
-const { logger } = require("../logger");
-const { env } = require("../config");
+import swaggerUiDist from "swagger-ui-dist";
+import fs from "node:fs";
+import path from "node:path";
+import express from "express";
+import helmet from "helmet";
+import { ZodError } from "zod";
+import { auditMiddleware } from "./audit.js";
+import { apiRouter } from "./routes.js";
+import { rateLimit } from "./rate-limit.js";
+import { buildOpenApiDocument } from "./openapi.js";
+import { registry } from "../monitoring/metrics.js";
+import { logger } from "../logger.js";
+import { env } from "../config.js";
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * @param {{
- *   repo: import('../storage/repository').Repository,
- *   connectors: import('../core/types').SourceConnector[],
- *   mapper: import('../pipeline/mapper').Mapper,
- *   auth: import('./auth').Authenticator
+ *   repo: import('../storage/repository.js').Repository,
+ *   connectors: import('../core/types.js').SourceConnector[],
+ *   mapper: import('../pipeline/mapper.js').Mapper,
+ *   auth: import('./auth.js').Authenticator
  * }} deps
  */
 function createApp(deps) {
@@ -169,7 +170,7 @@ function createApp(deps) {
  * /docs/asyncapi.yaml  spesifikasi WebSocket /ws
  */
 function mountDocs(app) {
-  const swaggerDist = require("swagger-ui-dist").getAbsoluteFSPath();
+  const swaggerDist = swaggerUiDist.getAbsoluteFSPath();
   let spec = null;
   app.get("/openapi.json", (_req, res) => {
     spec ??= buildOpenApiDocument();
@@ -212,4 +213,4 @@ function mountDocs(app) {
   );
 }
 
-module.exports = { createApp };
+export { createApp };

@@ -1,9 +1,7 @@
-"use strict";
-
-require("dotenv").config();
-const fs = require("node:fs");
-const path = require("node:path");
-const { z } = require("zod");
+import "dotenv/config";
+import fs from "node:fs";
+import path from "node:path";
+import { z } from "zod";
 
 const envSchema = z.object({
   NODE_ENV: z
@@ -158,4 +156,4 @@ function secretFromEnv(envName) {
   return v && v.length > 0 ? v : undefined;
 }
 
-module.exports = { env, loadSourcesConfig, secretFromEnv };
+export { env, loadSourcesConfig, secretFromEnv };

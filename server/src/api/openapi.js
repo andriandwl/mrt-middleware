@@ -1,11 +1,9 @@
-"use strict";
-
-const {
+import {
   OpenAPIRegistry,
   OpenApiGeneratorV3,
-} = require("@asteasolutions/zod-to-openapi");
-const { z, queries: Q, bodies: B, responses: R, dataOf } = require("./schemas");
-const pkg = require("../../package.json");
+} from "@asteasolutions/zod-to-openapi";
+import { z, queries as Q, bodies as B, responses as R, dataOf } from "./schemas.js";
+import pkg from "../../package.json" with { type: "json" };
 
 /**
  * Spesifikasi OpenAPI 3 dibangkitkan dari skema zod yang sama dengan validasi di routes.js.
@@ -282,4 +280,4 @@ function buildOpenApiDocument() {
   });
 }
 
-module.exports = { buildOpenApiDocument };
+export { buildOpenApiDocument };

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Generator katalog DTS / Telecommunication NMS (DUMMY REALISTIS).
  *
@@ -16,12 +14,13 @@
  * Pemakaian: npm run nms:generate
  */
 
-const fs = require('node:fs');
-const path = require('node:path');
-const { toCsv } = require('../src/core/csv');
-const { STATIONS } = require('./generate-scada-tags');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { toCsv } from '../src/core/csv.js';
+import { STATIONS } from './generate-scada-tags.js';
 
-const { ENT, VARBINDS } = require('../src/parsers/snmp-oids'); // enterprise dummy & OID varbind
+import { ENT, VARBINDS } from '../src/parsers/snmp-oids.js'; // enterprise dummy & OID varbind
 
 /** [type, kode di hostname, jumlah layang, jumlah bawah tanah, interface, deskripsi] */
 const STATION_DEVICES = [
@@ -143,7 +142,7 @@ function buildMappings(devices) {
   return rows;
 }
 
-if (require.main === module) {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const dir = path.resolve(__dirname, '..', 'data');
   fs.mkdirSync(dir, { recursive: true });
   const devices = buildDevices();
@@ -159,4 +158,4 @@ if (require.main === module) {
   console.log(byType);
 }
 
-module.exports = { buildDevices, buildTraps, VARBINDS, ENT };
+export { buildDevices, buildTraps, VARBINDS, ENT };

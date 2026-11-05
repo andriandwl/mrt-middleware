@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Simulator PIDC Server (DUMMY): feed perkiraan kedatangan kereta per stasiun, berdasarkan data/pids-stations.csv.
  *
@@ -19,12 +17,14 @@
  * Env: PIDS_PORT (8095), PIDS_API_TOKEN (kosong = tanpa auth), SIM_ALARM_RATE (pengali frekuensi gangguan)
  */
 
-const http = require('node:http');
-const path = require('node:path');
-const { randomUUID, createHash } = require('node:crypto');
-const express = require('express');
-const { WebSocketServer, WebSocket } = require('ws');
-const { readCsvFile } = require('../src/core/csv');
+import http from 'node:http';
+import path from 'node:path';
+import { randomUUID, createHash } from 'node:crypto';
+import express from 'express';
+import { WebSocketServer, WebSocket } from 'ws';
+import { readCsvFile } from '../src/core/csv.js';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const PORT = Number(process.env.PIDS_PORT || 8095);
 const TOKEN = process.env.PIDS_API_TOKEN || '';

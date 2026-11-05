@@ -1,8 +1,8 @@
-'use strict';
-
-const path = require('node:path');
-const { pool } = require('../src/storage/pool');
-const { readCsvFile } = require('../src/core/csv');
+import path from 'node:path';
+import { pool } from '../src/storage/pool.js';
+import { readCsvFile } from '../src/core/csv.js';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /**
  * Impor katalog tag (CSV) ke tabel tag_mappings.

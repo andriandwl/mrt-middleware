@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Generator katalog tag Facility SCADA (DUMMY REALISTIS) untuk MRT Jakarta Fase 1.
  *
@@ -15,9 +13,10 @@
  * Pemakaian: npm run tags:generate
  */
 
-const fs = require('node:fs');
-const path = require('node:path');
-const { toCsv } = require('../src/core/csv');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { toCsv } from '../src/core/csv.js';
 
 const NS = 'ns=2;s=';
 
@@ -189,7 +188,7 @@ function build() {
   return rows;
 }
 
-if (require.main === module) {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const rows = build();
   const out = path.resolve(__dirname, '..', 'data', 'scada-tags.csv');
   fs.mkdirSync(path.dirname(out), { recursive: true });
@@ -199,4 +198,4 @@ if (require.main === module) {
   console.log(bySystem);
 }
 
-module.exports = { build, STATIONS, COLUMNS };
+export { build, STATIONS, COLUMNS };

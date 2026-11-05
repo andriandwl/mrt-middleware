@@ -1,8 +1,6 @@
-"use strict";
-
-const { env } = require("../config");
-const { logger } = require("../logger");
-const { metrics } = require("../monitoring/metrics");
+import { env } from "../config.js";
+import { logger } from "../logger.js";
+import { metrics } from "../monitoring/metrics.js";
 
 /**
  * Daftar tabel berpartisi: nama, granularitas partisi, dan retensi (hari, 0 = simpan selamanya).
@@ -163,4 +161,4 @@ function startMaintenanceScheduler(pool) {
   };
 }
 
-module.exports = { runMaintenance, startMaintenanceScheduler, tables };
+export { runMaintenance, startMaintenanceScheduler, tables };

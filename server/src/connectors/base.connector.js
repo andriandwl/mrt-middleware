@@ -1,9 +1,7 @@
-'use strict';
-
-const { EventEmitter } = require('node:events');
-const { randomUUID } = require('node:crypto');
-const { backoffDelay, sleep } = require('../core/backoff');
-const { logger: rootLogger } = require('../logger');
+import { EventEmitter } from 'node:events';
+import { randomUUID } from 'node:crypto';
+import { backoffDelay, sleep } from '../core/backoff.js';
+import { logger as rootLogger } from '../logger.js';
 
 /**
  * Basis konektor dengan loop reconnect otomatis (exponential backoff + jitter, tanpa batas percobaan).
@@ -12,7 +10,7 @@ const { logger: rootLogger } = require('../logger');
  *  - async disconnect(): tutup koneksi dengan bersih.
  */
 class BaseConnector extends EventEmitter {
-  /** @param {import('../config').ConnectorConfig} config */
+  /** @param {import('../config.js').ConnectorConfig} config */
   constructor(config) {
     super();
     this.config = config;
@@ -21,7 +19,7 @@ class BaseConnector extends EventEmitter {
     this.options = config.options;
     this.log = rootLogger.child({ connector: config.id, source: config.source });
 
-    /** @type {import('../core/types').ConnectorState} */
+    /** @type {import('../core/types.js').ConnectorState} */
     this._state = 'idle';
     this._lastError = null;
     this._lastRecordTs = null;
@@ -53,7 +51,7 @@ class BaseConnector extends EventEmitter {
     this._setState('stopped');
   }
 
-  /** @returns {import('../core/types').ConnectorStatus} */
+  /** @returns {import('../core/types.js').ConnectorStatus} */
   status() {
     return {
       id: this.id,
@@ -75,7 +73,7 @@ class BaseConnector extends EventEmitter {
   emitRecord(sourceId, sourceTs, payload) {
     const now = new Date();
     const ts = sourceTs instanceof Date && !Number.isNaN(sourceTs.getTime()) ? sourceTs : now;
-    /** @type {import('../core/types').RawRecord} */
+    /** @type {import('../core/types.js').RawRecord} */
     const record = {
       source: this.source,
       connectorId: this.id,
@@ -150,4 +148,4 @@ function toDate(v) {
   return null;
 }
 
-module.exports = { BaseConnector, getPath, toDate };
+export { BaseConnector, getPath, toDate };

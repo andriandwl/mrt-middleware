@@ -1,8 +1,6 @@
-"use strict";
-
-const { Router } = require("express");
-const { requireRole, scopeAllows, formatScopes } = require("./auth");
-const { queries: Q, bodies: B } = require("./schemas");
+import { Router } from "express";
+import { requireRole, scopeAllows, formatScopes } from "./auth.js";
+import { queries as Q, bodies as B } from "./schemas.js";
 
 /** Bungkus handler async agar error diteruskan ke error handler Express. */
 const wrap = (fn) => (req, res, next) => fn(req, res).catch(next);
@@ -23,9 +21,9 @@ function assertScope(req, src, st) {
  * Bila menambah endpoint: tambahkan skema di schemas.js dan path-nya di openapi.js.
  *
  * @param {{
- *   repo: import('../storage/repository').Repository,
- *   connectors: import('../core/types').SourceConnector[],
- *   mapper: import('../pipeline/mapper').Mapper
+ *   repo: import('../storage/repository.js').Repository,
+ *   connectors: import('../core/types.js').SourceConnector[],
+ *   mapper: import('../pipeline/mapper.js').Mapper
  * }} deps
  */
 function apiRouter({ repo, connectors, mapper }) {
@@ -180,4 +178,4 @@ function apiRouter({ repo, connectors, mapper }) {
   return r;
 }
 
-module.exports = { apiRouter };
+export { apiRouter };

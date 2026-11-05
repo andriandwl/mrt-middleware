@@ -1,6 +1,4 @@
-"use strict";
-
-const { metrics } = require("../monitoring/metrics");
+import { metrics } from "../monitoring/metrics.js";
 
 /**
  * Rate limit sederhana (jendela tetap 60 detik, in-memory per proses).
@@ -54,4 +52,4 @@ function rateLimit({ limit, keyFn, name }) {
   };
 }
 
-module.exports = { rateLimit };
+export { rateLimit };

@@ -1,8 +1,6 @@
-'use strict';
-
-const { Pool } = require('pg');
-const { env } = require('../config');
-const { logger } = require('../logger');
+import { Pool } from 'pg';
+import { env } from '../config.js';
+import { logger } from '../logger.js';
 
 const pool = new Pool({
   connectionString: env.DATABASE_URL,
@@ -14,4 +12,4 @@ const pool = new Pool({
 
 pool.on('error', (err) => logger.error({ err: err.message }, 'postgres pool error'));
 
-module.exports = { pool };
+export { pool };

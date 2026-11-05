@@ -1,7 +1,5 @@
-"use strict";
-
-const { pool } = require("../src/storage/pool");
-const { runMaintenance, tables } = require("../src/maintenance/maintenance");
+import { pool } from "../src/storage/pool.js";
+import { runMaintenance, tables } from "../src/maintenance/maintenance.js";
 
 /**
  * Jalankan maintenance database sekali: buat partisi, hitung agregat per jam, terapkan retensi.

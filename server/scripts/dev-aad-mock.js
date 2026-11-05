@@ -1,5 +1,3 @@
-"use strict";
-
 /**
  * MOCK Azure AD (Microsoft Entra ID) — HANYA UNTUK PENGEMBANGAN & PENGUJIAN LOKAL.
  * Meniru endpoint OIDC v2.0 secukupnya agar alur login UI (MSAL, Authorization Code + PKCE) dan validasi
@@ -25,11 +23,11 @@
  * Middleware menolak AZURE_AD_AUTHORITY_HOST bila NODE_ENV=production.
  */
 
-const fs = require("node:fs");
-const http = require("node:http");
-const https = require("node:https");
-const { randomBytes, randomUUID, createHash } = require("node:crypto");
-const { generateKeyPair, exportJWK, SignJWT } = require("jose");
+import fs from "node:fs";
+import http from "node:http";
+import https from "node:https";
+import { randomBytes, randomUUID, createHash } from "node:crypto";
+import { generateKeyPair, exportJWK, SignJWT } from "jose";
 
 const TENANT = process.env.AZURE_AD_TENANT_ID;
 const API_CLIENT_ID = process.env.AZURE_AD_API_CLIENT_ID;

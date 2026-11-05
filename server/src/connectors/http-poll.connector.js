@@ -1,8 +1,6 @@
-'use strict';
-
-const { z } = require('zod');
-const { BaseConnector, getPath, toDate } = require('./base.connector');
-const { secretFromEnv } = require('../config');
+import { z } from 'zod';
+import { BaseConnector, getPath, toDate } from './base.connector.js';
+import { secretFromEnv } from '../config.js';
 
 const optionsSchema = z.object({
   url: z.string().url(),
@@ -75,4 +73,4 @@ class HttpPollConnector extends BaseConnector {
   }
 }
 
-module.exports = { HttpPollConnector };
+export { HttpPollConnector };

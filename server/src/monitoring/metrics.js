@@ -1,6 +1,4 @@
-"use strict";
-
-const client = require("prom-client");
+import client from "prom-client";
 
 const registry = new client.Registry();
 client.collectDefaultMetrics({ register: registry, prefix: "mrt_mw_" });
@@ -177,4 +175,4 @@ function bindRuntime({ connectors, pipeline, repo }) {
   runtime.repo = repo ?? null;
 }
 
-module.exports = { registry, metrics, bindRuntime };
+export { registry, metrics, bindRuntime };

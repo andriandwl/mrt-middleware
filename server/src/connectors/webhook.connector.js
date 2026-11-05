@@ -1,10 +1,8 @@
-'use strict';
-
-const { timingSafeEqual } = require('node:crypto');
-const express = require('express');
-const { z } = require('zod');
-const { BaseConnector, getPath, toDate } = require('./base.connector');
-const { secretFromEnv } = require('../config');
+import { timingSafeEqual } from 'node:crypto';
+import express from 'express';
+import { z } from 'zod';
+import { BaseConnector, getPath, toDate } from './base.connector.js';
+import { secretFromEnv } from '../config.js';
 
 const optionsSchema = z.object({
   host: z.string().default('0.0.0.0'),
@@ -74,4 +72,4 @@ class WebhookConnector extends BaseConnector {
   }
 }
 
-module.exports = { WebhookConnector };
+export { WebhookConnector };

@@ -1,9 +1,7 @@
-"use strict";
-
-const { createHash } = require("node:crypto");
-const { AzureAdVerifier } = require("../auth/azure-ad");
-const { logger } = require("../logger");
-const { metrics } = require("../monitoring/metrics");
+import { createHash } from "node:crypto";
+import { AzureAdVerifier } from "../auth/azure-ad.js";
+import { logger } from "../logger.js";
+import { metrics } from "../monitoring/metrics.js";
 
 /**
  * @typedef {'viewer'|'operator'|'admin'} Role
@@ -74,7 +72,7 @@ class AuthError extends Error {
  */
 class Authenticator {
   /**
-   * @param {import('../storage/repository').Repository} repo
+   * @param {import('../storage/repository.js').Repository} repo
    * @param {{ azure?: AzureAdVerifier|null, ttlMs?: number }} [opts]
    */
   constructor(repo, opts = {}) {
@@ -246,7 +244,7 @@ function requireRole(min) {
   };
 }
 
-module.exports = {
+export {
   Authenticator,
   AuthError,
   requireRole,

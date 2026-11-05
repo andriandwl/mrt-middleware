@@ -1,6 +1,4 @@
-"use strict";
-
-const { createRemoteJWKSet, jwtVerify, errors } = require("jose");
+import { createRemoteJWKSet, jwtVerify, errors } from "jose";
 
 /**
  * Verifikasi access token Azure AD (Microsoft Entra ID) untuk API middleware.
@@ -102,4 +100,4 @@ function describeJoseError(err) {
   return "token tidak valid";
 }
 
-module.exports = { AzureAdVerifier };
+export { AzureAdVerifier };

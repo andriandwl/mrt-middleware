@@ -1,9 +1,7 @@
-'use strict';
-
-const { randomBytes } = require('node:crypto');
-const { pool } = require('../src/storage/pool');
-const { Repository } = require('../src/storage/repository');
-const { hashApiKey } = require('../src/api/auth');
+import { randomBytes } from 'node:crypto';
+import { pool } from '../src/storage/pool.js';
+import { Repository } from '../src/storage/repository.js';
+import { hashApiKey } from '../src/api/auth.js';
 
 /**
  * Buat klien API baru dan tampilkan API key SEKALI.

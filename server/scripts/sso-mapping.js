@@ -1,7 +1,5 @@
-"use strict";
-
-const { pool } = require("../src/storage/pool");
-const { Repository } = require("../src/storage/repository");
+import { pool } from "../src/storage/pool.js";
+import { Repository } from "../src/storage/repository.js";
 
 /**
  * Kelola mapping Azure AD → role + scope middleware (tabel sso_role_mappings).

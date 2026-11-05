@@ -1,5 +1,3 @@
-'use strict';
-
 /** OID varbind yang dipakai katalog trap NMS, simulator, dan parser. */
 const ENT = '1.3.6.1.4.1.32473.1'; // enterprise dummy (PEN 32473 = dokumentasi, RFC 5612)
 
@@ -17,4 +15,4 @@ const VARBINDS = {
   peer: `${ENT}.2.4`,
 };
 
-module.exports = { ENT, VARBINDS };
+export { ENT, VARBINDS };

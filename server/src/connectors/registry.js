@@ -1,11 +1,9 @@
-'use strict';
-
-const { OpcUaConnector } = require('./opcua.connector');
-const { HttpPollConnector } = require('./http-poll.connector');
-const { WebhookConnector } = require('./webhook.connector');
-const { SyslogConnector } = require('./syslog.connector');
-const { SnmpTrapConnector } = require('./snmp-trap.connector');
-const { WebSocketClientConnector } = require('./websocket-client.connector');
+import { OpcUaConnector } from './opcua.connector.js';
+import { HttpPollConnector } from './http-poll.connector.js';
+import { WebhookConnector } from './webhook.connector.js';
+import { SyslogConnector } from './syslog.connector.js';
+import { SnmpTrapConnector } from './snmp-trap.connector.js';
+import { WebSocketClientConnector } from './websocket-client.connector.js';
 
 /** Tambahkan tipe baru di sini (dan di enum `type` pada config.js). */
 const CONNECTOR_TYPES = {
@@ -18,8 +16,8 @@ const CONNECTOR_TYPES = {
 };
 
 /**
- * @param {import('../config').ConnectorConfig} config
- * @returns {import('../core/types').SourceConnector}
+ * @param {import('../config.js').ConnectorConfig} config
+ * @returns {import('../core/types.js').SourceConnector}
  */
 function createConnector(config) {
   const Ctor = CONNECTOR_TYPES[config.type];
@@ -27,4 +25,4 @@ function createConnector(config) {
   return new Ctor(config);
 }
 
-module.exports = { createConnector, CONNECTOR_TYPES };
+export { createConnector, CONNECTOR_TYPES };

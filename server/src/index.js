@@ -1,21 +1,19 @@
-"use strict";
-
-const http = require("node:http");
-const { env, loadSourcesConfig } = require("./config");
-const { logger } = require("./logger");
-const { pool } = require("./storage/pool");
-const { Repository } = require("./storage/repository");
-const { createConnector } = require("./connectors/registry");
-const { getParser } = require("./parsers");
-const { Mapper } = require("./pipeline/mapper");
-const { DedupCache } = require("./pipeline/dedup");
-const { Pipeline } = require("./pipeline/pipeline");
-const { DistributionHub } = require("./distribution/websocket");
-const { Authenticator } = require("./api/auth");
-const { AzureAdVerifier } = require("./auth/azure-ad");
-const { createApp } = require("./api/app");
-const { metrics, bindRuntime } = require("./monitoring/metrics");
-const { startMaintenanceScheduler } = require("./maintenance/maintenance");
+import http from "node:http";
+import { env, loadSourcesConfig } from "./config.js";
+import { logger } from "./logger.js";
+import { pool } from "./storage/pool.js";
+import { Repository } from "./storage/repository.js";
+import { createConnector } from "./connectors/registry.js";
+import { getParser } from "./parsers/index.js";
+import { Mapper } from "./pipeline/mapper.js";
+import { DedupCache } from "./pipeline/dedup.js";
+import { Pipeline } from "./pipeline/pipeline.js";
+import { DistributionHub } from "./distribution/websocket.js";
+import { Authenticator } from "./api/auth.js";
+import { AzureAdVerifier } from "./auth/azure-ad.js";
+import { createApp } from "./api/app.js";
+import { metrics, bindRuntime } from "./monitoring/metrics.js";
+import { startMaintenanceScheduler } from "./maintenance/maintenance.js";
 
 async function main() {
   const repo = new Repository(pool);

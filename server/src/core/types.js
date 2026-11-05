@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Definisi tipe (JSDoc) untuk seluruh project. File ini tidak berisi logika;
  * editor seperti VS Code memakai anotasi ini untuk autocomplete dan pengecekan ringan.
@@ -100,4 +98,4 @@
  * }} SourceConnector
  */
 
-module.exports = {};
+export {};

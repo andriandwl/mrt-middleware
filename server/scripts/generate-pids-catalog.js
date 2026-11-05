@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Generator katalog PIDS / PIDC (DUMMY REALISTIS).
  *
@@ -12,10 +10,11 @@
  * Pemakaian: npm run pids:generate
  */
 
-const fs = require('node:fs');
-const path = require('node:path');
-const { toCsv } = require('../src/core/csv');
-const { STATIONS } = require('./generate-scada-tags');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { toCsv } from '../src/core/csv.js';
+import { STATIONS } from './generate-scada-tags.js';
 
 /** Waktu tempuh kumulatif (menit) dari Lebak Bulus, urut sesuai STATIONS. */
 const OFFSET_MIN = [0, 3, 5, 7, 9, 11, 13, 16, 18, 20, 23, 25, 28];
@@ -35,7 +34,7 @@ function buildStations() {
   }));
 }
 
-if (require.main === module) {
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const out = path.resolve(__dirname, '..', 'data', 'pids-stations.csv');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const rows = buildStations();
@@ -43,4 +42,4 @@ if (require.main === module) {
   console.log(`wrote ${rows.length} stations → data/pids-stations.csv (LBB→BHI ${rows.at(-1).offset_min} menit)`);
 }
 
-module.exports = { buildStations };
+export { buildStations };

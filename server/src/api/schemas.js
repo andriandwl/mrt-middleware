@@ -1,12 +1,10 @@
-"use strict";
-
 /**
  * Skema request & response API konsumen — SATU sumber untuk validasi di routes.js DAN dokumentasi OpenAPI
  * (src/api/openapi.js). Mengubah skema di sini otomatis memperbarui /openapi.json dan /docs.
  */
 
-const { z } = require("zod");
-const { extendZodWithOpenApi } = require("@asteasolutions/zod-to-openapi");
+import { z } from "zod";
+import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
 
 extendZodWithOpenApi(z);
 
@@ -410,33 +408,30 @@ const ErrorResponse = z
 /** Bungkus `{ data: ... }` seperti semua respons sukses API. */
 const dataOf = (schema) => z.object({ data: schema });
 
-module.exports = {
-  z,
-  queries: {
-    telemetryQuery,
-    telemetryHourlyQuery,
-    latestQuery,
-    eventsQuery,
-    activeAlarmsQuery,
-    trainInfoQuery,
-    boardQuery,
-    mappingsQuery,
-    ssoMappingDeleteQuery,
-  },
-  bodies: { mappingBody, ssoMappingBody },
-  responses: {
-    Telemetry,
-    TelemetryHourly,
-    Event,
-    TrainInfo,
-    BoardStation,
-    Me,
-    ConnectorStatus,
-    TagMapping,
-    SsoMapping,
-    AuthConfig,
-    ErrorResponse,
-  },
-  dataOf,
-  CATEGORIES,
+const queries = {
+  telemetryQuery,
+  telemetryHourlyQuery,
+  latestQuery,
+  eventsQuery,
+  activeAlarmsQuery,
+  trainInfoQuery,
+  boardQuery,
+  mappingsQuery,
+  ssoMappingDeleteQuery,
 };
+const bodies = { mappingBody, ssoMappingBody };
+const responses = {
+  Telemetry,
+  TelemetryHourly,
+  Event,
+  TrainInfo,
+  BoardStation,
+  Me,
+  ConnectorStatus,
+  TagMapping,
+  SsoMapping,
+  AuthConfig,
+  ErrorResponse,
+};
+
+export { z, queries, bodies, responses, dataOf, CATEGORIES };

@@ -1,6 +1,4 @@
-'use strict';
-
-const { z } = require('zod');
+import { z } from 'zod';
 
 const MAX_FUTURE_MS = 5 * 60_000; // toleransi clock skew 5 menit
 const MAX_PAST_MS = 7 * 24 * 3600_000; // tolak data lebih tua dari 7 hari
@@ -67,7 +65,7 @@ const canonical = z.union([telemetry, event, trainInfo]);
 
 /**
  * @param {unknown} record
- * @returns {{ ok: true, record: import('../core/types').CanonicalRecord } | { ok: false, reason: string }}
+ * @returns {{ ok: true, record: import('../core/types.js').CanonicalRecord } | { ok: false, reason: string }}
  */
 function validate(record) {
   const r = canonical.safeParse(record);
@@ -76,4 +74,4 @@ function validate(record) {
   return { ok: false, reason };
 }
 
-module.exports = { validate };
+export { validate };

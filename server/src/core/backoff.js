@@ -1,5 +1,3 @@
-'use strict';
-
 /** Exponential backoff dengan jitter. attempt mulai dari 0. */
 function backoffDelay(attempt, baseMs = 1000, maxMs = 60_000) {
   const exp = Math.min(maxMs, baseMs * 2 ** attempt);
@@ -22,4 +20,4 @@ function sleep(ms, signal) {
   });
 }
 
-module.exports = { backoffDelay, sleep };
+export { backoffDelay, sleep };

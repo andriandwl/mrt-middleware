@@ -1,12 +1,10 @@
-"use strict";
-
-const { formatScopes } = require("./auth");
-const { logger } = require("../logger");
+import { formatScopes } from "./auth.js";
+import { logger } from "../logger.js";
 
 /**
  * Catat setiap request API konsumen ke audit_logs setelah response selesai,
  * termasuk request yang ditolak (401/403) — identitas kosong bila autentikasi gagal.
- * @param {import('../storage/repository').Repository} repo
+ * @param {import('../storage/repository.js').Repository} repo
  */
 function auditMiddleware(repo) {
   return (req, res, next) => {
@@ -40,4 +38,4 @@ function auditMiddleware(repo) {
   };
 }
 
-module.exports = { auditMiddleware };
+export { auditMiddleware };

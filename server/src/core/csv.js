@@ -1,6 +1,4 @@
-'use strict';
-
-const fs = require('node:fs');
+import fs from 'node:fs';
 
 /**
  * Parser/penulis CSV sederhana (RFC 4180): mendukung kutip ganda, koma dan baris baru di dalam kutip.
@@ -55,4 +53,4 @@ function toCsv(columns, rows) {
   return `${[columns.join(','), ...rows.map((r) => columns.map((c) => esc(r[c])).join(','))].join('\n')}\n`;
 }
 
-module.exports = { parseCsv, readCsvFile, toCsv };
+export { parseCsv, readCsvFile, toCsv };

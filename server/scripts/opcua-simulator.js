@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Simulator Facility SCADA (OPC UA Server) untuk pengembangan, berbasis katalog tag data/scada-tags.csv.
  * Endpoint: opc.tcp://localhost:4840/UA/MiddlewareSim
@@ -26,9 +24,11 @@
  * Semua variabel read-only (accessLevel CurrentRead).
  */
 
-const path = require('node:path');
-const { DataType, OPCUAServer, Variant, StatusCodes } = require('node-opcua');
-const { readCsvFile } = require('../src/core/csv');
+import path from 'node:path';
+import { DataType, OPCUAServer, Variant, StatusCodes } from 'node-opcua';
+import { readCsvFile } from '../src/core/csv.js';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const CSV = path.resolve(process.env.SIM_TAGS_CSV || path.join(__dirname, '..', 'data', 'scada-tags.csv'));
 const ALARM_RATE = Number(process.env.SIM_ALARM_RATE || 1);

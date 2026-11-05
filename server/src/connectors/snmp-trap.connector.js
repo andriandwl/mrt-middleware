@@ -1,10 +1,8 @@
-'use strict';
-
-const snmp = require('net-snmp');
-const { z } = require('zod');
-const { BaseConnector } = require('./base.connector');
-const { secretFromEnv } = require('../config');
-const { VARBINDS } = require('../parsers/snmp-oids');
+import snmp from 'net-snmp';
+import { z } from 'zod';
+import { BaseConnector } from './base.connector.js';
+import { secretFromEnv } from '../config.js';
+import { VARBINDS } from '../parsers/snmp-oids.js';
 
 const optionsSchema = z.object({
   host: z.string().default('0.0.0.0'),
@@ -112,4 +110,4 @@ class SnmpTrapConnector extends BaseConnector {
   }
 }
 
-module.exports = { SnmpTrapConnector };
+export { SnmpTrapConnector };

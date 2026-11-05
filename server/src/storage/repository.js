@@ -1,7 +1,5 @@
-"use strict";
-
 /**
- * @typedef {import('../api/auth').Scope} Scope
+ * @typedef {import('../api/auth.js').Scope} Scope
  *
  * @typedef {Object} TagMapping
  * @property {number} id
@@ -81,9 +79,9 @@ class Repository {
   /**
    * Simpan raw + canonical dalam satu transaksi.
    * Return false bila raw sudah ada (dedup_key bentrok) — tidak ada yang disimpan.
-   * @param {import('../core/types').RawRecord} raw
+   * @param {import('../core/types.js').RawRecord} raw
    * @param {string} dedupKey
-   * @param {import('../core/types').CanonicalRecord[]} records
+   * @param {import('../core/types.js').CanonicalRecord[]} records
    */
   async persist(raw, dedupKey, records) {
     const client = await this.pool.connect();
@@ -250,7 +248,7 @@ class Repository {
 
   // ---------- Status konektor ----------
 
-  /** @param {import('../core/types').ConnectorStatus} s */
+  /** @param {import('../core/types.js').ConnectorStatus} s */
   async upsertConnectorStatus(s) {
     await this.pool.query(
       `INSERT INTO connector_status (connector_id, source, state, last_error, last_record_ts, updated_at)
@@ -539,4 +537,4 @@ class Repository {
   }
 }
 
-module.exports = { Repository };
+export { Repository };

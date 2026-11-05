@@ -1,16 +1,14 @@
-'use strict';
-
 /**
  * Parser mengubah payload mentah per sumber menjadi DraftRecord[].
  * Daftarkan parser baru di `parsers` di bawah, lalu rujuk namanya di config/sources.json.
  *
- * @typedef {import('../core/types').Parser} Parser
- * @typedef {import('../core/types').Severity} Severity
+ * @typedef {import('../core/types.js').Parser} Parser
+ * @typedef {import('../core/types.js').Severity} Severity
  */
 
-const path = require('node:path');
-const { readCsvFile } = require('../core/csv');
-const { VARBINDS } = require('./snmp-oids');
+import path from 'node:path';
+import { readCsvFile } from '../core/csv.js';
+import { VARBINDS } from './snmp-oids.js';
 
 const str = (v) => (v === undefined || v === null || v === '' ? undefined : String(v));
 const pick = (o, ...keys) => {
@@ -373,4 +371,4 @@ function getParser(name) {
   return p;
 }
 
-module.exports = { parsers, getParser };
+export { parsers, getParser };

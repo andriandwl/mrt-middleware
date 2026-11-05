@@ -1,8 +1,8 @@
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const { pool } = require('../src/storage/pool');
+import fs from 'node:fs';
+import path from 'node:path';
+import { pool } from '../src/storage/pool.js';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** Jalankan file migrations/*.sql yang belum pernah dijalankan, berurutan. */
 async function main() {

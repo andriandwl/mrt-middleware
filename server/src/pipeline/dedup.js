@@ -1,6 +1,4 @@
-'use strict';
-
-const { createHash } = require('node:crypto');
+import { createHash } from 'node:crypto';
 
 function stableStringify(v) {
   if (v === null || typeof v !== 'object') return JSON.stringify(v) ?? 'undefined';
@@ -13,7 +11,7 @@ function stableStringify(v) {
 
 /**
  * Kunci dedup = sha256(source | sourceId | sourceTs | payload).
- * @param {import('../core/types').RawRecord} raw
+ * @param {import('../core/types.js').RawRecord} raw
  */
 function dedupKey(raw) {
   return createHash('sha256')
@@ -61,4 +59,4 @@ class DedupCache {
   }
 }
 
-module.exports = { dedupKey, DedupCache };
+export { dedupKey, DedupCache };

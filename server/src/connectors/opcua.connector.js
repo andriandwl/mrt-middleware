@@ -1,7 +1,5 @@
-'use strict';
-
-const path = require('node:path');
-const {
+import path from 'node:path';
+import {
   AttributeIds,
   ClientMonitoredItemGroup,
   ClientSubscription,
@@ -10,11 +8,11 @@ const {
   SecurityPolicy,
   TimestampsToReturn,
   UserTokenType,
-} = require('node-opcua');
-const { z } = require('zod');
-const { BaseConnector } = require('./base.connector');
-const { secretFromEnv } = require('../config');
-const { readCsvFile } = require('../core/csv');
+} from 'node-opcua';
+import { z } from 'zod';
+import { BaseConnector } from './base.connector.js';
+import { secretFromEnv } from '../config.js';
+import { readCsvFile } from '../core/csv.js';
 
 const nodeSchema = z.object({
   nodeId: z.string().min(1),
@@ -176,4 +174,4 @@ class OpcUaConnector extends BaseConnector {
   }
 }
 
-module.exports = { OpcUaConnector };
+export { OpcUaConnector };

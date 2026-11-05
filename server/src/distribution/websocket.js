@@ -1,10 +1,8 @@
-"use strict";
-
-const { WebSocketServer, WebSocket } = require("ws");
-const { z } = require("zod");
-const { formatScopes, scopeAllows } = require("../api/auth");
-const { metrics } = require("../monitoring/metrics");
-const { logger } = require("../logger");
+import { WebSocketServer, WebSocket } from "ws";
+import { z } from "zod";
+import { formatScopes, scopeAllows } from "../api/auth.js";
+import { metrics } from "../monitoring/metrics.js";
+import { logger } from "../logger.js";
 
 const CHANNELS = ["telemetry", "event", "train_info"];
 const EXPIRY_WARNING_MS = 2 * 60_000;
@@ -42,8 +40,8 @@ const clientMessage = z.discriminatedUnion("type", [
  */
 class DistributionHub {
   /**
-   * @param {import('../api/auth').Authenticator} auth
-   * @param {import('../storage/repository').Repository} repo
+   * @param {import('../api/auth.js').Authenticator} auth
+   * @param {import('../storage/repository.js').Repository} repo
    */
   constructor(auth, repo) {
     this.auth = auth;
@@ -222,7 +220,7 @@ class DistributionHub {
 
   /**
    * Kirim record ke klien yang berlangganan channel tsb DAN record berada dalam scope-nya.
-   * @param {import('../core/types').CanonicalRecord} rec
+   * @param {import('../core/types.js').CanonicalRecord} rec
    */
   publish(rec) {
     const channel = rec.kind;
@@ -274,4 +272,4 @@ class DistributionHub {
   }
 }
 
-module.exports = { DistributionHub };
+export { DistributionHub };

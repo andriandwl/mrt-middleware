@@ -42,5 +42,6 @@
   },
   "devDependencies": {
     "pino-pretty": "^13.0.0"
-  }
+  },
+  "type": "module"
 }

@@ -1,13 +1,13 @@
-'use strict';
-
 /**
  * Jalankan ketiga simulator sekaligus: Facility SCADA (OPC UA), DTS/NMS (SNMP trap + syslog), PIDC (WebSocket feed).
  * Pemakaian: npm run sim:all    (Ctrl+C menghentikan semuanya)
  * Env diteruskan ke tiap simulator, mis. SIM_ALARM_RATE=10 npm run sim:all
  */
 
-const { spawn } = require('node:child_process');
-const path = require('node:path');
+import { spawn } from 'node:child_process';
+import path from 'node:path';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const SIMS = [
   ['scada', 'opcua-simulator.js'],

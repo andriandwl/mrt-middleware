@@ -1,9 +1,7 @@
-'use strict';
-
-const { DedupCache, dedupKey } = require('./dedup');
-const { validate } = require('./validate');
-const { metrics } = require('../monitoring/metrics');
-const { logger } = require('../logger');
+import { DedupCache, dedupKey } from './dedup.js';
+import { validate } from './validate.js';
+import { metrics } from '../monitoring/metrics.js';
+import { logger } from '../logger.js';
 
 /**
  * Alur: dedup → parse → map → normalize → validate → persist → distribute.
@@ -11,9 +9,9 @@ const { logger } = require('../logger');
  */
 class Pipeline {
   /**
-   * @param {import('../storage/repository').Repository} repo
-   * @param {import('./mapper').Mapper} mapper
-   * @param {import('../distribution/websocket').DistributionHub} hub
+   * @param {import('../storage/repository.js').Repository} repo
+   * @param {import('./mapper.js').Mapper} mapper
+   * @param {import('../distribution/websocket.js').DistributionHub} hub
    * @param {DedupCache} dedup
    */
   constructor(repo, mapper, hub, dedup, maxQueuePerConnector = 5_000) {
@@ -30,8 +28,8 @@ class Pipeline {
 
   /**
    * Masukkan record ke antrian konektor (non-blocking).
-   * @param {import('../core/types').RawRecord} raw
-   * @param {import('../core/types').Parser} parser
+   * @param {import('../core/types.js').RawRecord} raw
+   * @param {import('../core/types.js').Parser} parser
    */
   submit(raw, parser) {
     const n = this.pending.get(raw.connectorId) ?? 0;
@@ -119,4 +117,4 @@ class Pipeline {
   }
 }
 
-module.exports = { Pipeline };
+export { Pipeline };

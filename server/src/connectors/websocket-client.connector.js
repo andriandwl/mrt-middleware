@@ -1,9 +1,7 @@
-'use strict';
-
-const WebSocket = require('ws');
-const { z } = require('zod');
-const { BaseConnector, getPath, toDate } = require('./base.connector');
-const { secretFromEnv } = require('../config');
+import WebSocket from 'ws';
+import { z } from 'zod';
+import { BaseConnector, getPath, toDate } from './base.connector.js';
+import { secretFromEnv } from '../config.js';
 
 const optionsSchema = z.object({
   url: z.string().regex(/^wss?:\/\//, 'url harus ws:// atau wss://'),
@@ -99,4 +97,4 @@ class WebSocketClientConnector extends BaseConnector {
   }
 }
 
-module.exports = { WebSocketClientConnector };
+export { WebSocketClientConnector };

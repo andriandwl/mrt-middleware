@@ -1,8 +1,6 @@
-'use strict';
-
-const dgram = require('node:dgram');
-const { z } = require('zod');
-const { BaseConnector } = require('./base.connector');
+import dgram from 'node:dgram';
+import { z } from 'zod';
+import { BaseConnector } from './base.connector.js';
 
 const optionsSchema = z.object({
   host: z.string().default('0.0.0.0'),
@@ -54,4 +52,4 @@ class SyslogConnector extends BaseConnector {
   }
 }
 
-module.exports = { SyslogConnector };
+export { SyslogConnector };

@@ -1,7 +1,5 @@
-'use strict';
-
-const pino = require('pino');
-const { env } = require('./config');
+import pino from 'pino';
+import { env } from './config.js';
 
 const logger = pino({
   level: env.LOG_LEVEL,
@@ -13,4 +11,4 @@ const logger = pino({
     : {}),
 });
 
-module.exports = { logger };
+export { logger };

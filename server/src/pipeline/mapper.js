@@ -1,6 +1,4 @@
-'use strict';
-
-const { logger } = require('../logger');
+import { logger } from '../logger.js';
 
 function normalizeValue(v, scale) {
   if (typeof v === 'number') return { valueNum: Number.isFinite(v) ? v * scale : null, valueText: null };
@@ -24,7 +22,7 @@ function normalizeValue(v, scale) {
  * Mapping di-cache dan di-refresh berkala.
  */
 class Mapper {
-  /** @param {import('../storage/repository').Repository} repo */
+  /** @param {import('../storage/repository.js').Repository} repo */
   constructor(repo, refreshMs = 60_000) {
     this.repo = repo;
     this.refreshMs = refreshMs;
@@ -56,8 +54,8 @@ class Mapper {
 
   /**
    * @param {any} draft  DraftRecord dari parser
-   * @param {import('../core/types').RawRecord} raw
-   * @returns {import('../core/types').CanonicalRecord}
+   * @param {import('../core/types.js').RawRecord} raw
+   * @returns {import('../core/types.js').CanonicalRecord}
    */
   map(draft, raw) {
     const m = this.lookup(raw.source, draft.sourceKey);
@@ -120,4 +118,4 @@ class Mapper {
   }
 }
 
-module.exports = { Mapper };
+export { Mapper };

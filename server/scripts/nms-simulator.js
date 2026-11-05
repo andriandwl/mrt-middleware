@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Simulator DTS / Telecommunication NMS (DUMMY): mengirim SNMP v2c trap dan syslog (RFC 5424)
  * ke middleware, berdasarkan data/nms-devices.csv dan data/nms-traps.csv.
@@ -15,11 +13,13 @@
  *      NMS_COMMUNITY (public), SIM_ALARM_RATE (pengali frekuensi, default 1)
  */
 
-const dgram = require('node:dgram');
-const path = require('node:path');
-const snmp = require('net-snmp');
-const { readCsvFile } = require('../src/core/csv');
-const { VARBINDS } = require('./generate-nms-catalog');
+import dgram from 'node:dgram';
+import path from 'node:path';
+import snmp from 'net-snmp';
+import { readCsvFile } from '../src/core/csv.js';
+import { VARBINDS } from './generate-nms-catalog.js';
+import { fileURLToPath } from "node:url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const DATA = path.join(__dirname, '..', 'data');
 const HOST = process.env.NMS_TARGET_HOST || '127.0.0.1';
