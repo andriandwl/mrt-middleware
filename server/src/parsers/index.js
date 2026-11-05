@@ -7,6 +7,7 @@
  */
 
 import path from 'node:path';
+import fs from 'node:fs';
 import { readCsvFile } from '../core/csv.js';
 import { VARBINDS } from './snmp-oids.js';
 
@@ -107,14 +108,14 @@ const scadaOpcua = (raw) => {
 };
 
 // =====================================================================
-// NMS: SNMP trap (berbasis katalog data/nms-traps.csv)
+// NMS: SNMP trap. Set NMS_TRAPS_CSV to the deployment's trap catalog.
 // =====================================================================
 let trapCatalog = null;
 /** Katalog trap dimuat sekali. Path bisa diganti lewat env NMS_TRAPS_CSV. */
 function loadTrapCatalog() {
   if (trapCatalog) return trapCatalog;
   const file = path.resolve(process.env.NMS_TRAPS_CSV || 'data/nms-traps.csv');
-  const rows = readCsvFile(file);
+  const rows = fs.existsSync(file) ? readCsvFile(file) : [];
   const byId = Object.fromEntries(rows.map((r) => [r.trap_id, r]));
   trapCatalog = { byOid: Object.fromEntries(rows.map((r) => [r.trap_oid, r])), byId };
   return trapCatalog;

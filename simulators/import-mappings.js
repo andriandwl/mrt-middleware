@@ -1,6 +1,6 @@
 import path from 'node:path';
-import { pool } from '../src/storage/pool.js';
-import { readCsvFile } from '../src/core/csv.js';
+import { pool } from '../server/src/storage/pool.js';
+import { readCsvFile } from '../server/src/core/csv.js';
 import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -9,14 +9,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * Kolom yang dipakai: node_id (atau source_key), station_code, asset_id, metric, unit, (opsional) scale, active.
  *
  * Pemakaian:
- *   npm run mappings:import                          # default data/scada-tags.csv, source=scada
- *   npm run mappings:import -- data/nms-mappings.csv nms
+ *   npm run mappings:import                          # default ../simulators/scada/data/scada-tags.csv, source=scada
+ *   npm run mappings:import -- ../simulators/nms/data/nms-mappings.csv nms
  *   npm run mappings:import -- path/ke/tags-vendor.csv scada
  *
  * Aman dijalankan berulang (upsert per source + node_id). Baris yang tidak valid dilewati dan dilaporkan.
  */
 async function main() {
-  const file = path.resolve(process.argv[2] || path.join(__dirname, '..', 'data', 'scada-tags.csv'));
+  const file = path.resolve(process.argv[2] || path.join(__dirname, 'scada', 'data', 'scada-tags.csv'));
   const source = process.argv[3] || 'scada';
   if (!['scada', 'nms', 'pids'].includes(source)) throw new Error(`source tidak valid: ${source}`);
 

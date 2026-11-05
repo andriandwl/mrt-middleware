@@ -9,14 +9,16 @@
  * Yang ASUMSI (ganti setelah daftar tag vendor tersedia):
  *  - Kode stasiun 3 huruf, format nodeId, jumlah aset per stasiun, nama metric, rentang normal, severity alarm.
  *
- * Output: data/scada-tags.csv
+ * Output: simulators/scada/data/scada-tags.csv
  * Pemakaian: npm run tags:generate
  */
 
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { toCsv } from '../src/core/csv.js';
+import { toCsv } from '../../server/src/core/csv.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const NS = 'ns=2;s=';
 
@@ -190,7 +192,7 @@ function build() {
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const rows = build();
-  const out = path.resolve(__dirname, '..', 'data', 'scada-tags.csv');
+  const out = path.resolve(__dirname, 'data', 'scada-tags.csv');
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, toCsv(COLUMNS, rows));
   const bySystem = rows.reduce((acc, r) => ({ ...acc, [r.system]: (acc[r.system] ?? 0) + 1 }), {});

@@ -1,0 +1,58 @@
+{
+  "connectors": [
+    {
+      "id": "scada-main",
+      "source": "scada",
+      "type": "opcua",
+      "parser": "scada-opcua",
+      "enabled": true,
+      "options": {
+        "endpointUrl": "opc.tcp://localhost:4840/UA/MiddlewareSim",
+        "securityMode": "None",
+        "securityPolicy": "None",
+        "browseRootNodeId": "ns=0;i=85"
+      }
+    },
+    {
+      "id": "nms-trap",
+      "source": "nms",
+      "type": "snmp-trap",
+      "parser": "nms-snmp-trap",
+      "enabled": true,
+      "options": {
+        "host": "0.0.0.0",
+        "port": 1162,
+        "communityEnv": "NMS_SNMP_COMMUNITY",
+        "allowFrom": []
+      }
+    },
+    {
+      "id": "nms-syslog",
+      "source": "nms",
+      "type": "syslog",
+      "parser": "nms-syslog",
+      "enabled": true,
+      "options": {
+        "host": "0.0.0.0",
+        "port": 5514,
+        "allowFrom": []
+      }
+    },
+    {
+      "id": "pids-feed",
+      "source": "pids",
+      "type": "websocket-client",
+      "parser": "pids-pidc-feed",
+      "enabled": true,
+      "options": {
+        "url": "ws://localhost:8095/feed",
+        "tokenEnv": "PIDS_API_TOKEN",
+        "ignoreTypes": ["heartbeat"],
+        "itemsPath": "items",
+        "idField": "messageId",
+        "timestampField": "generatedAt",
+        "idleTimeoutMs": 60000
+      }
+    }
+  ]
+}

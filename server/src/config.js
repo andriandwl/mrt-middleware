@@ -84,7 +84,7 @@ const envSchema = z.object({
     .enum(["true", "false"])
     .default("false")
     .transform((v) => v === "true"),
-  /** Hanya untuk pengujian lokal dengan mock (scripts/dev-aad-mock.js). Jangan diisi di produksi. */
+  /** Hanya untuk pengujian lokal dengan authority yang dikonfigurasi. Jangan diisi di produksi. */
   AZURE_AD_AUTHORITY_HOST: z
     .string()
     .url()

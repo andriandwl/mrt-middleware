@@ -1,0 +1,17 @@
+{
+  "name": "mrt-middleware-mocks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local development mocks for MRT middleware integrations",
+  "scripts": {
+    "dev:aad": "node azure-ad/dev-aad-mock.js",
+    "check": "node --check azure-ad/dev-aad-mock.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "jose": "^5.10.0"
+  },
+  "type": "module"
+}

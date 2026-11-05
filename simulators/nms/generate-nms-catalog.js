@@ -2,9 +2,9 @@
  * Generator katalog DTS / Telecommunication NMS (DUMMY REALISTIS).
  *
  * Output:
- *   data/nms-devices.csv   perangkat telekomunikasi per stasiun + OCC (hostname, IP, tipe)
- *   data/nms-traps.csv     katalog SNMP trap: OID, severity, kategori, pasangan raise/clear, template pesan
- *   data/nms-mappings.csv  untuk tag_mappings (source=nms): IP & hostname → asset_id + stasiun
+ *   simulators/nms/data/nms-devices.csv   perangkat telekomunikasi per stasiun + OCC (hostname, IP, tipe)
+ *   simulators/nms/data/nms-traps.csv     katalog SNMP trap: OID, severity, kategori, pasangan raise/clear, template pesan
+ *   simulators/nms/data/nms-mappings.csv  untuk tag_mappings (source=nms): IP & hostname → asset_id + stasiun
  *
  * Yang ASUMSI (ganti setelah spesifikasi dari tim DTS tersedia):
  *   tipe & jumlah perangkat per stasiun, rencana IP 10.20.x.x, konvensi hostname, OID enterprise,
@@ -17,10 +17,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { toCsv } from '../src/core/csv.js';
-import { STATIONS } from './generate-scada-tags.js';
+import { toCsv } from '../../server/src/core/csv.js';
+import { STATIONS } from '../scada/generate-scada-tags.js';
 
-import { ENT, VARBINDS } from '../src/parsers/snmp-oids.js'; // enterprise dummy & OID varbind
+import { ENT, VARBINDS } from '../../server/src/parsers/snmp-oids.js'; // enterprise dummy & OID varbind
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** [type, kode di hostname, jumlah layang, jumlah bawah tanah, interface, deskripsi] */
 const STATION_DEVICES = [
@@ -143,7 +145,7 @@ function buildMappings(devices) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const dir = path.resolve(__dirname, '..', 'data');
+  const dir = path.resolve(__dirname, 'data');
   fs.mkdirSync(dir, { recursive: true });
   const devices = buildDevices();
   const traps = buildTraps();
@@ -154,7 +156,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     toCsv(['source_key', 'station_code', 'asset_id', 'metric', 'unit'], buildMappings(devices)),
   );
   const byType = devices.reduce((a, d) => ({ ...a, [d.device_type]: (a[d.device_type] ?? 0) + 1 }), {});
-  console.log(`wrote ${devices.length} devices, ${traps.length} trap types → data/nms-*.csv`);
+  console.log(`wrote ${devices.length} devices, ${traps.length} trap types → simulators/nms/data/nms-*.csv`);
   console.log(byType);
 }
 

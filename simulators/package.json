@@ -1,0 +1,29 @@
+{
+  "name": "mrt-middleware-simulators",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Development simulators and dummy source catalogs for MRT middleware",
+  "scripts": {
+    "sim:opcua": "node scada/opcua-simulator.js",
+    "tags:generate": "node scada/generate-scada-tags.js",
+    "mappings:import": "node import-mappings.js",
+    "nms:generate": "node nms/generate-nms-catalog.js",
+    "pids:generate": "node pids/generate-pids-catalog.js",
+    "sim:nms": "node nms/nms-simulator.js",
+    "sim:pids": "node pids/pids-simulator.js",
+    "sim:all": "node sim-all.js",
+    "check": "node --check sim-all.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "net-snmp": "^3.29.2",
+    "node-opcua": "^2.130.0",
+    "pg": "^8.13.1",
+    "ws": "^8.18.0"
+  },
+  "type": "module"
+}

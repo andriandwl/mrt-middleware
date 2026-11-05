@@ -10,13 +10,13 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const SIMS = [
-  ['scada', 'opcua-simulator.js'],
-  ['nms', 'nms-simulator.js'],
-  ['pids', 'pids-simulator.js'],
+  ['scada', path.join(__dirname, 'scada', 'opcua-simulator.js')],
+  ['nms', path.join(__dirname, 'nms', 'nms-simulator.js')],
+  ['pids', path.join(__dirname, 'pids', 'pids-simulator.js')],
 ];
 
 const children = SIMS.map(([name, file]) => {
-  const child = spawn(process.execPath, [path.join(__dirname, file)], { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
+  const child = spawn(process.execPath, [file], { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
   const prefix = `[${name}]`.padEnd(8);
   const pipe = (stream, out) =>
     stream.on('data', (buf) =>

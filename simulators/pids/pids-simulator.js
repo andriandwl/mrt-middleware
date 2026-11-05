@@ -1,5 +1,5 @@
 /**
- * Simulator PIDC Server (DUMMY): feed perkiraan kedatangan kereta per stasiun, berdasarkan data/pids-stations.csv.
+ * Simulator PIDC Server (DUMMY): feed perkiraan kedatangan kereta per stasiun, berdasarkan simulators/pids/data/pids-stations.csv.
  *
  * Interface dummy:
  *   WebSocket  ws://localhost:8095/feed          snapshot saat tersambung, lalu update incremental + heartbeat
@@ -22,7 +22,7 @@ import path from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import express from 'express';
 import { WebSocketServer, WebSocket } from 'ws';
-import { readCsvFile } from '../src/core/csv.js';
+import { readCsvFile } from '../../server/src/core/csv.js';
 import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -30,7 +30,7 @@ const PORT = Number(process.env.PIDS_PORT || 8095);
 const TOKEN = process.env.PIDS_API_TOKEN || '';
 const RATE = Number(process.env.SIM_ALARM_RATE || 1);
 
-const stations = readCsvFile(path.join(__dirname, '..', 'data', 'pids-stations.csv')).map((s) => ({
+const stations = readCsvFile(path.join(__dirname, 'data', 'pids-stations.csv')).map((s) => ({
   ...s,
   offset: Number(s.offset_min) * 60_000,
   dwell: Number(s.dwell_s) * 1000,

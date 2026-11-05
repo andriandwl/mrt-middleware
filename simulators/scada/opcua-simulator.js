@@ -1,5 +1,5 @@
 /**
- * Simulator Facility SCADA (OPC UA Server) untuk pengembangan, berbasis katalog tag data/scada-tags.csv.
+ * Simulator Facility SCADA (OPC UA Server) untuk pengembangan, berbasis katalog tag simulators/scada/data/scada-tags.csv.
  * Endpoint: opc.tcp://localhost:4840/UA/MiddlewareSim
  *
  * Perilaku (kolom `sim` di katalog):
@@ -19,18 +19,18 @@
  *   alarm           alarm acak, aktif 2–15 menit lalu normal kembali
  *   alarm_rare      seperti alarm, 10× lebih jarang
  *
- * Env: SIM_TAGS_CSV (default data/scada-tags.csv), SIM_ALARM_RATE (pengali frekuensi alarm, default 1),
+ * Env: SIM_TAGS_CSV (default simulators/scada/data/scada-tags.csv), SIM_ALARM_RATE (pengali frekuensi alarm, default 1),
  *      SIM_PORT (default 4840)
  * Semua variabel read-only (accessLevel CurrentRead).
  */
 
 import path from 'node:path';
 import { DataType, OPCUAServer, Variant, StatusCodes } from 'node-opcua';
-import { readCsvFile } from '../src/core/csv.js';
+import { readCsvFile } from '../../server/src/core/csv.js';
 import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const CSV = path.resolve(process.env.SIM_TAGS_CSV || path.join(__dirname, '..', 'data', 'scada-tags.csv'));
+const CSV = path.resolve(process.env.SIM_TAGS_CSV || path.join(__dirname, 'data', 'scada-tags.csv'));
 const ALARM_RATE = Number(process.env.SIM_ALARM_RATE || 1);
 const PORT = Number(process.env.SIM_PORT || 4840);
 const ANALOG_PERIOD_S = 15; // nilai analog diperbarui ±tiap 15 detik per tag

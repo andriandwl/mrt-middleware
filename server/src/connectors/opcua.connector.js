@@ -35,10 +35,14 @@ const optionsSchema = z
     readChunkSize: z.number().int().positive().default(200),
     /** Daftar node langsung di config ... */
     nodes: z.array(nodeSchema).optional(),
-    /** ... atau dari katalog CSV (kolom node_id, kind, severity, description). Path relatif ke folder server. */
+    /** ... atau dari katalog CSV (kolom node_id, kind, severity, description). Path dikelola oleh deployment. */
     nodesCsv: z.string().optional(),
+    /** Bila katalog tidak diberikan, temukan semua Variable di bawah root OPC UA ini. */
+    browseRootNodeId: z.string().default('ns=0;i=85'),
   })
-  .refine((o) => (o.nodes?.length ?? 0) > 0 || Boolean(o.nodesCsv), { message: 'isi `nodes` atau `nodesCsv`' });
+  .refine((o) => (o.nodes?.length ?? 0) > 0 || Boolean(o.nodesCsv) || Boolean(o.browseRootNodeId), {
+    message: 'isi `nodes`, `nodesCsv`, atau `browseRootNodeId`',
+  });
 
 function loadNodes(opts) {
   const list = [...(opts.nodes ?? [])];
@@ -58,6 +62,27 @@ function loadNodes(opts) {
   }
   const seen = new Set();
   return list.filter((n) => (seen.has(n.nodeId) ? false : seen.add(n.nodeId)));
+}
+
+async function browseVariables(session, rootNodeId) {
+  const nodes = [];
+  const queue = [rootNodeId];
+  const visited = new Set();
+  while (queue.length) {
+    const nodeId = queue.shift();
+    if (visited.has(nodeId)) continue;
+    visited.add(nodeId);
+    const result = await session.browse(nodeId);
+    for (const reference of result.references ?? []) {
+      const childNodeId = reference.nodeId.toString();
+      if (reference.nodeClass?.key === 'Variable' || reference.nodeClass === 2) {
+        nodes.push({ nodeId: childNodeId, kind: 'telemetry' });
+      } else if (reference.nodeClass?.key === 'Object' || reference.nodeClass === 1) {
+        queue.push(childNodeId);
+      }
+    }
+  }
+  return nodes;
 }
 
 /**
@@ -99,6 +124,11 @@ class OpcUaConnector extends BaseConnector {
       : { type: UserTokenType.Anonymous };
     this.session = await client.createSession(identity);
     this.session.on('session_closed', () => this.fail(new Error('OPC UA session closed')));
+    if (this.nodes.length === 0) {
+      this.nodes = await browseVariables(this.session, this.opts.browseRootNodeId);
+      if (this.nodes.length === 0) throw new Error(`No OPC UA variables found below ${this.opts.browseRootNodeId}`);
+      this.log.info({ nodes: this.nodes.length, root: this.opts.browseRootNodeId }, 'opc ua nodes discovered');
+    }
 
     // Initial read (dipecah per chunk) agar dashboard langsung punya nilai awal.
     // Timestamp sumbernya disimpan: notifikasi pertama subscription biasanya mengulang nilai yang sama.

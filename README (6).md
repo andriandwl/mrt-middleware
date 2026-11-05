@@ -30,10 +30,13 @@ npm install
 cp .env.example .env
 cp config/sources.example.json config/sources.json
 npm run migrate
-npm run mappings:import                                # mapping tag SCADA
-npm run mappings:import -- data/nms-mappings.csv nms   # mapping perangkat NMS
 npm run db:maintain        # buat partisi awal (server juga menjalankannya otomatis)
+cd ../simulators
+npm install
+npm run mappings:import                                # mapping tag SCADA
+npm run mappings:import -- nms/data/nms-mappings.csv nms   # mapping perangkat NMS
 npm run sim:all            # terminal 1: simulator SCADA + NMS + PIDC sekaligus
+cd ../server
 npm run dev                # terminal 2: middleware di :8080
 
 # buat API key untuk login UI
@@ -45,8 +48,16 @@ npm install
 npm run dev                # http://localhost:5173 — /api dan /ws diteruskan ke :8080
 ```
 
+`server/config/sources.json` berisi koneksi ke sistem sumber yang benar-benar dipakai
+pada deployment. File contoh menghubungkan ke interface simulator lokal; konfigurasi
+OPC UA dapat memakai discovery `browseRootNodeId` atau daftar node deployment.
+
+Server membaca data simulator melalui interface live, bukan file simulator:
+SCADA lewat OPC UA (`localhost:4840`), NMS lewat SNMP trap/syslog (`1162`/`5514`),
+dan PIDC lewat WebSocket (`localhost:8095`).
+
 Masuk ke UI dengan API key dari langkah `client:create`. Untuk login dengan akun Microsoft, isi variabel `AZURE_AD_*`
-di `.env` (lihat [docs/azure-ad-setup.md](docs/azure-ad-setup.md)), atau uji dulu dengan mock lokal `npm run dev:aad-mock`.
+di `.env` (lihat [docs/azure-ad-setup.md](docs/azure-ad-setup.md)), atau uji dulu dengan mock lokal dari `../mocks`.
 
 ### Produksi: satu proses
 
@@ -71,9 +82,17 @@ server/
     distribution/          WebSocket hub
     api/                   app, auth (API key, role, scope), audit, routes
     monitoring/            Prometheus metrics
-  scripts/                 migrate, create-client, opcua-simulator
+  scripts/                 migrate, create-client, db-maintain, sso-mapping
   migrations/001_init.sql
   config/sources.example.json
+simulators/
+  scada/                   Facility SCADA OPC UA server, generator, and tag catalog
+  nms/                     DTS/Telecommunication NMS trap/syslog server and catalogs
+  pids/                    PIDC WebSocket/REST server and station catalog
+  sim-all.js              run all upstream simulators together
+  import-mappings.js      import simulator catalogs into server mappings
+mocks/
+  azure-ad/                local-only Microsoft Entra ID mock
 web/
   src/
     main.jsx               router & provider
@@ -234,7 +253,7 @@ Konektor yang tersedia: `opcua`, `http-poll`, `webhook`, `syslog`, `snmp-trap`, 
 ## Katalog tag Facility SCADA (dummy realistis)
 
 Sebelum daftar tag resmi dari tim/vendor SCADA tersedia, middleware memakai katalog dummy
-`server/data/scada-tags.csv`. Isinya 880 tag dari 13 stasiun Fase 1 (7 layang, 6 bawah tanah).
+`simulators/scada/data/scada-tags.csv`. Isinya 880 tag dari 13 stasiun Fase 1 (7 layang, 6 bawah tanah).
 
 | Sistem | Kode | Aset per stasiun |
 | --- | --- | --- |
@@ -257,7 +276,8 @@ metric, data_type, unit, kind, severity, normal_min, normal_max, sim, descriptio
 jumlah aset per stasiun, nama metric, rentang normal, dan severity alarm.
 
 ```bash
-npm run tags:generate        # tulis ulang data/scada-tags.csv dari scripts/generate-scada-tags.js
+cd ../simulators
+npm run tags:generate        # tulis ulang scada/data/scada-tags.csv
 npm run mappings:import      # impor katalog ke tabel tag_mappings
 npm run sim:opcua            # simulator membaca katalog yang sama
 SIM_ALARM_RATE=20 npm run sim:opcua   # alarm 20× lebih sering, untuk demo/uji
@@ -273,30 +293,30 @@ unit, kind, severity`), arahkan `nodesCsv` di `config/sources.json` ke file itu,
 
 ## Katalog & simulator DTS/NMS (dummy)
 
-Katalog dibuat oleh `npm run nms:generate`:
+Katalog dibuat oleh `cd ../simulators && npm run nms:generate`:
 
 | File | Isi |
 | --- | --- |
-| `data/nms-devices.csv` | 142 perangkat: core & access switch DTS, radio base station, CCTV NVR, PA controller, clock slave, PIDS display controller per stasiun, plus core router/switch, NMS server, TETRA switch di OCC. IP `10.20.<stasiun>.x`, hostname `LBB-CSW01` |
-| `data/nms-traps.csv` | 24 jenis trap: linkDown/linkUp, coldStart, authenticationFailure (OID standar) + CPU, suhu, PSU, kipas, ring backbone, disk, carrier radio, clock sync, amplifier PA, display PIDS (OID dummy PEN 32473). Tiap alarm punya trap clear-nya |
-| `data/nms-mappings.csv` | IP & hostname → `asset_id` + stasiun, untuk `mappings:import ... nms` |
+| `../simulators/nms/data/nms-devices.csv` | 142 perangkat: core & access switch DTS, radio base station, CCTV NVR, PA controller, clock slave, PIDS display controller per stasiun, plus core router/switch, NMS server, TETRA switch di OCC. IP `10.20.<stasiun>.x`, hostname `LBB-CSW01` |
+| `../simulators/nms/data/nms-traps.csv` | 24 jenis trap: linkDown/linkUp, coldStart, authenticationFailure (OID standar) + CPU, suhu, PSU, kipas, ring backbone, disk, carrier radio, clock sync, amplifier PA, display PIDS (OID dummy PEN 32473). Tiap alarm punya trap clear-nya |
+| `../simulators/nms/data/nms-mappings.csv` | IP & hostname → `asset_id` + stasiun, untuk `mappings:import ... nms` |
 
-`npm run sim:nms` mengirim **SNMP v2c trap** ke UDP 1162 dan **syslog RFC 5424** ke UDP 5514:
+`cd ../simulators && npm run sim:nms` mengirim **SNMP v2c trap** ke UDP 1162 dan **syslog RFC 5424** ke UDP 5514:
 - Alarm acak sesuai tipe perangkat, aktif 1–20 menit lalu dikirim trap clear-nya.
 - linkDown/linkUp disertai syslog `%LINK-3-UPDOWN`.
 - Syslog rutin (login, sinkron NTP, konfigurasi disimpan, peringatan suhu) ±1 pesan per 3 detik.
 - Trap membawa `snmpTrapAddress.0` dan `sysName.0`, seperti trap yang diteruskan NMS.
 
 Konektor yang dipakai: `snmp-trap` (pasif, community dari env `NMS_SNMP_COMMUNITY`) dan `syslog`, dengan parser
-`nms-snmp-trap` (membaca `data/nms-traps.csv`) dan `nms-syslog` (RFC 5424 & 3164). Raise dan clear dipasangkan
+`nms-snmp-trap` (membaca `../simulators/nms/data/nms-traps.csv`) dan `nms-syslog` (RFC 5424 & 3164). Raise dan clear dipasangkan
 lewat `alarm_key = IP|trap|instans` (mis. `10.20.1.11|link_down|12`).
 
 ## Katalog & simulator PIDS/PIDC (dummy)
 
-`npm run pids:generate` menulis `data/pids-stations.csv`: urutan 13 stasiun, waktu tempuh kumulatif dari Lebak Bulus
+`cd ../simulators && npm run pids:generate` menulis `pids/data/pids-stations.csv`: urutan 13 stasiun, waktu tempuh kumulatif dari Lebak Bulus
 (28 menit ke Bundaran HI), peron per arah (1 = arah Bundaran HI, 2 = arah Lebak Bulus), dan dwell.
 
-`npm run sim:pids` menjalankan feed PIDC dummy:
+`cd ../simulators && npm run sim:pids` menjalankan feed PIDC dummy:
 - **WebSocket** `ws://localhost:8095/feed`: snapshot saat tersambung, lalu `arrival_update` / `disruption`, dan `heartbeat` tiap 15 detik.
 - **REST** `GET /api/v1/arrivals?station=LBB` dan `GET /api/v1/disruptions`.
 - Jam operasi 05.00–24.00 WIB, keberangkatan terakhir 23.30. Headway 5 menit di jam sibuk, 10 menit di luar itu.
@@ -306,7 +326,7 @@ lewat `alarm_key = IP|trap|instans` (mis. `10.20.1.11|link_down|12`).
 Konektor `websocket-client` (read-only, watchdog 60 detik) dengan parser `pids-pidc-feed`. ID perjalanan/gangguan
 masuk ke `train_info.ref_id`, status mentah ke `train_info.status` (migrasi `002`).
 
-Semua simulator sekaligus: `npm run sim:all`. Frekuensi alarm & gangguan: `SIM_ALARM_RATE=20 npm run sim:all`.
+Semua simulator sekaligus: `cd ../simulators && npm run sim:all`. Frekuensi alarm & gangguan: `SIM_ALARM_RATE=20 npm run sim:all`.
 
 **Yang asumsi** (ganti setelah spesifikasi tim DTS & PIDC tersedia): protokol & format pesan, tipe dan jumlah perangkat,
 rencana IP, OID enterprise, severity trap, waktu tempuh, nomor peron, headway, format nomor perjalanan.

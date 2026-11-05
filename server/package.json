@@ -9,17 +9,8 @@
     "start": "node src/index.js",
     "migrate": "node scripts/migrate.js",
     "client:create": "node scripts/create-client.js",
-    "sim:opcua": "node scripts/opcua-simulator.js",
     "check": "node --check src/index.js",
-    "tags:generate": "node scripts/generate-scada-tags.js",
-    "mappings:import": "node scripts/import-mappings.js",
-    "nms:generate": "node scripts/generate-nms-catalog.js",
-    "pids:generate": "node scripts/generate-pids-catalog.js",
-    "sim:nms": "node scripts/nms-simulator.js",
-    "sim:pids": "node scripts/pids-simulator.js",
-    "sim:all": "node scripts/sim-all.js",
     "sso:mapping": "node scripts/sso-mapping.js",
-    "dev:aad-mock": "node scripts/dev-aad-mock.js",
     "db:maintain": "node scripts/db-maintain.js"
   },
   "engines": {

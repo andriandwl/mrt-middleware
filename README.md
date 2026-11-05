@@ -32,7 +32,10 @@ npm install
 cp .env.example .env
 cp config/sources.example.json config/sources.json
 npm run migrate
+cd ../simulators
+npm install
 npm run sim:opcua          # terminal 1: simulator SCADA OPC UA
+cd ../server
 npm run dev                # terminal 2: middleware di :8080
 
 # buat API key untuk login UI
@@ -43,6 +46,10 @@ cd web
 npm install
 npm run dev                # http://localhost:5173 — /api dan /ws diteruskan ke :8080
 ```
+
+Server membaca data simulator melalui interface live, bukan file simulator:
+SCADA lewat OPC UA (`localhost:4840`), NMS lewat SNMP trap/syslog (`1162`/`5514`),
+dan PIDC lewat WebSocket (`localhost:8095`).
 
 Masuk ke UI dengan API key dari langkah `client:create`.
 
@@ -69,9 +76,16 @@ server/
     distribution/          WebSocket hub
     api/                   app, auth (API key, role, scope), audit, routes
     monitoring/            Prometheus metrics
-  scripts/                 migrate, create-client, opcua-simulator
+  scripts/                 migrate, create-client, db-maintain, sso-mapping
   migrations/001_init.sql
   config/sources.example.json
+simulators/
+  scada/                   Facility SCADA OPC UA server, generator, and tag catalog
+  nms/                     DTS/Telecommunication NMS trap/syslog server and catalogs
+  pids/                    PIDC WebSocket/REST server and station catalog
+  package.json            simulator commands and dependencies
+mocks/
+  azure-ad/                local-only Microsoft Entra ID mock
 web/
   src/
     main.jsx               router & provider
@@ -150,3 +164,5 @@ curl -X PUT -H "X-API-Key: <admin-key>" -H "Content-Type: application/json" \
   http://localhost:8080/api/v1/mappings \
   -d '{"source":"scada","sourceKey":"ns=2;i=1043","assetId":"LBB-AHU-01","station":"LBB","metric":"supply_temp","unit":"degC"}'
 ```
+mocks/
+  package.json            local mock commands and dependencies

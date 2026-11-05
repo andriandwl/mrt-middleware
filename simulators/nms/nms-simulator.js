@@ -1,6 +1,6 @@
 /**
  * Simulator DTS / Telecommunication NMS (DUMMY): mengirim SNMP v2c trap dan syslog (RFC 5424)
- * ke middleware, berdasarkan data/nms-devices.csv dan data/nms-traps.csv.
+ * ke middleware, berdasarkan simulators/nms/data/nms-devices.csv dan simulators/nms/data/nms-traps.csv.
  *
  * Perilaku:
  *  - Alarm acak per perangkat sesuai tipe (bobot di katalog), aktif 1–20 menit lalu dikirim trap clear-nya.
@@ -16,12 +16,12 @@
 import dgram from 'node:dgram';
 import path from 'node:path';
 import snmp from 'net-snmp';
-import { readCsvFile } from '../src/core/csv.js';
+import { readCsvFile } from '../../server/src/core/csv.js';
 import { VARBINDS } from './generate-nms-catalog.js';
 import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const DATA = path.join(__dirname, '..', 'data');
+const DATA = path.join(__dirname, 'data');
 const HOST = process.env.NMS_TARGET_HOST || '127.0.0.1';
 const TRAP_PORT = Number(process.env.NMS_TRAP_PORT || 1162);
 const SYSLOG_PORT = Number(process.env.NMS_SYSLOG_PORT || 5514);

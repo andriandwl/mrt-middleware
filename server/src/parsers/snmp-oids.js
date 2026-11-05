@@ -1,4 +1,4 @@
-/** OID varbind yang dipakai katalog trap NMS, simulator, dan parser. */
+/** OID varbind yang dipakai katalog trap NMS dan parser. */
 const ENT = '1.3.6.1.4.1.32473.1'; // enterprise dummy (PEN 32473 = dokumentasi, RFC 5612)
 
 const VARBINDS = {
