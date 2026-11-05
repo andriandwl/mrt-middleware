@@ -61,7 +61,7 @@ async function main() {
     conn.on("status", (s) => {
       metrics.connectorUp.set(
         { source: s.source, connector: s.id },
-        s.state === "connected" ? 1 : 0,
+        ["connected", "listening"].includes(s.state) ? 1 : 0,
       );
       repo
         .upsertConnectorStatus(s)

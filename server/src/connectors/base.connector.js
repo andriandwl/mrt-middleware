@@ -37,6 +37,11 @@ class BaseConnector extends EventEmitter {
   async disconnect() {
     throw new Error('disconnect() not implemented');
   }
+
+  /** State reported after a passive listener binds successfully. */
+  getReadyState() {
+    return 'connected';
+  }
   /* eslint-enable class-methods-use-this */
 
   async start() {
@@ -108,8 +113,9 @@ class BaseConnector extends EventEmitter {
         await this.connectOnce();
         this._attempts = 0;
         this._lastError = null;
-        this._setState('connected');
-        this.log.info('connected');
+        const readyState = this.getReadyState();
+        this._setState(readyState);
+        this.log.info(readyState);
         // Tunggu sampai koneksi dilaporkan putus atau konektor dihentikan
         await new Promise((resolve) => {
           this._lost = resolve;

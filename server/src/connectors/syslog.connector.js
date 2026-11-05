@@ -22,6 +22,10 @@ class SyslogConnector extends BaseConnector {
     this.seq = 0;
   }
 
+  getReadyState() {
+    return 'listening';
+  }
+
   async connectOnce() {
     const socket = dgram.createSocket('udp4');
     this.socket = socket;

@@ -339,6 +339,7 @@ const ConnectorStatus = z
       "idle",
       "connecting",
       "connected",
+      "listening",
       "disconnected",
       "error",
       "stopped",

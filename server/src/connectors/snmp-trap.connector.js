@@ -38,6 +38,10 @@ class SnmpTrapConnector extends BaseConnector {
     this.receiver = null;
   }
 
+  getReadyState() {
+    return 'listening';
+  }
+
   async connectOnce() {
     const communities = (secretFromEnv(this.opts.communityEnv) ?? '')
       .split(',')

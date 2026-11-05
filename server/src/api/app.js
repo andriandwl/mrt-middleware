@@ -60,9 +60,11 @@ function createApp(deps) {
     } catch {
       db = false;
     }
-    const allConnected = connectors.every((c) => c.state === "connected");
+    const allReady = connectors.every((c) =>
+      ["connected", "listening"].includes(c.state),
+    );
     let status = "not_ready";
-    if (db) status = allConnected ? "ready" : "degraded";
+    if (db) status = allReady ? "ready" : "degraded";
     res.status(db ? 200 : 503).json({
       status,
       database: db ? "up" : "down",

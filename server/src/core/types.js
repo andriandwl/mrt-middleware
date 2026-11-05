@@ -75,7 +75,7 @@
  *
  * ---------- Konektor ----------
  *
- * @typedef {'idle'|'connecting'|'connected'|'disconnected'|'error'|'stopped'} ConnectorState
+ * @typedef {'idle'|'connecting'|'connected'|'listening'|'disconnected'|'error'|'stopped'} ConnectorState
  *
  * @typedef {Object} ConnectorStatus
  * @property {string} id
